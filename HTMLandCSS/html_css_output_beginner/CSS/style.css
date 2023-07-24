@@ -170,6 +170,7 @@ footer p {
     }
 
     footer {
+        max-width: initial;
         border-bottom: 1px solid #000;
     }
 
