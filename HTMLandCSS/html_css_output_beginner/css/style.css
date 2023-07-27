@@ -18,16 +18,9 @@ p {
     font-size: 1.6rem;
 }
 
-.container {
-    width: 100%;
-    padding: 0 4%;
-    margin: 0 auto;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 100%;
-}
-
 header {
+    max-width: 960px;
+    padding: 0 4%;
     display: flex;
     justify-content: space-between;
     height: 50px;
@@ -45,11 +38,25 @@ header {
 .header-right {
     display: flex;
     justify-content: space-between;
-    width: 55%;
+    width: calc((330 / 600) * 100%);
+}
+
+.header-introduce {
+    margin-right: calc((40 / 600) * 100%);
 }
 
 .header-right p {
     font-size: 1.2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 960px;
+    padding: 0 4%;
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 .mainVisual {
@@ -81,7 +88,7 @@ section {
 }
 
 .introduce img {
-    width: calc((200 / 600) * 100%);
+    width: calc((150 / 600) * 100%);
     border-radius: 50%;
     object-fit: cover;
 }
@@ -117,44 +124,31 @@ footer p {
 
 /* PC表示 */
 @media screen and (min-width: 600px) {
-    .container {
-        max-width: 960px;
+    header {
+        margin: 0 auto;
     }
 
     .header-right {
-        width: 25%;
+        justify-content: center;
+        width: calc((330 / 960) * 100%);
     }
 
-    .introduce {
-        display: grid;
-        grid-template-columns: 7fr 5px 3fr;
+    .introduce-contents {
+        display: flex;
+        justify-content: center;
     }
 
-    .introduce h2 {
-        grid-column: 1 / 4;
-        grid-row: 1;
-    }
-
-    .introduce-left {
-        grid-column: 1;
-        grid-row: 2;
-        text-align: left;
-    }
-
-    .introduce-right {
-        grid-column: 3;
-        grid-row: 2;
+    .introduce .name {
         text-align: left;
     }
 
     .introduce img {
-        width: calc((400 / 960) * 100%);
+        width: calc((600 / 960) * 100%);
     }
 
     .profiles {
         display: grid;
         grid-template-columns: 1fr 5px 1fr 5px 1fr;
-        /* grid-template-columns: 1fr 1fr 1fr; */
     }
 
     .profA {
@@ -170,7 +164,6 @@ footer p {
     }
 
     footer {
-        max-width: initial;
         border-bottom: 1px solid #000;
     }
 
