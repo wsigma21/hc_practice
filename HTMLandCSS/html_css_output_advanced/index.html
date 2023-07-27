@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Zennの2種類の執筆方法について</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <img src="./images/logo.png" alt="Zennのロゴ" witdh="120" height="30">
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><img src="./images/loupe.png" alt="虫眼鏡のアイコン" witdh="20" height="20"></li>
+                    <li><img src="./images/bell.png" alt="ベルのアイコン" witdh="20" height="20"></li>
+                    <li><img src="./images/icon.png" alt="自分のアカウントのアイコン" width="40" height="40"></li>
+                    <li class="post_button"><a href="#">投稿する</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="title">
+            <h1>Zennの2種類の執筆方法について</h1>
+            <p class="article_data_for_mobile">
+                2020/09/06に公開・約1,200字
+            </p>
+        </div>
+        <main>
+            <article>
+                <p>このページではZennで記事や本を作成するときの執筆環境について紹介します</p>
+                <section class="article_header">
+                    <h2>Zenn の執筆方法は2種類</h2>
+                    <p>Zennのコンテンツは次のいずれかの方法で作成します。</p>
+                </section>
+                <section class="web_editor">
+                    <h2>1. Webエディター</h2>
+                    <img src="./images/webeditor.png" alt="Webエディターのサンプル">
+                    <p>ブラウザ上で動くエディターです。Zennにログインした状態で使用します。</p> 
+                    <details>
+                        <summary>ショートカットを使用しよう</summary>
+                        <p>オンラインのmarkdownエディターでは、以下のショートカットを使用できます。</p>
+                        <ul>
+                            <li><span>Ctrl + P（プレビュー）</span>：markdownがどのように表示されるかをチェックできます。もう一度ショートカットを実行すると、エディターに戻ります。</li>
+                            <li><span>Ctrl + S（内容の保存）</span>：変更内容を保存します。</li>
+                            <li><span>Ctrl + I（埋め込み）</span>：ツイートや YouTube、CodePen、SpeakerDeck などの埋め込みコンテンツを挿入するためのモーダルが表示されます。</li>
+                        </ul>
+                        <p>※ Mac の場合は<span class="cordspan">Ctrl</span>の代わりに<span class="cordspan">⌘</span>キーを使用します。</p>
+                    </details>
+                </section>
+                <section class="text_editor">
+                    <h2>2. ローカルのテキストエディター + CLI</h2>
+                    <img src="./images/texteditor1.png" alt="VSCode">
+                    <img src="./images/texteditor2.png" alt="ZennCLI">
+                    <p>自分の好きな環境で執筆したい方はGitHub リポジトリとの連携機能を利用することをおすすめします。リポジトリ連携をすると、特定のブランチに変更があったときに自動でコンテンツがzenn.devに反映されるようになります。</p>
+                    <p>📘 <a href="https://zenn.dev/zenn/articles/connect-to-github">Zenn と GitHub リポジトリを連携する →</a></p>
+                    <p>リポジトリ連携時には、ローカルでmarkdownファイルを作成し、好きなテキストエディターで編集を行います。Zenn CLIを使うことでブラウザでプレビューしながら執筆することが可能になります。</p>
+                    <p>📘 <a href="https://zenn.dev/zenn/articles/install-zenn-cli">Zenn CLI を導入する →</a></p>
+                    <p>オンラインエディターを使う場合も、CLIを使う場合もmarkdownの書き方は変わりません。具体的な記法は下記のリンク先をご覧ください。</p>
+                    <p>📘 <a href="https://zenn.dev/zenn/articles/markdown-guide">Zenn のmarkdown記法 →</a></p>
+                </section>
+            </article>
+        </main>
+        <div class="discussion">
+            <h2>Discussion</h2>
+            <img src="./images/discussion.png" alt="議論する男女">
+            <div class="comment">
+
+            </div>
+        </div>
+        <aside>
+            <section class="article_data">
+                
+            </section>
+            <section class=""account_data>
+                <p class="account_name">Zenn公式</p>
+                <p>Zennの使い方や開発状況を発信する公式アカウントです。</p>
+            </section>
+            <nav>
+                <p>目次</p>
+            </nav>
+        </aside>
+        <div class="read_next">
+
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+</body>
+</html>

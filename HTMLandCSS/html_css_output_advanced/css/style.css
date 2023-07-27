@@ -1,0 +1,60 @@
+body {
+    font-family:-apple-system, "system-ui", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+}
+
+.container {
+    background-color: #EDF2F7;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFF;
+    /* height: 60px;
+    width: 100%; */
+    padding: 10px 0;
+}
+/* .header-left {
+    float: left;
+} */
+
+.header-right ul {
+    width: 17%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-right: 5px;
+} 
+
+.title {
+    margin: 0 auto;
+}
+
+main {
+    margin: 0 auto;
+    background-color: #FFF;
+}
+
+.discussion {
+    background-color: #FFF;
+    
+}
+
+
+/* スマホ表示2 */
+@media screen and (min-width: 600px){
+    /* headerの『投稿する』ボタン表示 */
+}
+
+/* iPadの設定 */
+@media screen and (min-width: 993px){
+    /* aside表示 */
+}
+
+/* PCの設定 */
+@media screen and (min-width: 1300px){
+    /* 左側のいいねボタンとツイートボタン表示 */
+}
