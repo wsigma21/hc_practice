@@ -1,5 +1,48 @@
+html {
+    font-size: 62.5%;
+}
+
 body {
     font-family:-apple-system, "system-ui", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+    background-color: #fff;
+    max-width: 1200px;
+}
+
+header {
+    height: 60px;
+    margin: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFF;
+    padding: 10px 0;
+}
+
+.header-left img {
+    width: 100px;
+    height: auto;
+}
+
+.header-right {
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.icon {
+    width: 20px;
+    height: auto;
+}
+
+#my_icon {
+    width: 40px;
+    height: auto;
+}
+
+#post_button {
+    display: none;
 }
 
 .container {
@@ -9,25 +52,7 @@ body {
     grid-template-columns: 100%;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #FFF;
-    /* height: 60px;
-    width: 100%; */
-    padding: 10px 0;
-}
-/* .header-left {
-    float: left;
-} */
 
-.header-right ul {
-    width: 17%;
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    margin-right: 5px;
-} 
 
 .title {
     margin: 0 auto;
@@ -45,12 +70,32 @@ main {
 
 
 /* スマホ表示2 */
-@media screen and (min-width: 600px){
+@media screen and (min-width: 576px){
     /* headerの『投稿する』ボタン表示 */
+    .header-right {
+        width: 250px;
+    }
+
+    #post_button {
+        display: block;
+        width: 90px;
+        height: 35px;
+        background-color: #3EA8FF;
+        border-radius: 7px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    #post_button:hover {
+        cursor:pointer;
+        background-color: #0F83FD;
+    }
 }
 
 /* iPadの設定 */
-@media screen and (min-width: 993px){
+@media screen and (min-width: 990px){
+    /* headerの二段目が消える */
     /* aside表示 */
 }
 
