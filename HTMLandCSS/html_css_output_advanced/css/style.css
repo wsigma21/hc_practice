@@ -28,6 +28,10 @@ h2 {
     font-size: 2.7rem;
 }
 
+img {
+    width: 100%;
+}
+
 header {
     height: 60px;
     padding: 10px 15px;
@@ -35,7 +39,7 @@ header {
     border-bottom: 1px solid #E6EEF4;
 }
 
-header .header-container {
+header .header_container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
@@ -44,12 +48,12 @@ header .header-container {
     align-items: center;
 }
 
-header .header-left img {
+header .header_left img {
     width: 100px;
     height: auto;
 }
 
-header .header-right {
+header .header_right {
     width: 120px;
     display: flex;
     flex-direction: row;
@@ -80,6 +84,31 @@ header #post_button {
         "Title"
         "Main"
         "ReadNext";
+}
+
+.title {
+    grid-area: Title;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px 0;
+    text-align: center;
+}
+
+.title img {
+    text-align: center;
+    margin: 0 auto;
+    width: 65px;
+    height: 70px;
+}
+
+.title h1 {
+    font-size: 2.2rem;
+}
+
+.title p {
+    font-size: 1.45rem;
+    color: #65717B;
 }
 
 aside {
@@ -142,38 +171,75 @@ nav #arrow_icon {
     height: auto;
 }
 
-.title {
-    grid-area: Title;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px 0;
-    text-align: center;
-}
-
-.title img {
-    text-align: center;
-    margin: 0 auto;
-    width: 65px;
-    height: 70px;
-}
-
-.title h1 {
-    font-size: 2.2rem;
-}
-
-.title p {
-    font-size: 1.45rem;
-    color: #65717B;
-}
-
 main {
     grid-area: Main;
-    background-color: aqua;
+    padding: 0 20px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
 
-img {
-    width: 100%;
+main .main_contents {
+    display: grid;
+    gap: 50px;
+}
+
+main .main_contents h2 {
+    border-bottom: 1px solid #E6EEF4;
+    margin-bottom: 20px;
+}
+
+main .icon_area {
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+main .icon_area button {
+    width: 80px;
+    height: 33px;
+    background-color: #fff;
+    border: 1px solid #E7EFF5;
+    border-radius: 25px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+main .icon_area button img {
+    width: 25px;
+    height: 25px;
+}
+
+main .icon_area button p {
+    font-size: 1.15rem;
+}
+
+main .web_editor p, details {
+    margin-bottom: 20px;
+}
+
+main details {
+    border: 1px solid #E2ECF3;
+    border-radius: 10px;
+    /* TODO: 背景色がpadding部分につかないので調整する */
+    padding: 9.5px;
+}
+
+main details span {
+    display: inline-block;
+}
+
+main summary {
+    font-size: 1.368rem;
+}
+
+main details[open] summary{
+    background-color: #F1F5F9;
+}
+
+main details[open] .summary_contents {
+    border-top: 1px solid #E2ECF3;
 }
 
 .read_next {
@@ -190,7 +256,7 @@ footer {
 /* スマホ表示2 */
 @media screen and (min-width: 576px){
     /* headerの『投稿する』ボタン表示 */
-    header .header-right {
+    header .header_right {
         width: 250px;
     }
 
@@ -238,6 +304,10 @@ footer {
 
     .title .article_data_forsp {
         display: none;
+    }
+
+    main {
+        margin-right: 25px;
     }
 }
 

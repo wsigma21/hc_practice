@@ -10,11 +10,11 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="header-left">
+        <div class="header_container">
+            <div class="header_left">
                 <img src="./images/logo.png" alt="Zennのロゴ">
             </div>
-            <div class="header-right">
+            <div class="header_right">
                 <img class="icon" src="./images/loupe.png" alt="虫眼鏡のアイコン">
                 <img class="icon" src="./images/bell.png" alt="ベルのアイコン">
                 <img id="my_icon" src="./images/icon.png" alt="自分のアカウントのアイコン">
@@ -32,7 +32,19 @@
         </div>
         <main>
             <article class="main_contents">
-                <p>このページではZennで記事や本を作成するときの執筆環境について紹介します</p>
+                <section class="introduction">
+                    <div class="icon_area">
+                        <button>
+                            <img src="./images/zenn_logo1.png" alt="Zennのロゴ">
+                            <p>Zenn</p>
+                        </button>
+                        <button>
+                            <img src="./images/idea-icon.svg" alt="ideaのロゴ">
+                            <p>idea</p>
+                        </button>
+                    </div>
+                    <p>このページではZennで記事や本を作成するときの執筆環境について紹介します。</p>
+                </section>
                 <section class="article_header">
                     <h2>Zenn の執筆方法は2種類</h2>
                     <p>Zennのコンテンツは次のいずれかの方法で作成します。</p>
@@ -42,14 +54,16 @@
                     <img src="./images/webeditor.png" alt="Webエディターのサンプル">
                     <p>ブラウザ上で動くエディターです。Zennにログインした状態で使用します。</p> 
                     <details>
-                        <summary>ショートカットを使用しよう</summary>
-                        <p>オンラインのmarkdownエディターでは、以下のショートカットを使用できます。</p>
-                        <ul>
-                            <li><span>Ctrl + P（プレビュー）</span>：markdownがどのように表示されるかをチェックできます。もう一度ショートカットを実行すると、エディターに戻ります。</li>
-                            <li><span>Ctrl + S（内容の保存）</span>：変更内容を保存します。</li>
-                            <li><span>Ctrl + I（埋め込み）</span>：ツイートや YouTube、CodePen、SpeakerDeck などの埋め込みコンテンツを挿入するためのモーダルが表示されます。</li>
-                        </ul>
-                        <p>※ Mac の場合は<span class="cordspan">Ctrl</span>の代わりに<span class="cordspan">⌘</span>キーを使用します。</p>
+                        <summary><span>ショートカットを使用しよう</span></summary>
+                        <div class="summary_contents">
+                            <p>オンラインのmarkdownエディターでは、以下のショートカットを使用できます。</p>
+                            <ul>
+                                <li><span>Ctrl + P（プレビュー）</span>：markdownがどのように表示されるかをチェックできます。もう一度ショートカットを実行すると、エディターに戻ります。</li>
+                                <li><span>Ctrl + S（内容の保存）</span>：変更内容を保存します。</li>
+                                <li><span>Ctrl + I（埋め込み）</span>：ツイートや YouTube、CodePen、SpeakerDeck などの埋め込みコンテンツを挿入するためのモーダルが表示されます。</li>
+                            </ul>
+                            <p>※ Mac の場合は<span class="cordspan">Ctrl</span>の代わりに<span class="cordspan">⌘</span>キーを使用します。</p>
+                        </div>
                     </details>
                 </section>
                 <section class="text_editor">
