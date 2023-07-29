@@ -4,9 +4,10 @@ html {
 
 body {
     font-family:-apple-system, "system-ui", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
-    background-color: #fff;
-    max-width: 1200px;
     margin: 0 auto;
+    color: #303132;
+    background-color: #EDF2F7;
+
 }
 
 .icon {
@@ -29,12 +30,18 @@ h2 {
 
 header {
     height: 60px;
-    display: flex;
     padding: 10px 15px;
-    justify-content: space-between;
-    align-items: center;
     background-color: #FFF;
     border-bottom: 1px solid #E6EEF4;
+}
+
+header .header-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .header-left img {
@@ -60,6 +67,7 @@ header #post_button {
 }
 
 .container {
+    max-width: 1200px;
     background-color: #EDF2F7;
     display: grid;
     width: 100%;
@@ -135,11 +143,19 @@ nav #arrow_icon {
 }
 
 .title {
-    /* height: 290px; */
-    text-align: center;
-    /* vertical-align: middle; */
     grid-area: Title;
-    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px 0;
+    text-align: center;
+}
+
+.title img {
+    text-align: center;
+    margin: 0 auto;
+    width: 65px;
+    height: 70px;
 }
 
 .title h1 {
@@ -167,17 +183,18 @@ img {
 
 footer {
     height: 290px;
+    background-color: #fff;
 }
 
 
 /* スマホ表示2 */
 @media screen and (min-width: 576px){
     /* headerの『投稿する』ボタン表示 */
-    .header-right {
+    header .header-right {
         width: 250px;
     }
 
-    #post_button {
+    header #post_button {
         display: block;
         width: 90px;
         height: 35px;
@@ -188,7 +205,7 @@ footer {
         font-weight: 800;
     }
 
-    #post_button:hover {
+    header #post_button:hover {
         cursor:pointer;
         background-color: #0F83FD;
     }
@@ -206,9 +223,9 @@ footer {
 
 /* iPadの設定 */
 @media screen and (min-width: 993px){
-    /* headerの二段目が消える */
-    /* asideは横に表示 */
+    /* asideは上ではなく横に表示 */
     /* footerのロゴが左端にくる */
+
     .container {
         grid-template-columns: 4fr 1fr;
         /* ReadNextの高さが測れないので仮 */
@@ -217,7 +234,10 @@ footer {
             "Title Title"
             "Main Aside"
             "ReadNext ReadNext"
-        
+    }
+
+    .title .article_data_forsp {
+        display: none;
     }
 }
 
