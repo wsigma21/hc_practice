@@ -6,24 +6,43 @@ body {
     font-family:-apple-system, "system-ui", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
     background-color: #fff;
     max-width: 1200px;
+    margin: 0 auto;
+}
+
+.icon {
+    width: 20px;
+    height: auto;
+}
+
+.heart_icon {
+    width: 40px;
+    height: auto;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-size: 2.7rem;
 }
 
 header {
     height: 60px;
-    margin: 0 15px;
     display: flex;
+    padding: 10px 15px;
     justify-content: space-between;
     align-items: center;
     background-color: #FFF;
-    padding: 10px 0;
+    border-bottom: 1px solid #E6EEF4;
 }
 
-.header-left img {
+header .header-left img {
     width: 100px;
     height: auto;
 }
 
-.header-right {
+header .header-right {
     width: 120px;
     display: flex;
     flex-direction: row;
@@ -31,17 +50,12 @@ header {
     align-items: center;
 } 
 
-.icon {
-    width: 20px;
-    height: auto;
-}
-
-#my_icon {
+header #my_icon {
     width: 40px;
     height: auto;
 }
 
-#post_button {
+header #post_button {
     display: none;
 }
 
@@ -49,23 +63,110 @@ header {
     background-color: #EDF2F7;
     display: grid;
     width: 100%;
-    grid-template-columns: 100%;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    /* ReadNextの高さが測れないので仮 */
+    grid-template-rows: 60px 290px 1fr 1000px;
+    grid-template-areas:
+        "Aside"
+        "Title"
+        "Main"
+        "ReadNext";
+}
+
+aside {
+    grid-area: Aside;
+    background-color: #fff;
+    padding: 0 15px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+aside .article_data {
+    display: none;
+}
+
+aside .account_data_forsp {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside .account_data {
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+aside .account_data img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+}
+
+aside .account_name {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+aside .account_text {
+    display: none;
+}
+
+nav {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav p {
+    font-size: 1.4rem;
+    color: #65717B;
 }
 
 
+nav #arrow_icon {
+    width: 10px;
+    height: auto;
+}
 
 .title {
-    margin: 0 auto;
+    /* height: 290px; */
+    text-align: center;
+    /* vertical-align: middle; */
+    grid-area: Title;
+    background-color: pink;
+}
+
+.title h1 {
+    font-size: 2.2rem;
+}
+
+.title p {
+    font-size: 1.45rem;
+    color: #65717B;
 }
 
 main {
-    margin: 0 auto;
-    background-color: #FFF;
+    grid-area: Main;
+    background-color: aqua;
 }
 
-.discussion {
-    background-color: #FFF;
-    
+img {
+    width: 100%;
+}
+
+.read_next {
+    grid-area: ReadNext;
+    background-color: beige;
+}
+
+footer {
+    height: 290px;
 }
 
 
@@ -83,7 +184,7 @@ main {
         background-color: #3EA8FF;
         border-radius: 7px;
         color: #fff;
-        font-size: 14px;
+        font-size: 1.4rem;
         font-weight: 800;
     }
 
@@ -93,13 +194,35 @@ main {
     }
 }
 
+@media screen and (min-width: 768px){
+    /* titleが大きくなる */
+    /* Read nextが2列になる */
+    /* footerが4列になる */
+    .title h1 {
+        font-size: 30px;
+    }
+}
+
+
 /* iPadの設定 */
-@media screen and (min-width: 990px){
+@media screen and (min-width: 993px){
     /* headerの二段目が消える */
-    /* aside表示 */
+    /* asideは横に表示 */
+    /* footerのロゴが左端にくる */
+    .container {
+        grid-template-columns: 4fr 1fr;
+        /* ReadNextの高さが測れないので仮 */
+        grid-template-rows: 290px 1fr 1000px;
+        grid-template-areas: 
+            "Title Title"
+            "Main Aside"
+            "ReadNext ReadNext"
+        
+    }
 }
 
 /* PCの設定 */
 @media screen and (min-width: 1300px){
     /* 左側のいいねボタンとツイートボタン表示 */
+
 }
