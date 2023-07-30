@@ -15,21 +15,66 @@ body {
     height: auto;
 }
 
-.heart_icon {
-    width: 40px;
+.arrow_icon {
+    width: 10px;
     height: auto;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+h2, h3 {
+    border-bottom: 1px solid #E6EEF4;
+    margin-bottom: 20px;
 }
 
 p {
     font-size: 1.6rem;
-}
-
-h2 {
-    font-size: 2.7rem;
+    line-height: 3.0rem;
 }
 
 img {
     width: 100%;
+}
+
+a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #0F83FD;
+}
+
+.button {
+    background-color: #fff;
+    border: 1px solid #E7EFF5;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button > p {
+    font-weight: 500;
+    color: #303132;
+}
+
+
+.button:hover {
+    background-color: #F5FAFC;
+}
+
+.emphasis {
+    font-weight: 700;
 }
 
 header {
@@ -78,11 +123,12 @@ header #post_button {
     margin: 0 auto;
     grid-template-columns: 1fr;
     /* ReadNextの高さが測れないので仮 */
-    grid-template-rows: 60px 290px 1fr 1000px;
+    grid-template-rows: 60px 290px 1fr 580px 1000px;
     grid-template-areas:
         "Aside"
         "Title"
         "Main"
+        "Discussion"
         "ReadNext";
 }
 
@@ -100,10 +146,6 @@ header #post_button {
     margin: 0 auto;
     width: 65px;
     height: 70px;
-}
-
-.title h1 {
-    font-size: 2.2rem;
 }
 
 .title p {
@@ -138,7 +180,7 @@ aside .account_data {
     align-items: center;
 }
 
-aside .account_data img {
+.zenn_logo {
     width: 40px;
     height: auto;
     border-radius: 50%;
@@ -160,20 +202,19 @@ nav {
     align-items: center;
 }
 
+nav .heart_icon {
+    width: 40px;
+    height: auto;
+}
+
 nav p {
     font-size: 1.4rem;
     color: #65717B;
 }
 
-
-nav #arrow_icon {
-    width: 10px;
-    height: auto;
-}
-
 main {
     grid-area: Main;
-    padding: 0 20px;
+    padding: 25px 30px;
     background-color: #fff;
     border: 1px solid #fff;
     border-radius: 10px;
@@ -184,54 +225,34 @@ main .main_contents {
     gap: 50px;
 }
 
-main .main_contents h2 {
-    border-bottom: 1px solid #E6EEF4;
-    margin-bottom: 20px;
-}
-
 main .icon_area {
     padding: 10px 0;
     margin-bottom: 20px;
 }
 
-main .icon_area button {
+main .icon_area .button {
     width: 80px;
     height: 33px;
-    background-color: #fff;
-    border: 1px solid #E7EFF5;
     border-radius: 25px;
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 0 10px;
 }
 
-main .icon_area button img {
+main .icon_area .button img {
     width: 25px;
     height: 25px;
 }
 
-main .icon_area button p {
+main .icon_area .button p {
     font-size: 1.15rem;
 }
 
-main .web_editor p, details {
+main .web_editor>img,  .web_editor>p, .web_editor>details, .text_editor>img, .text_editor>p {
     margin-bottom: 20px;
 }
 
 main details {
     border: 1px solid #E2ECF3;
     border-radius: 10px;
-    /* TODO: 背景色がpadding部分につかないので調整する */
-    padding: 9.5px;
-}
-
-main details span {
-    display: inline-block;
-}
-
-main summary {
-    font-size: 1.368rem;
 }
 
 main details[open] summary{
@@ -240,6 +261,175 @@ main details[open] summary{
 
 main details[open] .summary_contents {
     border-top: 1px solid #E2ECF3;
+}
+
+main summary {
+    font-size: 1.368rem;
+    padding: 9.5px;
+}
+
+main .summary_contents {
+    padding: 7px 15px;
+    font-size: 1.5rem;
+}
+
+main .summary_contents p {
+    margin: 7px auto 7px auto;
+}
+
+main .summary_contents li {
+    list-style: disc;
+    width: 90%;
+    margin: 5px auto 5px auto;
+}
+
+main .summary_contents li>span{
+    font-weight: 700;
+}
+
+main .summary_contents .cordspan {
+    font-size: 1.2rem;
+    background-color: #F1F5F9;
+    padding: 2.5px 5px;
+    vertical-align: middle;
+}
+
+main .text_editor #zenn_cli {
+    padding-bottom: 40px;
+    border-bottom: 3px solid #E6EEF4;
+
+}
+
+main .text_editor .button {
+    width: 180px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px #E6EEF4;
+    padding: 0 10px;
+}
+
+main .text_editor .button img {
+    width: 18px;
+    height: 18px;
+}
+
+main .text_editor .button p {
+    font-size: 1.4rem;
+}
+
+main .evaluation_area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+main .evaluation_area .heart_icon {
+    width: 50px;
+    height: auto;
+    height: auto;
+}
+
+main .evaluation_left {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .evaluation_left .good_count {
+    color: #303132;
+}
+
+main .evaluation_right {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .evaluation_area .button {
+    width: 115px;
+    height: 45px;
+    border-radius: 25px;
+    padding: 0 12px;
+}
+
+/* TODO:できればTwitterアイコンの色を変える */
+main .evaluation_area .button img {
+    width: 20px;
+    height: auto;
+    color: #8F9FAA;
+}
+
+main .evaluation_area .button p {
+    color: #8F9FAA;
+}
+
+main .evaluation_area .button p:hover {
+    color: #323333;
+}
+
+main .account_data {
+    display: flex;
+    /* justify-content: center; */
+    padding-top: 30px;
+    padding-bottom: 20px;
+    /* border-bottom: 1px solid #E6EEF4; */
+}
+
+main .account_data_right {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 10px 0;
+}
+
+main .account_data .zenn_logo {
+    width: 65px;
+    height: auto;
+    margin-right: 15px;
+}
+
+main .account_data .account_name {
+    font-weight: 800;
+    font-size: 1.7rem;
+}
+
+main .account_data .account_text {
+    color: #65717B;
+}
+
+main .account_data .follow_area {
+    width: 160px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+main .account_data .button {
+    width: auto;
+    height: 35px;
+    border-radius: 15px;
+    padding: 0 15px;
+}
+
+main .account_data .button p {
+    font-size: 1.2rem;
+}
+
+main .account_data img {
+    width: 18px;
+    height: 18px;
+}
+
+
+
+.discussion {
+    grid-area: Discussion;
 }
 
 .read_next {
@@ -275,14 +465,24 @@ footer {
         cursor:pointer;
         background-color: #0F83FD;
     }
+
+    /* Discussionエリアの分離 */
 }
 
 @media screen and (min-width: 768px){
     /* titleが大きくなる */
     /* Read nextが2列になる */
     /* footerが4列になる */
-    .title h1 {
-        font-size: 30px;
+    h1 {
+        font-size: 3.0rem;
+    }
+
+    h2 {
+        font-size: 2.7rem;
+    }
+
+    h3 {
+        font-size: 2.4rem;
     }
 }
 
@@ -295,10 +495,11 @@ footer {
     .container {
         grid-template-columns: 4fr 1fr;
         /* ReadNextの高さが測れないので仮 */
-        grid-template-rows: 290px 1fr 1000px;
+        grid-template-rows: 290px 1fr 580px 1000px;
         grid-template-areas: 
             "Title Title"
             "Main Aside"
+            "Discussion Aside"
             "ReadNext ReadNext"
     }
 
