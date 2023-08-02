@@ -17,8 +17,8 @@
             <div class="header_right">
                 <img class="icon" src="./images/loupe.png" alt="虫眼鏡のアイコン">
                 <img class="icon" src="./images/bell.png" alt="ベルのアイコン">
-                <img id="my_icon" src="./images/icon.png" alt="自分のアカウントのアイコン">
-                <button id="post_button">投稿する</button>
+                <img class="my_icon" src="./images/icon.png" alt="自分のアカウントのアイコン">
+                <button class="post_button">投稿する</button>
             </div>
         </div>
     </header>
@@ -104,20 +104,46 @@
                         <p class="account_text">Zennの使い方や開発状況を発信する公式アカウントです。</p>
                         <div class="follow_area">
                             <a class="button" href="#"><p>フォロー</p></a>
-                            <img src="./images/github-logo.png" alt="Gitのアイコン">
-                            <img src="./images/twitter_logo_mono.png" alt="Twitterのアイコン">
+                            <img class="icon" src="./images/github-logo.png" alt="Gitのアイコン">
+                            <img class="icon" src="./images/twitter_logo_mono.png" alt="Twitterのアイコン">
                         </div>
                     </div>
                 </section>
             </article>
         </main>
         <section class="discussion">
-            <h2>Discussion</h2>
-            <img src="./images/discussion.png" alt="議論する男女">
-            <div class="comment">
-                
+            <div class="image_area">
+                <h3>Discussion</h3>
+                <img src="./images/discussion.png" alt="議論する男女">
+            </div>
+            <div class="comment_area">
+                <div class="editor_mode">
+                    <div class="editor_left">
+                        <img class="my_icon" src="./images/icon.png" alt="自分のアカウントのアイコン">
+                        <span id="markdown">Markdown</span>
+                        <span>Preview</span>
+                    </div>
+                    <div class="editor_right">
+                        <span><a class="link" href="https://zenn.dev/zenn/articles/markdown-guide">Markdownガイド</a> ↗︎</span>
+                    </div>
+                </div>
+                <textarea name="comment" id="comment" placeholder="記事についてコメントする"></textarea>
+                <div class="post_area">
+                    <div class="post_area_left">
+                        <img class="icon" src="./images/image_icon.png" alt="画像のアイコン">
+                        <img class="icon" src="./images/plus_icon.png" alt="画像追加のアイコン"><span class="embedded">埋め込み</span>
+                    </div>
+                    <div class="post_area_right">
+                        <button class="post_button" disabled>投稿する</button>
+                    </div>
+                </div>
+            </div>
+            <div class="community_guideline">
+                <img src="./images/info_icon.png" alt="お知らせアイコン">
+                <a class="link" href="https://zenn.dev/guideline">コミュニティガイドライン</a>に則った投稿をしましょう。
             </div>
         </section>
+
         <aside>
             <section class="article_data">
                 著者、公開日などの情報

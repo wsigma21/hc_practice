@@ -32,7 +32,7 @@ h3 {
     font-size: 2.2rem;
 }
 
-h2, h3 {
+main h2, main h3 {
     border-bottom: 1px solid #E6EEF4;
     margin-bottom: 20px;
 }
@@ -55,6 +55,12 @@ a:visited {
     color: #0F83FD;
 }
 
+.link, .link:visited {
+    font-weight: 500;
+    color: #8F9FAA;
+    text-decoration: underline;
+}
+
 .button {
     background-color: #fff;
     border: 1px solid #E7EFF5;
@@ -68,10 +74,24 @@ a:visited {
     color: #303132;
 }
 
-
 .button:hover {
     background-color: #F5FAFC;
 }
+
+.my_icon {
+    width: 40px;
+    height: auto;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
 
 .emphasis {
     font-weight: 700;
@@ -106,12 +126,7 @@ header .header_right {
     align-items: center;
 } 
 
-header #my_icon {
-    width: 40px;
-    height: auto;
-}
-
-header #post_button {
+header .post_button {
     display: none;
 }
 
@@ -123,7 +138,7 @@ header #post_button {
     margin: 0 auto;
     grid-template-columns: 1fr;
     /* ReadNextの高さが測れないので仮 */
-    grid-template-rows: 60px 290px 1fr 580px 1000px;
+    grid-template-rows: 60px 290px 1fr 590px 1000px;
     grid-template-areas:
         "Aside"
         "Title"
@@ -161,6 +176,7 @@ aside {
     top: 0;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #E6EEF4;
 }
 
 aside .article_data {
@@ -216,13 +232,11 @@ main {
     grid-area: Main;
     padding: 25px 30px;
     background-color: #fff;
-    border: 1px solid #fff;
-    border-radius: 10px;
 }
 
 main .main_contents {
     display: grid;
-    gap: 50px;
+    gap: 40px;
 }
 
 main .icon_area {
@@ -407,7 +421,6 @@ main .account_data .follow_area {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 main .account_data .button {
@@ -421,15 +434,120 @@ main .account_data .button p {
     font-size: 1.2rem;
 }
 
-main .account_data img {
-    width: 18px;
-    height: 18px;
-}
-
-
-
 .discussion {
     grid-area: Discussion;
+    background-color: #EDF2F7;
+    border-top: 1px solid #EDF2F7;
+}
+
+.discussion .image_area {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #EDF2F7;
+}
+
+.discussion .image_area img {
+    width: 285px;
+    height: 170px;
+}
+
+.discussion .comment_area {
+    border-bottom: 1px solid #fff;
+    border-radius: 0px 0px 10px 10px;
+    padding: 15px 17px;
+    background-color: #fff;
+}
+
+.discussion .editor_mode .editor_left {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discussion .editor_mode .editor_right {
+    display: none;
+}
+
+.discussion span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #8F9FAA;
+}
+
+.discussion span:hover {
+    color: #0F83FD;
+}
+
+.discussion .editor_mode #markdown {
+    border: 1px solid #fff;
+    border-radius: 15px;
+    color: #0F83FD;
+    background-color: #E6F2FF;
+    padding: 7px 12px;
+}
+
+.discussion #comment {
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 110px;
+    margin: 15px 0;
+    font-size: 1.6rem;
+    padding: 8px;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+.discussion #comment::placeholder {
+    /* font-size: 1.6rem; */
+    color: #97A6AF;
+    /* padding: 8px; */
+}
+
+.discussion .comment_area .post_button {
+    display: block;
+    width: 90px;
+    height: 35px;
+    background-color: #3EA8FF;
+    opacity: 0.5;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.discussion .post_area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.discussion .post_area_left img:first-child {
+    margin-right: 10px;
+}
+
+.discussion .post_area_left .embedded {
+    display: none;
+}
+
+.discussion .community_guideline {
+    display: flex;
+    align-items: center;
+    padding: 15px 0 0 5px;
+    height: 30px;
+}
+
+.discussion .community_guideline img {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.discussion .community_guideline {
+    font-size: 1.3rem;
+    color: #8F9FAA;
 }
 
 .read_next {
@@ -445,12 +563,21 @@ footer {
 
 /* スマホ表示2 */
 @media screen and (min-width: 576px){
+    /* TODO:両脇にpaddingが入る */
+    /* ただしasideには入れたくない */
+
+    .container {
+        /* Discussionの高さを上げる */
+        grid-template-rows: 60px 290px 1fr 630px 1000px;
+        padding: 0 25px;
+    }
+
     /* headerの『投稿する』ボタン表示 */
     header .header_right {
         width: 250px;
     }
 
-    header #post_button {
+    header .post_button {
         display: block;
         width: 90px;
         height: 35px;
@@ -461,18 +588,72 @@ footer {
         font-weight: 800;
     }
 
-    header #post_button:hover {
+    header .post_button:hover {
         cursor:pointer;
         background-color: #0F83FD;
     }
 
+    /* Zennロゴの大きさ変更 */
+    main .account_data .zenn_logo {
+        width: 85px;
+        height: auto;
+        margin-right: 15px;
+    }
+
     /* Discussionエリアの分離 */
+    main {
+        border: 1px solid #fff;
+        border-radius: 10px;
+    }
+
+    .discussion {
+        margin-top: 40px;
+    }
+    
+    .discussion .image_area {
+        border-top: 1px solid #fff;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .discussion .image_area img {
+        width: 300px;
+        height: 180px;
+    }
+
+    /* コメント欄の＋の横に「埋め込み」を追加 */
+    .discussion .post_area_left .embedded {
+        display: inline;
+        text-align: center;
+        margin-left: 8px;
+        color: #97A6AF;
+        font-weight: 500;
+    }
+
+    /* コメント欄に「markdownガイド」追加 */
+    .discussion .editor_mode  {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .discussion .editor_mode .editor_right {
+        color: #8F9FAA;
+        display: flex;
+        width: 115px;
+    }
+
+    .discussion .editor_mode .editor_right span {
+        font-size: 1.2rem;
+    }
+
+    .discussion .editor_mode .editor_right a:hover {
+        color: #0F83FD;
+    }
 }
 
 @media screen and (min-width: 768px){
     /* titleが大きくなる */
-    /* Read nextが2列になる */
-    /* footerが4列になる */
+    /* TODO:Read nextが2列になる */
+    /* TODO:footerが4列になる */
     h1 {
         font-size: 3.0rem;
     }
@@ -490,12 +671,12 @@ footer {
 /* iPadの設定 */
 @media screen and (min-width: 993px){
     /* asideは上ではなく横に表示 */
-    /* footerのロゴが左端にくる */
+    /* TODO:footerのロゴが左端にくる */
 
     .container {
         grid-template-columns: 4fr 1fr;
         /* ReadNextの高さが測れないので仮 */
-        grid-template-rows: 290px 1fr 580px 1000px;
+        grid-template-rows: 290px 1fr 630px 1000px;
         grid-template-areas: 
             "Title Title"
             "Main Aside"
@@ -507,13 +688,13 @@ footer {
         display: none;
     }
 
-    main {
+    main, .discussion {
         margin-right: 25px;
     }
 }
 
 /* PCの設定 */
 @media screen and (min-width: 1300px){
-    /* 左側のいいねボタンとツイートボタン表示 */
+    /* TODO:左側のいいねボタンとツイートボタン表示 */
 
 }
