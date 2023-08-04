@@ -92,6 +92,14 @@ a:visited {
     cursor: pointer;
 }
 
+.mini_heart_icon {
+    width: 15px;
+    height: 15px;
+}
+
+.good_count {
+    color: #303132;
+}
 
 .emphasis {
     font-weight: 700;
@@ -138,7 +146,7 @@ header .post_button {
     margin: 0 auto;
     grid-template-columns: 1fr;
     /* ReadNextの高さが測れないので仮 */
-    grid-template-rows: 60px 290px 1fr 590px 1000px;
+    grid-template-rows: 60px 290px 1fr 590px 1250px;
     grid-template-areas:
         "Aside"
         "Title"
@@ -352,10 +360,6 @@ main .evaluation_left {
     align-items: center;
 }
 
-main .evaluation_left .good_count {
-    color: #303132;
-}
-
 main .evaluation_right {
     width: 150px;
     display: flex;
@@ -545,15 +549,81 @@ main .account_data .button p {
     height: 15px;
 }
 
-.discussion .community_guideline {
-    font-size: 1.3rem;
-    color: #8F9FAA;
+.discussion .community_guideline p {
+   font-weight: 500;
+   font-size: 1.3rem;
+   color: #8F9FAA;
 }
 
 .read_next {
     grid-area: ReadNext;
-    background-color: beige;
+    padding: 0 14px;
 }
+
+.read_next h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.read_next .art {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.read_next .art_left {
+    width: 75px;
+    height: 80px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.read_next .art_right {
+    flex-grow: 1;
+}
+
+.read_next svg {
+    width: 40px;
+    height: 40px;
+}
+
+.read_next .art_title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    /* 長い文字の場合省略する */
+    /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden; */
+}
+
+.read_next .art_info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.read_next .art_info>img,.art_info>span{
+    margin-right: 10px;
+}
+
+.read_next .art_info .mini_heart_icon {
+    margin-right: 5px;
+}
+
+.read_next .user_icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
 
 footer {
     height: 290px;
@@ -568,7 +638,7 @@ footer {
 
     .container {
         /* Discussionの高さを上げる */
-        grid-template-rows: 60px 290px 1fr 630px 1000px;
+        grid-template-rows: 60px 290px 1fr 630px 1400px;
         padding: 0 25px;
     }
 
@@ -648,6 +718,26 @@ footer {
     .discussion .editor_mode .editor_right a:hover {
         color: #0F83FD;
     }
+
+    /* TODO:read_nextの画像大きくする */
+    .read_next .art {
+        height: 125px;
+    }
+
+    .read_next .art_left {
+        width: 95px;
+        height: 95px;
+    }
+
+    .read_next svg {
+        width: 45px;
+        height: 45px;
+    }
+
+    .read_next .user_icon {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 @media screen and (min-width: 768px){
@@ -664,6 +754,20 @@ footer {
 
     h3 {
         font-size: 2.4rem;
+    }
+    
+    .other_article {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .read_next .art {
+        /* width: calc((100% - 50px) / 2); */
+        width: 48%;
+        height: 140px;
+        
     }
 }
 
