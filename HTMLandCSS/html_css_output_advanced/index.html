@@ -23,6 +23,7 @@
         </div>
     </header>
     <div class="container">
+        <!-- タイトル -->
         <div class="title">
             <img src="./images/pencil.svg" alt="鉛筆とノートの絵">
             <h1>Zennの2種類の執筆方法について</h1>
@@ -30,8 +31,10 @@
                 2020/09/06に公開・約1,200字
             </p>
         </div>
+        <!-- メイン記事 -->
         <main>
             <article class="main_contents">
+                <!-- 導入 -->
                 <section class="introduction">
                     <div class="icon_area">
                         <a class="button" href="https://zenn.dev/topics/zenn">
@@ -45,10 +48,12 @@
                     </div>
                     <p>このページではZennで記事や本を作成するときの執筆環境について紹介します。</p>
                 </section>
+                <!-- はじめに -->
                 <section class="article_header">
                     <h2>Zenn の執筆方法は2種類</h2>
                     <p>Zennのコンテンツは次のいずれかの方法で作成します。</p>
                 </section>
+                <!-- 1章 -->
                 <section class="web_editor">
                     <h3>1. Webエディター</h3>
                     <img src="./images/webeditor.png" alt="Webエディターのサンプル">
@@ -67,6 +72,7 @@
                         </div>
                     </details>
                 </section>
+                <!-- 2章 -->
                 <section class="text_editor">
                     <h3>2. ローカルのテキストエディター + CLI</h3>
                     <img src="./images/texteditor1.png" alt="VSCode">
@@ -82,6 +88,7 @@
                         <p>GitHubで編集を提案</p>
                     </a>
                 </section>
+                <!-- いいね、ツイート欄 -->
                 <section class="evaluation_area">
                     <div class="evaluation_left">
                         <img class="heart_icon" src="./images/heart.jpeg" alt="いいねのアイコン">
@@ -95,6 +102,7 @@
                         </a>
                     </div>
                 </section>
+                <!-- 投稿ユーザーデータ表示 -->
                 <section class="account_data">
                     <div class="account_data_left">
                         <img class="zenn_logo" src="./images/zenn_logo2.jpeg" alt="Zennのロゴ">
@@ -111,6 +119,7 @@
                 </section>
             </article>
         </main>
+        <!-- Discussion表示 -->
         <section class="discussion">
             <div class="image_area">
                 <h3>Discussion</h3>
@@ -145,14 +154,63 @@
         </section>
 
         <aside>
-            <section class="article_data">
-                著者、公開日などの情報
-            </section>
+            <!-- PC用（右側に表示）のアカウントデータ表示 -->
+            <div class="account_data_forpc">
+                <section class="article_data card">
+                    <ul>
+                        <li>
+                            <span class="item_title"><img class="icon" src="./images/man_icon.png" alt="人物のアイコン">著者</span>
+                            <span><img class="logo" src="./images/zenn_logo2.jpeg" alt="Zennのロゴ"> Zenn公式</span>
+                        </li>
+                        <li>
+                            <span class="item_title"><img class="icon" src="./images/calendar_icon.png" alt="カレンダーのアイコン">公開</span>
+                            <span>2020/09/06</span>
+                        </li>
+                        <li>
+                            <span class="item_title"><img class="icon" src="./images/reload_icon.png" alt="リロードのアイコン">本文更新</span>
+                            <span><img class="logo" src="./images/github-logo.png" alt="Gitのロゴ"> 2021/09/09</span>
+                        </li>
+                        <li>
+                            <span class="item_title"><img class="icon" src="./images/document_icon.png" alt="文書のアイコン">文章量</span>
+                            <span>約1,200字</span>
+                        </li>
+                    </ul>
+                </section>
+                <div class="sticky_area">
+                    <section class="account_data card">
+                        <div class="account_data_firstline">
+                            <div class="account_data_left">
+                                <img class="zenn_logo" src="./images/zenn_logo2.jpeg" alt="Zennのロゴ">
+                            </div>
+                            <div class="account_data_right">
+                                <p class="account_name">Zenn公式</p>
+                                <div class="follow_area">
+                                    <a class="button" href="#"><p>フォロー</p></a>
+                                    <img class="icon" src="./images/github-logo.png" alt="Gitのアイコン">
+                                    <img class="icon" src="./images/twitter_logo_mono.png" alt="Twitterのアイコン">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="account_text">Zennの使い方や開発状況を発信する公式アカウントです。</p>
+                    </section>
+                    <nav class="card">
+                        <p class="nav_title">目次</p>
+                        <div class="outline">
+                            <img src="./images/outline_bar.jpeg" alt="目次のバー">
+                            <ul>
+                                <li>Zenn の執筆方法は2種類</li>
+                                <li>1. Webエディター</li>
+                                <li>2. ローカルのテキストエディター + CLI</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- スマホ用のアカウントデータ表示 -->
             <div class="account_data_forsp">
                 <section class="account_data">
                     <img class="zenn_logo" src="./images/zenn_logo2.jpeg" alt="Zennのロゴ">
                     <p class="account_name">Zenn公式</p>
-                    <p class="account_text">Zennの使い方や開発状況を発信する公式アカウントです。</p>
                 </section>
                 <nav>
                     <p>目次 </p>

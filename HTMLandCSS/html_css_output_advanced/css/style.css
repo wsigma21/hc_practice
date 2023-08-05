@@ -145,7 +145,6 @@ header .post_button {
     width: 100%;
     margin: 0 auto;
     grid-template-columns: 1fr;
-    /* ReadNextの高さが測れないので仮 */
     grid-template-rows: 60px 290px 1fr 590px 1250px;
     grid-template-areas:
         "Aside"
@@ -187,7 +186,7 @@ aside {
     border-bottom: 1px solid #E6EEF4;
 }
 
-aside .article_data {
+aside .account_data_forpc {
     display: none;
 }
 
@@ -197,26 +196,23 @@ aside .account_data_forsp {
     justify-content: space-between;
 }
 
-aside .account_data {
-    width: 110px;
+aside .account_data_forsp .account_data {
+    width: 115px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.zenn_logo {
+aside .account_data .zenn_logo {
     width: 40px;
     height: auto;
+    margin-right: 10px;
     border-radius: 50%;
 }
 
 aside .account_name {
     font-size: 1.4rem;
     font-weight: 600;
-}
-
-aside .account_text {
-    display: none;
 }
 
 nav {
@@ -231,7 +227,7 @@ nav .heart_icon {
     height: auto;
 }
 
-nav p {
+nav p,li {
     font-size: 1.4rem;
     color: #65717B;
 }
@@ -391,10 +387,8 @@ main .evaluation_area .button p:hover {
 
 main .account_data {
     display: flex;
-    /* justify-content: center; */
     padding-top: 30px;
     padding-bottom: 20px;
-    /* border-bottom: 1px solid #E6EEF4; */
 }
 
 main .account_data_right {
@@ -406,8 +400,8 @@ main .account_data_right {
 
 main .account_data .zenn_logo {
     width: 65px;
-    height: auto;
     margin-right: 15px;
+    border-radius: 50%;
 }
 
 main .account_data .account_name {
@@ -419,7 +413,8 @@ main .account_data .account_text {
     color: #65717B;
 }
 
-main .account_data .follow_area {
+/* main, aside共通 */
+.follow_area {
     width: 160px;
     height: 30px;
     display: flex;
@@ -427,16 +422,17 @@ main .account_data .follow_area {
     align-items: center;
 }
 
-main .account_data .button {
+.account_data .button {
     width: auto;
     height: 35px;
     border-radius: 15px;
     padding: 0 15px;
 }
 
-main .account_data .button p {
+.account_data .button p {
     font-size: 1.2rem;
 }
+/* ここまで */
 
 .discussion {
     grid-area: Discussion;
@@ -502,6 +498,7 @@ main .account_data .button p {
     font-size: 1.6rem;
     padding: 8px;
     border-bottom: 1px solid #E6EEF4;
+    letter-spacing: 2px;
 }
 
 .discussion #comment::placeholder {
@@ -597,11 +594,6 @@ main .account_data .button p {
 .read_next .art_title {
     font-size: 1.6rem;
     font-weight: 700;
-    /* 長い文字の場合省略する */
-    /* display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden; */
 }
 
 .read_next .art_info {
@@ -633,13 +625,10 @@ footer {
 
 /* スマホ表示2 */
 @media screen and (min-width: 576px){
-    /* TODO:両脇にpaddingが入る */
-    /* ただしasideには入れたくない */
 
     .container {
         /* Discussionの高さを上げる */
         grid-template-rows: 60px 290px 1fr 630px 1400px;
-        padding: 0 25px;
     }
 
     /* headerの『投稿する』ボタン表示 */
@@ -674,10 +663,11 @@ footer {
     main {
         border: 1px solid #fff;
         border-radius: 10px;
+        margin: 0 25px;
     }
 
     .discussion {
-        margin-top: 40px;
+        margin: 40px 25px 0px 25px;
     }
     
     .discussion .image_area {
@@ -719,7 +709,11 @@ footer {
         color: #0F83FD;
     }
 
-    /* TODO:read_nextの画像大きくする */
+    .read_next {
+        margin: 0 25px;
+    }
+
+    /* read_nextの画像が大きくなる */
     .read_next .art {
         height: 125px;
     }
@@ -742,8 +736,6 @@ footer {
 
 @media screen and (min-width: 768px){
     /* titleが大きくなる */
-    /* TODO:Read nextが2列になる */
-    /* TODO:footerが4列になる */
     h1 {
         font-size: 3.0rem;
     }
@@ -756,6 +748,12 @@ footer {
         font-size: 2.4rem;
     }
     
+     /* Read nextが2列になる */
+    .container {
+        /* Readnextの高さを下げる */
+        grid-template-rows: 60px 290px 1fr 630px 800px;
+    }
+
     .other_article {
         display: flex;
         flex-direction: row;
@@ -767,34 +765,159 @@ footer {
         /* width: calc((100% - 50px) / 2); */
         width: 48%;
         height: 140px;
-        
     }
+    /* TODO:footerが4列になる */
 }
-
 
 /* iPadの設定 */
 @media screen and (min-width: 993px){
-    /* asideは上ではなく横に表示 */
-    /* TODO:footerのロゴが左端にくる */
-
+    
     .container {
-        grid-template-columns: 4fr 1fr;
-        /* ReadNextの高さが測れないので仮 */
-        grid-template-rows: 290px 1fr 630px 1000px;
+        grid-template-columns: 1fr 30%;
+        grid-template-rows: 290px 1fr 630px 900px;
         grid-template-areas: 
-            "Title Title"
-            "Main Aside"
-            "Discussion Aside"
-            "ReadNext ReadNext"
+        "Title Title"
+        "Main Aside"
+        "Discussion Aside"
+        "ReadNext ReadNext";
     }
-
+    
     .title .article_data_forsp {
         display: none;
     }
 
-    main, .discussion {
-        margin-right: 25px;
+    /* asideは上ではなく横に表示 */
+    aside {
+        grid-area: Aside;
+        display: flex;
+        flex-direction: column;
+        background-color: #EDF2F7;
+        position: static;
     }
+
+    aside .account_data_forsp {
+        display: none;
+    }
+
+    aside .account_data_forpc {
+        /* ここがstickyの親要素になる */
+        /* stickyが効くように高さはasideいっぱいにする */
+        height: 100%;
+        display: grid;
+        flex-direction: column; 
+        grid-template-rows: 195px 30px 1fr;
+    }
+
+    aside .card {
+        border: 1px solid #fff;
+        border-radius: 10px;
+        padding: 10px 20px;
+        background-color: #fff;
+        width: 300px;
+    }
+
+    aside .article_data {
+        font-size: 1.3rem;
+    }
+
+    aside .article_data li {
+        border-bottom: 1px solid #EDF2F7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 45px;
+    }
+
+    aside .article_data li:last-child {
+        border: none;
+    }
+
+    aside .article_data img {
+        margin-right: 5px;
+    }
+
+    aside .article_data .item_title {
+        color: #65717B;
+    }
+    
+    aside .article_data .logo {
+        width: 20px;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    aside .account_data_forpc .sticky_area {
+        grid-row: 3;
+        height: 415px;
+        position: sticky;
+        top: 30px;
+    }
+
+    aside .account_data_forpc .account_data {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+
+    aside .account_data_firstline {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    aside .account_data_forpc .zenn_logo {
+        width: 60px;
+    }
+
+    aside .account_name {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+    
+    aside .account_text {
+        font-size: 1.4rem;
+    }
+
+    nav {
+        /* スマホのdisplay: flex;を初期化 */
+        display: block;
+        height: 200px;
+    }
+
+    nav .nav_title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: 1px;
+        margin: 15px 0;
+    }
+
+    nav .outline {
+        display: flex;
+    }
+
+    nav .outline li {
+        margin-bottom: 8px;
+    }
+
+    nav .outline li:first-child {
+        font-weight: 600;
+        color: #000;
+    }
+
+    nav .outline li:hover {
+        color: #000;
+    }
+
+    nav img {
+        width: 20px;
+        height: 100px;
+    }
+
+    .read_next {
+        padding: 0 100px;
+    }
+
+    /* TODO:footerのロゴが左端にくる */
+
 }
 
 /* PCの設定 */
