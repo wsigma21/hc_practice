@@ -447,7 +447,7 @@ main .account_data .account_text {
 .account_data .button p {
     font-size: 1.2rem;
 }
-/* ここまで */
+/* main, aside共通ここまで */
 
 .discussion {
     grid-area: Discussion;
@@ -634,8 +634,72 @@ main .account_data .account_text {
 }
 
 footer {
-    height: 290px;
     background-color: #fff;
+}
+
+footer .footer_container {
+    height: 550px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 65px;
+}
+
+footer .footer_upper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 70px repeat(2, 1fr);
+    margin: 45px 25px;
+    font-size: 1.4rem;
+    gap: 30px 20px;
+}
+
+footer .footer_upper .logo_area {
+    grid-column:  1 / 3;
+}
+
+footer .footer_upper .logo_area img {
+    width: 90px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+
+footer .footer_upper .logo_area .zenn_explanation_forpc {
+    display: none;
+}
+
+footer .footer_upper .logo_area p {
+    font-size: 1.3rem;
+    color: #8F9FAA;
+}
+
+footer .footer_upper .link_cell ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+footer .footer_upper ul li {
+    color: #000;
+}
+
+footer .footer_upper ul li:first-child {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+footer .footer_lower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #EDF2F7;
+}
+
+footer .footer_lower img {
+    width: 115px;
+    height: 25px;
 }
 
 
@@ -778,11 +842,22 @@ footer {
     }
 
     .read_next .art {
-        /* width: calc((100% - 50px) / 2); */
         width: 48%;
         height: 140px;
     }
-    /* TODO:footerが4列になる */
+    /* footerが4列になる */
+    footer .footer_container {
+        height: 400px;
+    }
+    
+    footer .footer_upper {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px  1fr;
+    }
+
+    footer .footer_upper .logo_area {
+        grid-column: 1 / 5;
+    }
 }
 
 /* iPadの設定 */
@@ -790,7 +865,7 @@ footer {
     
     .container {
         grid-template-columns: 1fr 30%;
-        grid-template-rows: 290px 1fr 630px 900px;
+        grid-template-rows: 290px 1fr 630px 800px;
         grid-template-areas: 
         "Title Title"
         "Main Aside"
@@ -936,7 +1011,28 @@ footer {
         padding: 0 100px;
     }
 
-    /* TODO:footerのロゴが左端にくる */
+    /* footerのロゴが左端にくる */
+    footer .footer_container {
+        height: 300px;
+    }
+    
+    footer .footer_upper {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+    }
+
+    footer .footer_upper .logo_area {
+        grid-column: 1;
+    }
+
+
+    footer .footer_upper .logo_area .zenn_explanation_forsp {
+        display: none;
+    }
+
+    footer .footer_upper .logo_area .zenn_explanation_forpc {
+        display: block;
+    }
 
 }
 
