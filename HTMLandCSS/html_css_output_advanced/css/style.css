@@ -7,7 +7,6 @@ body {
     margin: 0 auto;
     color: #303132;
     background-color: #EDF2F7;
-
 }
 
 .icon {
@@ -98,7 +97,7 @@ a:visited {
 }
 
 .good_count {
-    color: #303132;
+    color: #8F9FAA;
 }
 
 .emphasis {
@@ -113,7 +112,7 @@ header {
 }
 
 header .header_container {
-    max-width: 1200px;
+    max-width: 1120px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -370,11 +369,15 @@ main .evaluation_area .button {
     padding: 0 12px;
 }
 
-/* TODO:できればTwitterアイコンの色を変える */
-main .evaluation_area .button img {
+main .evaluation_area .button svg {
     width: 20px;
     height: auto;
     color: #8F9FAA;
+    fill: #8F9FAA;
+}
+
+main .evaluation_area .button svg:hover {
+    fill: #000;
 }
 
 main .evaluation_area .button p {
@@ -421,6 +424,18 @@ main .account_data .account_text {
     justify-content: space-between;
     align-items: center;
 }
+
+.follow_area .svg_icon {
+    width: 20px;
+    height: auto;
+    fill: #8F9FAA;
+}
+
+.follow_area .svg_icon:hover {
+    fill: #000;
+    cursor:pointer;
+}
+
 
 .account_data .button {
     width: auto;
@@ -498,13 +513,11 @@ main .account_data .account_text {
     font-size: 1.6rem;
     padding: 8px;
     border-bottom: 1px solid #E6EEF4;
-    letter-spacing: 2px;
 }
 
 .discussion #comment::placeholder {
-    /* font-size: 1.6rem; */
+    letter-spacing: 2px;
     color: #97A6AF;
-    /* padding: 8px; */
 }
 
 .discussion .comment_area .post_button {
@@ -547,9 +560,9 @@ main .account_data .account_text {
 }
 
 .discussion .community_guideline p {
-   font-weight: 500;
-   font-size: 1.3rem;
-   color: #8F9FAA;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #8F9FAA;
 }
 
 .read_next {
@@ -616,6 +629,9 @@ main .account_data .account_text {
     border-radius: 50%;
 }
 
+.sidebar {
+    display: none;
+}
 
 footer {
     height: 290px;
@@ -839,6 +855,10 @@ footer {
     aside .article_data .item_title {
         color: #65717B;
     }
+
+    aside .article_data span {
+        color: #000;
+    }
     
     aside .article_data .logo {
         width: 20px;
@@ -922,6 +942,51 @@ footer {
 
 /* PCの設定 */
 @media screen and (min-width: 1300px){
-    /* TODO:左側のいいねボタンとツイートボタン表示 */
+    /* 左側のいいねボタンとツイートボタン表示 */    
+    .container {
+        grid-template-columns: 50px 1fr 300px;
+        grid-template-rows: 290px 1fr 630px 830px;
+        grid-template-areas: 
+        "Title Title Title"
+        "SideBar Main Aside"
+        "SideBar Discussion Aside"
+        "ReadNext ReadNext ReadNext";
+    }
 
+    .sidebar {
+        grid-area: SideBar;
+        display: block;
+        height: 100%;
+    }
+
+    .sidebar .sticky_area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 150px;
+        position: sticky;
+        top: 100px;
+    }
+
+    .sidebar img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .sidebar svg {
+        fill: #8F9FAA;
+        width: 30px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .sidebar span {
+        color: #8F9FAA;
+        margin-bottom: 10px;
+    }
+
+    .sidebar .svg_icon:hover {
+        fill: #000;
+        cursor:pointer;
+    }
 }
