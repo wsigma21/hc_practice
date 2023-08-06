@@ -50,10 +50,6 @@ a {
     text-decoration: none;
 }
 
-a:visited {
-    color: #0F83FD;
-}
-
 .link, .link:visited {
     font-weight: 500;
     color: #8F9FAA;
@@ -272,6 +268,10 @@ main details {
     border-radius: 10px;
 }
 
+main details li {
+    color: #000;
+}
+
 main details[open] summary{
     background-color: #F1F5F9;
 }
@@ -314,8 +314,12 @@ main .summary_contents .cordspan {
 main .text_editor #zenn_cli {
     padding-bottom: 40px;
     border-bottom: 3px solid #E6EEF4;
-
 }
+
+main .text_editor a {
+    color: #0F83FD;
+}
+
 
 main .text_editor .button {
     width: 180px;
@@ -376,16 +380,18 @@ main .evaluation_area .button svg {
     fill: #8F9FAA;
 }
 
-main .evaluation_area .button svg:hover {
+main .evaluation_area .button:hover svg  {
     fill: #000;
 }
 
-main .evaluation_area .button p {
-    color: #8F9FAA;
+
+main .evaluation_area .button:hover p  {
+    color: #323333;
 }
 
-main .evaluation_area .button p:hover {
-    color: #323333;
+
+main .evaluation_area .button p {
+    color: #8F9FAA;
 }
 
 main .account_data {
@@ -690,6 +696,17 @@ footer .footer_upper ul li:first-child {
     font-size: 1.5rem;
 }
 
+footer .footer_upper ul li a {
+    color: #000;
+    font-weight: 400;
+}
+
+footer .footer_upper ul li a:hover {
+    color: #000;
+    font-weight: 400;
+    text-decoration:underline;
+}
+
 footer .footer_lower {
     display: flex;
     justify-content: center;
@@ -801,6 +818,10 @@ footer .footer_lower img {
     .read_next .art_left {
         width: 95px;
         height: 95px;
+    }
+
+    .read_next .art_right a {
+        color: #000;
     }
 
     .read_next svg {
