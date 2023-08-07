@@ -1,0 +1,1109 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family:-apple-system, "system-ui", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif, "Segoe UI Emoji";
+    margin: 0 auto;
+    color: #303132;
+    background-color: #EDF2F7;
+}
+
+.icon {
+    width: 20px;
+    height: auto;
+}
+
+.arrow_icon {
+    width: 10px;
+    height: auto;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+main h2, main h3 {
+    border-bottom: 1px solid #E6EEF4;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.6rem;
+    line-height: 3.0rem;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.link, .link:visited {
+    font-weight: 500;
+    color: #8F9FAA;
+    text-decoration: underline;
+}
+
+.button {
+    background-color: #fff;
+    border: 1px solid #E7EFF5;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button > p {
+    font-weight: 500;
+    color: #303132;
+}
+
+.button:hover {
+    background-color: #F5FAFC;
+}
+
+.my_icon {
+    width: 40px;
+    height: auto;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.mini_heart_icon {
+    width: 15px;
+    height: 15px;
+}
+
+.good_count {
+    color: #8F9FAA;
+}
+
+.emphasis {
+    font-weight: 700;
+}
+
+header {
+    height: 60px;
+    padding: 10px 15px;
+    background-color: #FFF;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+header .header_container {
+    max-width: 1120px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header_left img {
+    width: 100px;
+    height: auto;
+}
+
+header .header_right {
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+header .post_button {
+    display: none;
+}
+
+.container {
+    max-width: 1200px;
+    background-color: #EDF2F7;
+    display: grid;
+    width: 100%;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 290px 1fr 590px 1250px;
+    grid-template-areas:
+        "Aside"
+        "Title"
+        "Main"
+        "Discussion"
+        "ReadNext";
+}
+
+.title {
+    grid-area: Title;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px 0;
+    text-align: center;
+}
+
+.title img {
+    text-align: center;
+    margin: 0 auto;
+    width: 65px;
+    height: 70px;
+}
+
+.title p {
+    font-size: 1.45rem;
+    color: #65717B;
+}
+
+aside {
+    grid-area: Aside;
+    background-color: #fff;
+    padding: 0 15px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+aside .account_data_forpc {
+    display: none;
+}
+
+aside .account_data_forsp {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside .account_data_forsp .account_data {
+    width: 115px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+aside .account_data .zenn_logo {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+aside .account_name {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+nav {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .heart_icon {
+    width: 40px;
+    height: auto;
+}
+
+nav p,li {
+    font-size: 1.4rem;
+    color: #65717B;
+}
+
+main {
+    grid-area: Main;
+    padding: 25px 30px;
+    background-color: #fff;
+}
+
+main .main_contents {
+    display: grid;
+    gap: 40px;
+}
+
+main .icon_area {
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+main .icon_area .button {
+    width: 80px;
+    height: 33px;
+    border-radius: 25px;
+    padding: 0 10px;
+}
+
+main .icon_area .button img {
+    width: 25px;
+    height: 25px;
+}
+
+main .icon_area .button p {
+    font-size: 1.15rem;
+}
+
+main .web_editor>img,  .web_editor>p, .web_editor>details, .text_editor>img, .text_editor>p {
+    margin-bottom: 20px;
+}
+
+main details {
+    border: 1px solid #E2ECF3;
+    border-radius: 10px;
+}
+
+main details li {
+    color: #000;
+}
+
+main details[open] summary{
+    background-color: #F1F5F9;
+}
+
+main details[open] .summary_contents {
+    border-top: 1px solid #E2ECF3;
+}
+
+main summary {
+    font-size: 1.368rem;
+    padding: 9.5px;
+}
+
+main .summary_contents {
+    padding: 7px 15px;
+    font-size: 1.5rem;
+}
+
+main .summary_contents p {
+    margin: 7px auto 7px auto;
+}
+
+main .summary_contents li {
+    list-style: disc;
+    width: 90%;
+    margin: 5px auto 5px auto;
+}
+
+main .summary_contents li>span{
+    font-weight: 700;
+}
+
+main .summary_contents .cordspan {
+    font-size: 1.2rem;
+    background-color: #F1F5F9;
+    padding: 2.5px 5px;
+    vertical-align: middle;
+}
+
+main .text_editor #zenn_cli {
+    padding-bottom: 40px;
+    border-bottom: 3px solid #E6EEF4;
+}
+
+main .text_editor a {
+    color: #0F83FD;
+}
+
+
+main .text_editor .button {
+    width: 180px;
+    height: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px #E6EEF4;
+    padding: 0 10px;
+}
+
+main .text_editor .button img {
+    width: 18px;
+    height: 18px;
+}
+
+main .text_editor .button p {
+    font-size: 1.4rem;
+}
+
+main .evaluation_area {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+main .evaluation_area .heart_icon {
+    width: 50px;
+    height: auto;
+    height: auto;
+}
+
+main .evaluation_left {
+    width: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .evaluation_right {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .evaluation_area .button {
+    width: 115px;
+    height: 45px;
+    border-radius: 25px;
+    padding: 0 12px;
+}
+
+main .evaluation_area .button svg {
+    width: 20px;
+    height: auto;
+    color: #8F9FAA;
+    fill: #8F9FAA;
+}
+
+main .evaluation_area .button:hover svg  {
+    fill: #000;
+}
+
+
+main .evaluation_area .button:hover p  {
+    color: #323333;
+}
+
+
+main .evaluation_area .button p {
+    color: #8F9FAA;
+}
+
+main .account_data {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+main .account_data_right {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    gap: 10px 0;
+}
+
+main .account_data .zenn_logo {
+    width: 65px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+main .account_data .account_name {
+    font-weight: 800;
+    font-size: 1.7rem;
+}
+
+main .account_data .account_text {
+    color: #65717B;
+}
+
+/* main, aside共通 */
+.follow_area {
+    width: 160px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.follow_area .svg_icon {
+    width: 20px;
+    height: auto;
+    fill: #8F9FAA;
+}
+
+.follow_area .svg_icon:hover {
+    fill: #000;
+    cursor:pointer;
+}
+
+
+.account_data .button {
+    width: auto;
+    height: 35px;
+    border-radius: 15px;
+    padding: 0 15px;
+}
+
+.account_data .button p {
+    font-size: 1.2rem;
+}
+/* main, aside共通ここまで */
+
+.discussion {
+    grid-area: Discussion;
+    background-color: #EDF2F7;
+    border-top: 1px solid #EDF2F7;
+}
+
+.discussion .image_area {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #EDF2F7;
+}
+
+.discussion .image_area img {
+    width: 285px;
+    height: 170px;
+}
+
+.discussion .comment_area {
+    border-bottom: 1px solid #fff;
+    border-radius: 0px 0px 10px 10px;
+    padding: 15px 17px;
+    background-color: #fff;
+}
+
+.discussion .editor_mode .editor_left {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.discussion .editor_mode .editor_right {
+    display: none;
+}
+
+.discussion span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #8F9FAA;
+}
+
+.discussion span:hover {
+    color: #0F83FD;
+}
+
+.discussion .editor_mode #markdown {
+    border: 1px solid #fff;
+    border-radius: 15px;
+    color: #0F83FD;
+    background-color: #E6F2FF;
+    padding: 7px 12px;
+}
+
+.discussion #comment {
+    resize: none;
+    outline: none;
+    width: 100%;
+    height: 110px;
+    margin: 15px 0;
+    font-size: 1.6rem;
+    padding: 8px;
+    border-bottom: 1px solid #E6EEF4;
+}
+
+.discussion #comment::placeholder {
+    letter-spacing: 2px;
+    color: #97A6AF;
+}
+
+.discussion .comment_area .post_button {
+    display: block;
+    width: 90px;
+    height: 35px;
+    background-color: #3EA8FF;
+    opacity: 0.5;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.discussion .post_area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.discussion .post_area_left img:first-child {
+    margin-right: 10px;
+}
+
+.discussion .post_area_left .embedded {
+    display: none;
+}
+
+.discussion .community_guideline {
+    display: flex;
+    align-items: center;
+    padding: 15px 0 0 5px;
+    height: 30px;
+}
+
+.discussion .community_guideline img {
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.discussion .community_guideline p {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #8F9FAA;
+}
+
+.read_next {
+    grid-area: ReadNext;
+    padding: 0 14px;
+}
+
+.read_next h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.read_next .art {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.read_next .art_left {
+    width: 75px;
+    height: 80px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.read_next svg {
+    width: 40px;
+    height: 40px;
+}
+
+.read_next .art_right {
+    flex-grow: 1;
+}
+
+.read_next .art_title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.read_next .art_right a {
+    color: #000;
+}
+
+.read_next .art_info {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.read_next .art_info>img,.art_info>span{
+    margin-right: 10px;
+}
+
+.read_next .art_info .mini_heart_icon {
+    margin-right: 5px;
+}
+
+.read_next .user_icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.sidebar {
+    display: none;
+}
+
+footer {
+    background-color: #fff;
+}
+
+footer .footer_container {
+    height: 550px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 1fr 65px;
+}
+
+footer .footer_upper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 70px repeat(2, 1fr);
+    margin: 45px 25px;
+    font-size: 1.4rem;
+    gap: 30px 20px;
+}
+
+footer .footer_upper .logo_area {
+    grid-column:  1 / 3;
+}
+
+footer .footer_upper .logo_area img {
+    width: 90px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+
+footer .footer_upper .logo_area .zenn_explanation_forpc {
+    display: none;
+}
+
+footer .footer_upper .logo_area p {
+    font-size: 1.3rem;
+    color: #8F9FAA;
+}
+
+footer .footer_upper .link_cell ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+footer .footer_upper ul li {
+    color: #000;
+}
+
+footer .footer_upper ul li:first-child {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+footer .footer_upper ul li a {
+    color: #000;
+    font-weight: 400;
+}
+
+footer .footer_upper ul li a:hover {
+    color: #000;
+    font-weight: 400;
+    text-decoration:underline;
+}
+
+footer .footer_lower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #EDF2F7;
+}
+
+footer .footer_lower img {
+    width: 115px;
+    height: 25px;
+}
+
+
+/* スマホ表示2 */
+@media screen and (min-width: 576px){
+
+    .container {
+        /* Discussionの高さを上げる */
+        grid-template-rows: 60px 290px 1fr 630px 1400px;
+    }
+
+    /* headerの『投稿する』ボタン表示 */
+    header .header_right {
+        width: 250px;
+    }
+
+    header .post_button {
+        display: block;
+        width: 90px;
+        height: 35px;
+        background-color: #3EA8FF;
+        border-radius: 7px;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 800;
+    }
+
+    header .post_button:hover {
+        cursor:pointer;
+        background-color: #0F83FD;
+    }
+
+    /* Zennロゴの大きさ変更 */
+    main .account_data .zenn_logo {
+        width: 85px;
+        height: auto;
+        margin-right: 15px;
+    }
+
+    /* Discussionエリアの分離 */
+    main {
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin: 0 25px;
+    }
+
+    .discussion {
+        margin: 40px 25px 0px 25px;
+    }
+    
+    .discussion .image_area {
+        border-top: 1px solid #fff;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .discussion .image_area img {
+        width: 300px;
+        height: 180px;
+    }
+
+    /* コメント欄の＋の横に「埋め込み」を追加 */
+    .discussion .post_area_left .embedded {
+        display: inline;
+        text-align: center;
+        margin-left: 8px;
+        color: #97A6AF;
+        font-weight: 500;
+    }
+
+    /* コメント欄に「markdownガイド」追加 */
+    .discussion .editor_mode  {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .discussion .editor_mode .editor_right {
+        color: #8F9FAA;
+        display: flex;
+        width: 115px;
+    }
+
+    .discussion .editor_mode .editor_right span {
+        font-size: 1.2rem;
+    }
+
+    .discussion .editor_mode .editor_right a:hover {
+        color: #0F83FD;
+    }
+
+    .read_next {
+        margin: 0 25px;
+    }
+
+    /* read_nextの画像が大きくなる */
+    .read_next .art {
+        height: 125px;
+    }
+
+    .read_next .art_left {
+        width: 95px;
+        height: 95px;
+    }
+
+    .read_next svg {
+        width: 45px;
+        height: 45px;
+    }
+
+    .read_next .user_icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (min-width: 768px){
+    /* titleが大きくなる */
+    h1 {
+        font-size: 3.0rem;
+    }
+
+    h2 {
+        font-size: 2.7rem;
+    }
+
+    h3 {
+        font-size: 2.4rem;
+    }
+    
+     /* Read nextが2列になる */
+    .container {
+        /* Readnextの高さを下げる */
+        grid-template-rows: 60px 290px 1fr 630px 800px;
+    }
+
+    .other_article {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .read_next .art {
+        width: 48%;
+        height: 140px;
+    }
+    /* footerが4列になる */
+    footer .footer_container {
+        height: 400px;
+    }
+    
+    footer .footer_upper {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 70px  1fr;
+    }
+
+    footer .footer_upper .logo_area {
+        grid-column: 1 / 5;
+    }
+}
+
+/* iPadの設定 */
+@media screen and (min-width: 993px){
+    
+    .container {
+        grid-template-columns: 1fr 30%;
+        grid-template-rows: 290px 1fr 630px 800px;
+        grid-template-areas: 
+        "Title Title"
+        "Main Aside"
+        "Discussion Aside"
+        "ReadNext ReadNext";
+    }
+    
+    .title .article_data_forsp {
+        display: none;
+    }
+
+    /* asideは上ではなく横に表示 */
+    aside {
+        grid-area: Aside;
+        display: flex;
+        flex-direction: column;
+        background-color: #EDF2F7;
+        position: static;
+    }
+
+    aside .account_data_forsp {
+        display: none;
+    }
+
+    aside .account_data_forpc {
+        /* ここがstickyの親要素になる */
+        /* stickyが効くように高さはasideいっぱいにする */
+        height: 100%;
+        display: grid;
+        flex-direction: column; 
+        grid-template-rows: 195px 30px 1fr;
+    }
+
+    aside .card {
+        border: 1px solid #fff;
+        border-radius: 10px;
+        padding: 10px 20px;
+        background-color: #fff;
+        width: 300px;
+    }
+
+    aside .article_data {
+        font-size: 1.3rem;
+    }
+
+    aside .article_data li {
+        border-bottom: 1px solid #EDF2F7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 45px;
+    }
+
+    aside .article_data li:last-child {
+        border: none;
+    }
+
+    aside .article_data img {
+        margin-right: 5px;
+    }
+
+    aside .article_data .item_title {
+        color: #65717B;
+    }
+
+    aside .article_data span {
+        color: #000;
+    }
+    
+    aside .article_data .logo {
+        width: 20px;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    aside .account_data_forpc .sticky_area {
+        grid-row: 3;
+        height: 415px;
+        position: sticky;
+        top: 30px;
+    }
+
+    aside .account_data_forpc .account_data {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+
+    aside .account_data_firstline {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    aside .account_data_forpc .zenn_logo {
+        width: 60px;
+    }
+
+    aside .account_name {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+    
+    aside .account_text {
+        font-size: 1.4rem;
+    }
+
+    nav {
+        /* スマホのdisplay: flex;を初期化 */
+        display: block;
+        height: 200px;
+    }
+
+    nav .nav_title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #000;
+        letter-spacing: 1px;
+        margin: 15px 0;
+    }
+
+    nav .outline {
+        display: flex;
+    }
+
+    nav .outline li {
+        margin-bottom: 8px;
+    }
+
+    nav .outline li:first-child {
+        font-weight: 600;
+        color: #000;
+    }
+
+    nav .outline li:hover {
+        color: #000;
+    }
+
+    nav img {
+        width: 20px;
+        height: 100px;
+    }
+
+    .read_next {
+        padding: 0 100px;
+    }
+
+    /* footerのロゴが左端にくる */
+    footer .footer_container {
+        height: 300px;
+    }
+    
+    footer .footer_upper {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+    }
+
+    footer .footer_upper .logo_area {
+        grid-column: 1;
+    }
+
+
+    footer .footer_upper .logo_area .zenn_explanation_forsp {
+        display: none;
+    }
+
+    footer .footer_upper .logo_area .zenn_explanation_forpc {
+        display: block;
+    }
+
+}
+
+/* PCの設定 */
+@media screen and (min-width: 1300px){
+    /* 左側のいいねボタンとツイートボタン表示 */    
+    .container {
+        grid-template-columns: 50px 1fr 300px;
+        grid-template-rows: 290px 1fr 630px 830px;
+        grid-template-areas: 
+        "Title Title Title"
+        "SideBar Main Aside"
+        "SideBar Discussion Aside"
+        "ReadNext ReadNext ReadNext";
+    }
+
+    .sidebar {
+        grid-area: SideBar;
+        display: block;
+        height: 100%;
+    }
+
+    .sidebar .sticky_area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 150px;
+        position: sticky;
+        top: 100px;
+    }
+
+    .sidebar img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .sidebar svg {
+        fill: #8F9FAA;
+        width: 30px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .sidebar span {
+        color: #8F9FAA;
+        margin-bottom: 10px;
+    }
+
+    .sidebar .svg_icon:hover {
+        fill: #000;
+        cursor:pointer;
+    }
+}
