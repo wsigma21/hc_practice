@@ -4,17 +4,14 @@
 class VendingMachine
   attr_reader :list
 
-  # attr_writer :sales
-
-  # 売上金額が外部から書き換えられないようにする
-  # private :sales=
-
   def initialize(list)
-    @list = list
+    # 売上金額（外部に公開しないので書き換えられる心配なし）
     @sales = 0
-    # ジュース1本で1インスタンスとする
+    # 在庫一覧
+    @list = list
+    # 在庫
     @stocks = {}
-    # 在庫に追加
+    # 在庫追加処理
     @list.each do |name, info|
       @stocks[name] = []
       info[:stock].times do
@@ -24,22 +21,20 @@ class VendingMachine
     # pp @stocks
   end
 
+  # 販売処理
   def sell(suica, juice, num)
     # 購入本数より在庫が少ない場合
-    # print "在庫数は#{@stocks[juice].size}"
     raise '申し訳ありません、在庫がありません' if num > @stocks[juice].size
 
     # 価格より残高が少ない場合
-    # print "価格は#{@list[juice][:price]}"
     total_value = num * @list[juice][:price]
     raise 'Suicaの残高が不足しています' if total_value > suica.balance
 
-    # 上記2条件をクリア
     # 自動販売機はジュースの在庫を減らす
     substruct(juice, num)
     # Suicaのチャージ残高を減らす
     suica.buy(total_value)
-    # 売り上げ金額を増やす
+    # 売上金額を増やして返す
     @sales += total_value
   end
 
@@ -61,20 +56,13 @@ class VendingMachine
     end
   end
 
-  # 在庫補充
-  # 数本以上補充できるように
+  # 在庫補充処理
   def refill(name, num)
-    # puts @list
-    # puts @list[name][:price]
-    # puts "在庫は#{@stocks[name]}"
-    # puts "在庫は#{@stocks[name].size}個"
     # 在庫に追加
     num.times do
       @stocks[name] << Juice.new(name, @list[name][:price])
     end
     # 在庫一覧に追加
     @list[name][:stock] = @stocks[name].size
-    # puts "在庫は#{@stocks[name]}"
-    # puts "在庫は#{@stocks[name].size}個"
   end
 end
