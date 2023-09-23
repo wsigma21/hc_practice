@@ -26,27 +26,15 @@ class VendingMachine
     # 購入本数より在庫が少ない場合
     raise '申し訳ありません、在庫がありません' if num > @stocks[juice].size
 
-    # 価格より残高が少ない場合
+    # Suicaのチャージ残高を減らす
     total_value = num * @list[juice][:price]
-    raise 'Suicaの残高が不足しています' if total_value > suica.balance
+    suica.pay(total_value)
 
     # 自動販売機はジュースの在庫を減らす
     substruct(juice, num)
-    # Suicaのチャージ残高を減らす
-    suica.buy(total_value)
+
     # 売上金額を増やして返す
     @sales += total_value
-  end
-
-  # 在庫を減らす
-  def substruct(name, num)
-    # 在庫から減らす
-    num.times do
-      @stocks[name].delete_at(@stocks[name].size - 1)
-    end
-    # 在庫一覧から減らす
-    @list[name][:stock] = @stocks[name].size
-    # pp @stocks
   end
 
   # 購入可能なドリンクのリストを返す
@@ -64,5 +52,19 @@ class VendingMachine
     end
     # 在庫一覧に追加
     @list[name][:stock] = @stocks[name].size
+  end
+
+  # 外から在庫を減らされないようにprivateメソッドにする
+  private
+
+  # 在庫を減らす
+  def substruct(name, num)
+    # 在庫から減らす
+    num.times do
+      @stocks[name].delete_at(@stocks[name].size - 1)
+    end
+    # 在庫一覧から減らす
+    @list[name][:stock] = @stocks[name].size
+    # pp @stocks
   end
 end
