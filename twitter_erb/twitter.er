@@ -1,0 +1,70 @@
+[follows]{bgcolor: "#fffacd"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  follow_user_id {label:"bigint, not null, FK(users)"}
+  notified_flag {label:"boolean, default 0, not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[direct_messages]{bgcolor: "#fffacd"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  target_user_id {label:"bigint, not null, FK(users)"}
+  content {label:"varchar(10000), not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[retweets]{bgcolor: "#7fffd4"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  tweet_id {label:"bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[bookmarks]{bgcolor: "#7fffd4"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  tweet_id {label:"bigint, not null, FK(tweets)"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[nices]{bgcolor: "#7fffd4"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  tweet_id {label:"bigint, not null, FK(tweets)"}
+  notified_flag {label:"boolean, default 0, not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[tweets]{bgcolor: "#87cefa"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  content {label:"varchar(140), not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+[users]{bgcolor: "#ffc0cb"}
+  *id {label:"bigint, not null"}
+  email {label: "varchar(100), not null, uniq"}
+  user_name {label: "varchar(100), uniq"}
+  tel {label: "varchar(100), uniq"}
+  display_name {label: "varchar(100)"}
+  self_introduction {label: "varchar(100)"}
+  place {label: "varchar(100)"}
+  web_site {label: "varchar(100)"}
+  birthday {label: "date"}
+  profile_images {label: "blob"}
+  avatar_images {label: "blob"}
+  notification_reception_flag {label:"boolean, default 1, not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
+# Cardinality    Syntax
+users 1--* `direct_messages`
+users 1--* `retweets`
+users 1--* `bookmarks`
+users 1--* `nices`
+users 1--* `follows`
+tweets 1--* `retweets`
+tweets 1--* `bookmarks`
+tweets 1--* `nices`
