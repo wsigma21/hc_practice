@@ -1,15 +1,15 @@
 [follows]{bgcolor: "#fffacd"}
   *id {label:"bigint, not null"}
-  user_id {label:"bigint, not null, FK(users)"}
-  follow_user_id {label:"bigint, not null, FK(users)"}
+  follower_user_id {label:"bigint, not null, FK(users)"}
+  followee_user_id {label:"bigint, not null, FK(users)"}
   notified_flag {label:"boolean, default 0, not null"}
   created_at { label: "datatime, default current_timestamp, not null"}
   updated_at { label: "datatime, default current_timestamp, not null"}
 
 [direct_messages]{bgcolor: "#fffacd"}
   *id {label:"bigint, not null"}
-  user_id {label:"bigint, not null, FK(users)"}
-  target_user_id {label:"bigint, not null, FK(users)"}
+  from_user_id {label:"bigint, not null, FK(users)"}
+  to_user_id {label:"bigint, not null, FK(users)"}
   content {label:"varchar(10000), not null"}
   created_at { label: "datatime, default current_timestamp, not null"}
   updated_at { label: "datatime, default current_timestamp, not null"}
