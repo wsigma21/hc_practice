@@ -1,8 +1,16 @@
+[notifications]{bgcolor: "#c0c0c0"}
+  *id {label:"bigint, not null"}
+  user_id {label:"bigint, not null, FK(users)"}
+  nice_id {label:"bigint, FK(nices)"}
+  follow_id {label:"bigint, FK(follows)"}
+  read_flag  {label:"boolean, default 0, not null"}
+  created_at { label: "datatime, default current_timestamp, not null"}
+  updated_at { label: "datatime, default current_timestamp, not null"}
+
 [follows]{bgcolor: "#fffacd"}
   *id {label:"bigint, not null"}
   follower_user_id {label:"bigint, not null, FK(users)"}
   followee_user_id {label:"bigint, not null, FK(users)"}
-  notified_flag {label:"boolean, default 0, not null"}
   created_at { label: "datatime, default current_timestamp, not null"}
   updated_at { label: "datatime, default current_timestamp, not null"}
 
@@ -32,7 +40,6 @@
   *id {label:"bigint, not null"}
   user_id {label:"bigint, not null, FK(users)"}
   tweet_id {label:"bigint, not null, FK(tweets)"}
-  notified_flag {label:"boolean, default 0, not null"}
   created_at { label: "datatime, default current_timestamp, not null"}
   updated_at { label: "datatime, default current_timestamp, not null"}
 
@@ -60,6 +67,7 @@
   updated_at { label: "datatime, default current_timestamp, not null"}
 
 # Cardinality    Syntax
+users 1--* `notifications`
 users 1--* `direct_messages`
 users 1--* `retweets`
 users 1--* `bookmarks`
@@ -68,3 +76,5 @@ users 1--* `follows`
 tweets 1--* `retweets`
 tweets 1--* `bookmarks`
 tweets 1--* `nices`
+follows ?--? `notifications`
+nices ?--? `notifications`
