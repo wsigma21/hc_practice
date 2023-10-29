@@ -15,7 +15,7 @@ try {
 function checkArgs(args) {
   const option = args[0];
   // 数字部分を文字列から数字に変換する
-  const inputed_month = Number(args[1]);
+  const inputedMonth = Number(args[1]);
 
   // 第一引数があるのに"-m"じゃない
   if (option !== "-m") {
@@ -23,14 +23,14 @@ function checkArgs(args) {
   }
 
   // 第一引数は"-m"だけど第二引数が不適切
-  const month_list = Array(12).fill().map((_, i) => i + 1);
-  const is_month = month_list.includes(inputed_month);
-  if (isNaN(inputed_month)) {
+  const monthList = [...Array(12)].map((_, i) => i + 1);
+  const isMonth = monthList.includes(inputedMonth);
+  if (isNaN(inputedMonth)) {
     throw new Error("第二引数に、表示したい月を数字で入力してください");
-  } else if (!is_month) {
-    throw new Error(`第二引数に入力された ${inputed_month} は月として不適切です。1 ~ 12 を入力してください`);
+  } else if (!isMonth) {
+    throw new Error(`第二引数に入力された ${inputedMonth} は月として不適切です。1 ~ 12 を入力してください`);
   }
-  return inputed_month;
+  return inputedMonth;
 }
 
 // 対象となる月をセットする関数
@@ -39,13 +39,13 @@ function setMonth(args) {
   if (args.length === 0) {
     // 引数がなければ今月を出す
     const now = new Date();
-    const this_month = now.getMonth() + 1
-    return this_month;
+    const thisMonth = now.getMonth() + 1
+    return thisMonth;
   } 
 
   // 引数があればチェックしてから出力対象月とする
-  const target_month = checkArgs(args);
-  return target_month;
+  const targetMonth = checkArgs(args);
+  return targetMonth;
 }
 
 function printCalendar(month) {
@@ -56,27 +56,27 @@ function printCalendar(month) {
   process.stdout.write("日 月 火 水 木 金 土\n");
 
   // 月の開始日の曜日を取得
-  const first_day_obj = new Date(year, month-1);
-  const first_day_week = first_day_obj.getDay();
+  const firstDayObj = new Date(year, month-1);
+  const firstDayWeek = firstDayObj.getDay();
 
   // 月の最終日の日付を取得
-  const last_day_obj = new Date(year, month, 0);
-  const last_day = last_day_obj.getDate();
+  const lastDayObj = new Date(year, month, 0);
+  const lastDay = lastDayObj.getDate();
 
   // 月の開始日までの余白を出力
-  const week = '   '.repeat(first_day_week);
+  const week = '   '.repeat(firstDayWeek);
   process.stdout.write(week);
 
   // 1ヶ月の日数の配列を作成
-  const day_list = Array(last_day).fill().map((_, i) => i + 1);
+  const dayList = [...Array(lastDay)].fill().map((_, i) => i + 1);
 
   // 曜日を管理する変数
-  wday = first_day_week;
+  wday = firstDayWeek;
 
   // 日付の出力
-  day_list.forEach(day => {
-    const zerofill_day = String(day).padStart(2, ' ');
-    process.stdout.write(zerofill_day + ' ');
+  dayList.forEach(day => {
+    const zerofillDay = String(day).padStart(2, ' ');
+    process.stdout.write(zerofillDay + ' ');
     wday += 1
     // 土曜日なら改行
     if (wday % 7 === 0) {
