@@ -1,6 +1,5 @@
 // 引数を受け取る
-// 第一、第二引数にはnodeコマンドと実行されたスクリプトのファイルパスが
-// 入るので取り除く
+// 第一、第二引数にはnodeコマンドと実行されたスクリプトのファイルパスが入るので取り除く
 const args = process.argv.slice(2);
 console.log(args);
 const option = args[0];
@@ -34,7 +33,6 @@ console.log("外側 target_month", target_month);
 
 // TODO:現状だとエラーが出ても以下の処理も実行される。。month=13になったりする
 // 引数がなければ今月を出す
-// 月のデフォルトを指定する
 const now = new Date();
 const this_month = now.getMonth() + 1
 
@@ -43,8 +41,8 @@ const month = target_month || this_month;
 console.log({month});
 
 // ヘッダ出力
-console.log(`      ${month}月 ${year}     `);
-console.log("日 月 火 水 木 金 土");
+process.stdout.write(`      ${month}月 ${year}     \n`);
+process.stdout.write("日 月 火 水 木 金 土\n");
 
 // 月の開始日の曜日を取得
 const first_day_obj = new Date(year, month-1);
