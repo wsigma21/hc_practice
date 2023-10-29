@@ -1,53 +1,51 @@
 // 引数を受け取る
 // 第一、第二引数にはnodeコマンドと実行されたスクリプトのファイルパスが入るので取り除く
 const args = process.argv.slice(2);
-console.log(args);
+// console.log(args);
 
-// TODO:関数化の検討
+// メイン処理部分
 try {
-  const month = setMonth(args)
-  console.log("外側 month", month);
+  const month = setMonth(args);
   printCalendar(month);
 } catch(error) {
   console.log(error.message);
 }
 
+// 引数をチェックする関数
 function checkArgs(args) {
   const option = args[0];
   // 数字部分を文字列から数字に変換する
-  const target_month = Number(args[1]);
+  const inputed_month = Number(args[1]);
 
   // 第一引数があるのに"-m"じゃない
-  // TODO: args.length !== 0が保証されるなら左の条件は不要
-  // if (args.length > 0 && option !== "-m") {
   if (option !== "-m") {
     throw new Error("オプションとして「-m」を指定してください");
   }
 
-  // 第一引数が"-m"だけど第二引数が不適切
+  // 第一引数は"-m"だけど第二引数が不適切
   const month_list = Array(12).fill().map((_, i) => i + 1);
-  const is_month = month_list.includes(target_month);
-  if (isNaN(target_month)) {
-    throw new Error("第二引数に月を数字で入力してください");
+  const is_month = month_list.includes(inputed_month);
+  if (isNaN(inputed_month)) {
+    throw new Error("第二引数に、表示したい月を数字で入力してください");
   } else if (!is_month) {
-    throw new Error(`${target_month} は月として不適切です。1 ~ 12 を入力してください`);
+    throw new Error(`第二引数に入力された ${inputed_month} は月として不適切です。1 ~ 12 を入力してください`);
   }
-  return target_month
+  return inputed_month;
 }
 
-// TODO:JSDoc
-// 引数をチェックして対象となる月をセットする関数
+// 対象となる月をセットする関数
 function setMonth(args) {
   // 引数のエラー処理
   if (args.length === 0) {
     // 引数がなければ今月を出す
     const now = new Date();
     const this_month = now.getMonth() + 1
-    return this_month
-  } else {
-    const target_month = checkArgs(args);
-    return target_month;
-  }
+    return this_month;
+  } 
+
+  // 引数があればチェックしてから出力対象月とする
+  const target_month = checkArgs(args);
+  return target_month;
 }
 
 function printCalendar(month) {
@@ -73,7 +71,7 @@ function printCalendar(month) {
   const day_list = Array(last_day).fill().map((_, i) => i + 1);
 
   // 曜日を管理する変数
-  wday = first_day_week
+  wday = first_day_week;
 
   // 日付の出力
   day_list.forEach(day => {
