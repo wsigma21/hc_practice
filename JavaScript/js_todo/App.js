@@ -5,7 +5,6 @@ const allTaskCountElement = document.getElementById("js-count-all");
 const completedTaskCountElement = document.getElementById("js-count-completed");
 const uncompletedTaskCountElement = document.getElementById("js-count-uncompleted");
 let itemId = 1;
-let isEditing = false;
 
 // 保存ボタン押下時の処理
 submitBtn.addEventListener('click', (event) => {
@@ -19,22 +18,20 @@ submitBtn.addEventListener('click', (event) => {
   // li要素のcheckboxに対してイベントリスナーを設定
   itemElement.addEventListener('click', (event) => {
     if (event.target.type === 'checkbox') {
-        // console.log("checkbox addEventListener");
         updateItemNum();
     }
   });
 
   // input要素（チェックボックス）の作成
-  const inputElement = document.createElement("input");
-  inputElement.id = `checkbox${itemId}`;
-  inputElement.className = "checkbox";
-  inputElement.type = "checkbox";
+  const checkboxElement = document.createElement("input");
+  checkboxElement.id = `checkbox${itemId}`;
+  checkboxElement.className = "checkbox";
+  checkboxElement.type = "checkbox";
 
   // ラベル要素の作成
   const labelElement = document.createElement("label");
   labelElement.innerHTML = formInputElement.value;
-  // labelElement.className = "itemTitle";
-  labelElement.setAttribute ('for', `checkbox${itemId}`);
+  labelElement.setAttribute('for', `checkbox${itemId}`);
 
   // 編集ボタンの作成
   const editBtn = document.createElement("button");
@@ -44,31 +41,34 @@ submitBtn.addEventListener('click', (event) => {
   // 編集・保存ボタン押下時の処理
   editBtn.addEventListener('click', (event) => {
     const parentElement = event.target.parentNode;
+    const isEditing = parentElement.classList.contains('editing');
     // parentElement.id;
     console.log("parentElement=", parentElement);
     console.log("parentElement.id=", parentElement.id);
-    if (!isEditing) { // 未編集状態
+    if (!isEditing) { // 未編集 -> 編集中へ
       // console.log("編集中：", isEditing);
+      console.log("未編集 -> 編集中へ");
       const labelElement = parentElement.querySelector('label');
       const inputElement = document.createElement('input');
-      inputElement.id = `titleFor${parentElement.id}`;
-      // inputElement.className = "editItemTitle";
       inputElement.value = labelElement.textContent;
       // labelとinputを入れ替える
       event.target.parentNode.replaceChild(inputElement, labelElement);
-    } else {
-      // console.log("編集中：", isEditing);
-      const labelElement = document.createElement("label");
-      // labelElement.className = "itemTitle";
-      labelElement.setAttribute ('for', `checkbox${itemId}`);
+      parentElement.classList.add('editing');
+    } else { // 編集中 -> 未編集へ
+      console.log("編集中 -> 未編集へ");
+
       const inputElement = event.target.previousElementSibling;
+      const inputElmentIdNum = parentElement.id.replace(/[^0-9]/g, '');
+      const labelElement = document.createElement("label");
+      console.log("inputElmentIdNum=", inputElmentIdNum);
+      labelElement.setAttribute('for', `checkbox${inputElmentIdNum}`);
       labelElement.innerHTML = inputElement.value;
+      // labelとinputを入れ替える
       event.target.parentNode.replaceChild(labelElement, inputElement);
-      // console.log("保存後の値？:", inputElement);
+      parentElement.classList.remove('editing');
     }
     // ボタン名を変更する
     event.target.innerHTML = isEditing ? "編集" : "保存";
-    isEditing = !isEditing;
   });
 
   // 削除ボタンの作成
@@ -76,10 +76,9 @@ submitBtn.addEventListener('click', (event) => {
   deleteBtn.className = "deleteBtn";
   deleteBtn.innerHTML = "削除";
 
-  // li要素にinput -> label -> title -> buttonの順で追加
-  itemElement.appendChild(inputElement);
+  // li要素にcheckbox -> label -> title -> buttonの順で追加
+  itemElement.appendChild(checkboxElement);
   itemElement.appendChild(labelElement);
-  // itemElement.appendChild(itemTitle);
   itemElement.appendChild(editBtn);
   itemElement.appendChild(deleteBtn);
 
@@ -110,16 +109,9 @@ function updateItemNum() {
       completedCount++;
     }
   });
-  console.log("completedCount=", completedCount);
   completedTaskCountElement.innerHTML = `完了済み: ${completedCount}`;
 
   // 未完了のタスク
   const uncompletedCount = allTasksCount - completedCount;
   uncompletedTaskCountElement.innerHTML = `未完了: ${uncompletedCount}`;
 };
-
-
-
-
-
-
