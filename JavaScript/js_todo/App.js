@@ -76,6 +76,20 @@ submitBtn.addEventListener('click', (event) => {
   deleteBtn.className = "deleteBtn";
   deleteBtn.innerHTML = "削除";
 
+  deleteBtn.addEventListener('click', (event) => {
+    // 削除確認
+    const isConfirmed = window.confirm("本当に削除してもよろしいですか？");
+    if (!isConfirmed) {
+      return
+    }
+    // 削除処理
+    const parentElement = event.target.parentNode;
+    todoListElement.removeChild(parentElement);
+
+    // タスク数の更新
+    updateItemNum();
+  });
+
   // li要素にcheckbox -> label -> title -> buttonの順で追加
   itemElement.appendChild(checkboxElement);
   itemElement.appendChild(labelElement);
