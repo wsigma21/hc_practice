@@ -4,6 +4,7 @@ const submitBtn = document.getElementById("submitBtn");
 const allTaskCountElement = document.getElementById("js-count-all");
 const completedTaskCountElement = document.getElementById("js-count-completed");
 const uncompletedTaskCountElement = document.getElementById("js-count-uncompleted");
+// アイテムごと（li要素ごと）に一意のidを振る
 let itemId = 1;
 
 // 保存ボタン押下時の処理
@@ -13,12 +14,13 @@ submitBtn.addEventListener('click', (event) => {
 
   // li要素の作成
   const itemElement = document.createElement("li");
-  itemElement.id = `item${itemId}`
+  itemElement.id = `item${itemId}`;
 
   // li要素のcheckboxに対してイベントリスナーを設定
   itemElement.addEventListener('click', (event) => {
+    // チェックボックスのクリック時にタスク状況を更新
     if (event.target.type === 'checkbox') {
-        updateItemNum();
+        updateTaskStatus();
     }
   });
 
@@ -40,14 +42,11 @@ submitBtn.addEventListener('click', (event) => {
 
   // 編集・保存ボタン押下時の処理
   editBtn.addEventListener('click', (event) => {
+    // li要素を取得
     const parentElement = event.target.parentNode;
+    // 編集中かどうかを取得
     const isEditing = parentElement.classList.contains('editing');
-    // parentElement.id;
-    console.log("parentElement=", parentElement);
-    console.log("parentElement.id=", parentElement.id);
     if (!isEditing) { // 未編集 -> 編集中へ
-      // console.log("編集中：", isEditing);
-      console.log("未編集 -> 編集中へ");
       const labelElement = parentElement.querySelector('label');
       const inputElement = document.createElement('input');
       inputElement.value = labelElement.textContent;
@@ -55,13 +54,10 @@ submitBtn.addEventListener('click', (event) => {
       event.target.parentNode.replaceChild(inputElement, labelElement);
       parentElement.classList.add('editing');
     } else { // 編集中 -> 未編集へ
-      console.log("編集中 -> 未編集へ");
-
       const inputElement = event.target.previousElementSibling;
-      const inputElmentIdNum = parentElement.id.replace(/[^0-9]/g, '');
+      const idNum = parentElement.id.replace(/[^0-9]/g, '');
       const labelElement = document.createElement("label");
-      console.log("inputElmentIdNum=", inputElmentIdNum);
-      labelElement.setAttribute('for', `checkbox${inputElmentIdNum}`);
+      labelElement.setAttribute('for', `checkbox${idNum}`);
       labelElement.innerHTML = inputElement.value;
       // labelとinputを入れ替える
       event.target.parentNode.replaceChild(labelElement, inputElement);
@@ -86,8 +82,8 @@ submitBtn.addEventListener('click', (event) => {
     const parentElement = event.target.parentNode;
     todoListElement.removeChild(parentElement);
 
-    // タスク数の更新
-    updateItemNum();
+    // タスク状況の更新
+    updateTaskStatus();
   });
 
   // li要素にcheckbox -> label -> title -> buttonの順で追加
@@ -99,8 +95,8 @@ submitBtn.addEventListener('click', (event) => {
   // listにitemを追加
   todoListElement.appendChild(itemElement);
 
-  // タスク数の更新
-  updateItemNum();
+  // タスク状況の更新
+  updateTaskStatus();
 
   // 入力欄初期化
   formInputElement.value = "";
@@ -108,8 +104,8 @@ submitBtn.addEventListener('click', (event) => {
   itemId++;
 });
 
-// タスク数を更新する処理
-function updateItemNum() {
+// タスク状況を更新する関数
+function updateTaskStatus() {
   // 全てのチェックボックスの要素
   const checkboxElements = document.querySelectorAll('.checkbox');
   // 全てのタスクの数
