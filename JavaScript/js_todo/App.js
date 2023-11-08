@@ -10,7 +10,11 @@ let itemId = 1;
 // 保存ボタン押下時の処理
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log(formInputElement.value);
+  const task = formInputElement.value;
+  if (task.trim().length === 0 || task === null || task === undefined) {
+    alert("タスクを入力してください");
+    return 
+  }
 
   // li要素の作成
   const itemElement = document.createElement("li");
@@ -32,7 +36,7 @@ submitBtn.addEventListener('click', (event) => {
 
   // ラベル要素の作成
   const labelElement = document.createElement("label");
-  labelElement.innerHTML = formInputElement.value;
+  labelElement.innerHTML = task;
   labelElement.setAttribute('for', `checkbox${itemId}`);
 
   // 編集ボタンの作成
