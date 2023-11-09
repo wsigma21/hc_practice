@@ -16,9 +16,18 @@ let itemId = 1;
 
 // 保存ボタン押下時の処理
 submitBtn.addEventListener('click', (event) => {
+  // タスクの作成
+  createTask(event);
+});
+
+/**
+ * タスクを作成する処理
+ * @param {event} event 
+ */
+function createTask(event) {
   // 更新を防ぐ
   event.preventDefault();
-  
+
   // タスク受け取り
   const task = formInputElement.value;
   
@@ -27,23 +36,8 @@ submitBtn.addEventListener('click', (event) => {
     alert("タスクを入力してください");
     return 
   }
-  // タスクの作成
-  createTask(task);
-});
-
-/**
- * タスクを作成する処理
- * @param {string} task 
- */
-function createTask(task) {
   // タスクのHTML要素を作成
-  const {editBtn, deleteBtn} = createTaskHTML(task);
-
-  // 編集ボタンにイベントリスナを付加
-  createEditBtnEventListener(editBtn);
-
-  // 削除ボタンにイベントリスナを付加
-  createDeleteBtnEventListener(deleteBtn)
+  createTaskHTML(task);
 
   // タスク状況の更新
   updateTaskStatus();
@@ -84,14 +78,10 @@ function createTaskHTML(task) {
   labelElement.setAttribute('for', `checkbox${itemId}`);
 
   // 編集ボタンの作成
-  const editBtn = document.createElement("button");
-  editBtn.innerHTML = "編集";
-  editBtn.className = "editBtn";
+  const editBtn = createEditBtn();
 
   // 削除ボタンの作成
-  const deleteBtn = document.createElement("button");
-  deleteBtn.innerHTML = "削除";
-  deleteBtn.className = "deleteBtn";
+  const deleteBtn = createDeleteBtn();
 
   // li要素にcheckbox -> label -> title -> buttonの順で追加
   itemElement.appendChild(checkboxElement);
@@ -101,15 +91,37 @@ function createTaskHTML(task) {
 
   // listにitemを追加
   todoListElement.appendChild(itemElement);
-  
-  return {editBtn: editBtn, deleteBtn: deleteBtn}; 
+}
+
+/**
+ * 編集ボタンを作成しイベントを付与する関数
+ * @returns {Element} editBtn
+ */
+const createEditBtn = () => { 
+  const editBtn = document.createElement("button");
+  editBtn.innerHTML = "編集";
+  editBtn.className = "editBtn";
+  addEditBtnEventListener(editBtn)
+  return editBtn
+}
+
+/**
+ * 削除ボタンを作成しイベントを付与する関数
+ * @returns {Element} deleteBtn
+ */
+const createDeleteBtn = () => {
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerHTML = "削除";
+  deleteBtn.className = "deleteBtn";
+  addDeleteBtnEventListener(deleteBtn)
+  return deleteBtn
 }
 
 /**
  * 編集ボタンにイベントリスナを付加する関数
  * @param {Element} editBtn 
  */
-function createEditBtnEventListener(editBtn) {
+function addEditBtnEventListener(editBtn) {
   // 編集・保存ボタン押下時の処理
   editBtn.addEventListener('click', (event) => {
     // li要素を取得
@@ -130,7 +142,7 @@ function createEditBtnEventListener(editBtn) {
  * 削除ボタンにイベントリスナを付加する関数
  * @param {Element} deleteBtn 
  */
-function createDeleteBtnEventListener(deleteBtn) {
+function addDeleteBtnEventListener(deleteBtn) {
   deleteBtn.addEventListener('click', (event) => {
     // 削除確認
     const isConfirmed = window.confirm("本当に削除してもよろしいですか？");
@@ -187,12 +199,7 @@ function updateTaskStatus() {
   allTaskCountElement.innerHTML = `全てのタスク: ${allTasksCount}`;
   
   // 完了済みのタスク
-  let completedCount = 0;
-  checkboxElements.forEach((checkbox) => {
-    if (checkbox.checked) {
-      completedCount++;
-    }
-  });
+  const completedCount = Array.from(checkboxElements).filter((checkbox) => checkbox.checked).length
   completedTaskCountElement.innerHTML = `完了済み: ${completedCount}`;
 
   // 未完了のタスク
