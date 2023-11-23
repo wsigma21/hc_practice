@@ -4,6 +4,7 @@ const profilesArea = document.getElementById('profiles');
 const messageArea = document.getElementById('message-area');
 const message = document.getElementById('message');
 const baseURL = "https://ihatov08.github.io";
+const APIURL = baseURL + "/kimetsu_api/api/"
 
 function init() {
   // 初期化
@@ -42,11 +43,11 @@ async function displayCharacters(fileName) {
 
 /**
  * fetchを実行してデータを取得する関数
- * @param {string} [fileName='all] 
+ * @param {string} [fileName='all'] 
  * @returns {Object} Promise
  */
 async function fetchFile(fileName = 'all') {
-  const response = await fetch(`${baseURL}/kimetsu_api/api/${fileName}.json`);
+  const response = await fetch(`${APIURL}${fileName}.json`);
   if (response.ok) {
     const data = await response.json();
     // const data = []; // データがない場合を擬似的に試す
