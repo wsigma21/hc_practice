@@ -1,0 +1,39 @@
+html {
+  font-size: 62.5%;
+}
+
+header {
+  padding: 4% 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display:grid;
+  grid-template-rows: 100px 100px 1fr;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.select-area {
+  font-size: 2rem;
+}
+
+.choices {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  text-align: center;
+}
