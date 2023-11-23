@@ -10,7 +10,7 @@ header {
   width: 80%;
   margin: 0 auto;
   display:grid;
-  grid-template-rows: 100px 100px 1fr;
+  grid-template-rows: 100px 120px 1fr;
 }
 
 h1 {
@@ -22,10 +22,13 @@ p {
 }
 
 .select-area {
+  border: 1px solid black;
+  padding: 5px;
   font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.choices {
+#radioBtn {
   padding-top: 10px;
   display: flex;
   justify-content: space-around;
