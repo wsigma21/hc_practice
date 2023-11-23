@@ -10,7 +10,7 @@ header {
   width: 80%;
   margin: 0 auto;
   display:grid;
-  grid-template-rows: 100px 120px 1fr;
+  grid-template-rows: 100px 120px 70px 1fr;
 }
 
 h1 {
@@ -32,6 +32,19 @@ p {
   padding-top: 10px;
   display: flex;
   justify-content: space-around;
+}
+
+#message-area {
+  color: red;
+  background-color: #ffb6c1;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding-left: 10px;
+  display: none;
+}
+
+#message {
+  line-height: 5rem;
 }
 
 .profiles {
