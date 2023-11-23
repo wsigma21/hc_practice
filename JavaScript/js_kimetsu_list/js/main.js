@@ -1,11 +1,19 @@
 import { NoDataError } from './error.js';
 
+// プロフィール表示部分
 const profilesArea = document.getElementById('profiles');
+// エラーメッセージ表示部分
 const messageArea = document.getElementById('message-area');
 const message = document.getElementById('message');
+// ローディング表示部分
+const loadingArea = document.querySelector('.loading-area');
+// URL
 const baseURL = "https://ihatov08.github.io";
 const APIURL = baseURL + "/kimetsu_api/api/"
 
+/**
+ * 初期実行用関数
+ */
 function init() {
   // 初期化
   clearProfilesArea();
@@ -30,8 +38,12 @@ async function displayCharacters(fileName) {
   try {
     // 初期化
     clearProfilesArea();
+    // ローディング表示ON
+    displayLoading();
     const data = await fetchFile(fileName);
     createHTMLElement(data);
+    // ローディング表示OFF
+    hiddenLoading();
   } catch(e) {
     let errorMessage = "不具合が発生しています。。管理者に問い合わせてください。";
     if (e.name === "NoDataError") {
@@ -39,6 +51,23 @@ async function displayCharacters(fileName) {
     }
     displayMessage(errorMessage)
   } 
+}
+
+/**
+ * ローディング表示
+ */
+function displayLoading() {
+  loadingArea.classList.remove('hide');
+} 
+
+/**
+ * ローディング非表示
+ */
+function hiddenLoading() {
+  // 処理中表示確認用：fetchが一瞬なのであえて遅らせる
+  setTimeout(() => {
+    loadingArea.classList.add('hide')}
+    , "800");
 }
 
 /**
@@ -50,7 +79,7 @@ async function fetchFile(fileName = 'all') {
   const response = await fetch(`${APIURL}${fileName}.json`);
   if (response.ok) {
     const data = await response.json();
-    // const data = []; // データがない場合を擬似的に試す
+    // const data = []; // データがない場合の確認用
     if (!data.length) {
       throw new NoDataError('no data found');
     }
