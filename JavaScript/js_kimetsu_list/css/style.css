@@ -47,9 +47,14 @@ p {
   line-height: 5rem;
 }
 
-.profiles {
+#profiles {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 50px;
   text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
 }
