@@ -9,48 +9,47 @@ const message = document.getElementById('message');
 const loadingArea = document.querySelector('.loading-area');
 // URL
 const baseURL = "https://ihatov08.github.io";
-const APIURL = baseURL + "/kimetsu_api/api/"
+const API_URL = baseURL + "/kimetsu_api/api/"
 
 /**
  * 初期実行用関数
  */
 function init() {
-  // 初期化
-  clearProfilesArea();
-  // エラーメッセージ非表示
-  hiddenMessage();
   // デフォルトで全キャラクター表示
   displayCharacters();
 
   // ラジオボタンにイベントリスナをセット
   const radioBtn = document.getElementById('radioBtn');
-  radioBtn.addEventListener('change', ()=> {
-    const fileName = radioBtn.category.value;
-    displayCharacters(fileName);
-  })
+  radioBtn.addEventListener('change', displayCharacters);
 }
 
 /**
  * ProfilesAreaにキャラクターを表示する関数
- * @param {string} fileName
+ * @param {event} event
  */
-async function displayCharacters(fileName) {
+async function displayCharacters(event) {
   try {
     // 初期化
     clearProfilesArea();
+    // エラーメッセージ非表示
+    hiddenMessage();
     // ローディング表示ON
     displayLoading();
+    console.log("event=", event);
+    const fileName = event ? event.target.value : 'all';
+    console.log("display fileName=", fileName);
     const data = await fetchFile(fileName);
     createHTMLElement(data);
-    // ローディング表示OFF
-    hiddenLoading();
   } catch(e) {
     let errorMessage = "不具合が発生しています。。管理者に問い合わせてください。";
     if (e.name === "NoDataError") {
       errorMessage = "データがありません。。別のカテゴリを選んでね！";
     }
     displayMessage(errorMessage)
-  } 
+  } finally {
+    // ローディング表示OFF
+    hiddenLoading();
+  }
 }
 
 /**
@@ -67,19 +66,21 @@ function hiddenLoading() {
   // 処理中表示確認用：fetchが一瞬なのであえて遅らせる
   setTimeout(() => {
     loadingArea.classList.add('hide')}
-    , "800");
+    , 800);
 }
 
 /**
  * fetchを実行してデータを取得する関数
- * @param {string} [fileName='all'] 
+ * @param {string} fileName 
  * @returns {Object} Promise
  */
-async function fetchFile(fileName = 'all') {
-  const response = await fetch(`${APIURL}${fileName}.json`);
+async function fetchFile(fileName) {
+  const response = await fetch(`${API_URL}${fileName}.json`);
   if (response.ok) {
-    const data = await response.json();
-    // const data = []; // データがない場合の確認用
+    let data = await response.json();
+    if (fileName === "oni") {  // データがない場合の確認用
+      data = [];
+    }
     if (!data.length) {
       throw new NoDataError('no data found');
     }
