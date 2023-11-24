@@ -35,9 +35,7 @@ async function displayCharacters(event) {
     hiddenMessage();
     // ローディング表示ON
     displayLoading();
-    console.log("event=", event);
     const fileName = event ? event.target.value : 'all';
-    console.log("display fileName=", fileName);
     const data = await fetchFile(fileName);
     createHTMLElement(data);
   } catch(e) {
