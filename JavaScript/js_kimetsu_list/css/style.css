@@ -1,0 +1,88 @@
+/* 全体的な設定 */
+html {
+  font-size: 62.5%;
+}
+
+header {
+  padding: 4% 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display:grid;
+  grid-template-rows: 100px 120px 70px 1fr;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 2rem;
+}
+
+/* カテゴリ選択部分 */
+.select-area {
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#radioBtn {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* エラーメッセージ表示 */
+#message-area {
+  color: red;
+  background-color: #ffb6c1;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding-left: 10px;
+  display: none;
+}
+
+#message {
+  line-height: 5rem;
+}
+
+/* プロフィール部分の表示 */
+#profiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+/* ローディング表示 */
+.loading-area {
+  position: fixed;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.loading-area.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s;
+}
+
+.loading {
+  font-weight: bold;
+}

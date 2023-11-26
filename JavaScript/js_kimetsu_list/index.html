@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://wsigma21.github.io/hc_practice/JavaScript/js_kimetsu_list/css/reset.css">
+  <link rel="stylesheet" href="https://wsigma21.github.io/hc_practice/JavaScript/js_kimetsu_list/css/style.css">
+  <!-- <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css"> -->
+  <title>鬼滅の刃 キャラクター一覧</title>
+</head>
+<body>
+  <div class="loading-area">
+    <p class="loading">Loading...</p>
+  </div>
+  <div class="container">
+    <header>
+      <h1>鬼滅の刃 キャラクター一覧</h1>
+    </header>
+    <div class="select-area">
+      <p>※ 好きなカテゴリを選ぼう！</p>
+      <form id="radioBtn">
+        <label class="choice" for="all">
+          <input type="radio" name="category" id="all" value="all" checked>
+          全キャラクター
+        </label>
+        <label class="choice" for="kisatsutai">
+          <input type="radio" name="category" id="kisatsutai" value="kisatsutai">
+          鬼殺隊
+        </label>
+        <label class="choice" for="hashira">
+          <input type="radio" name="category" id="hashira" value="hashira">
+          柱
+        </label>
+        <label class="choice" for="oni">
+          <input type="radio" name="category" id="oni" value="oni">
+          鬼
+        </label>
+      </form>
+    </div>
+    <div id="message-area">
+      <p id="message"></p>
+    </div>
+    <div id="profiles">
+    </div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
