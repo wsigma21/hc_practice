@@ -1,12 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import styled from "styled-components";
-import {USER_LIST} from "./user_list"
-
-type UserType = {
-  id: number,
-  name: string;
-  email: string;
-}
+import { USER_LIST } from "./user_list"
+import { UserType } from "./types/user"
 
 function App() {
   const [users, setUsers] = useState<Array<UserType>>(USER_LIST);
