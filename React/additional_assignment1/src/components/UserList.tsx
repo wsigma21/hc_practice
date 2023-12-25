@@ -6,8 +6,7 @@ type UserListProps = {
   users: UserType[];
 }
 
-export const UserList: FC<UserListProps>  = (props) => {
-  const { users } = props;
+export const UserList: FC<UserListProps>  = ({ users }) => {
   return (
     <Stable>
       <thead>
@@ -18,8 +17,7 @@ export const UserList: FC<UserListProps>  = (props) => {
         </tr>
       </thead>
       <tbody>
-        {users.map((user) => {
-          return (
+        {users.map((user) => (
             <>
               <tr key={user.id}>
                 <Std>{user.id}</Std>
@@ -28,7 +26,7 @@ export const UserList: FC<UserListProps>  = (props) => {
               </tr>
             </>
           )
-        })}
+        )}
       </tbody>
     </Stable>
   )
@@ -38,6 +36,7 @@ const Stable = styled.table`
   width: 100%;
   border-collapse: collapse;
 `
+
 const Sth = styled.th`
   padding: 3px;
   text-align: center;

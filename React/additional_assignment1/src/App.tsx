@@ -1,25 +1,16 @@
-import { useState, ChangeEvent } from 'react';
 import styled from "styled-components";
-import { USER_LIST } from "./user_list";
-import { UserType } from "./types/user";
 import { ButtonMenu } from "./components/ButtonMenu";
 import { UserList } from "./components/UserList";
+import { useUserList } from "./hooks/useUserList";
 
 function App() {
-  const [users, setUsers] = useState<Array<UserType>>(USER_LIST);
-  const originalUsers = USER_LIST;
-  const onChangeInputWord = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputedWord = e.target.value;
-    const newUsers = originalUsers.filter((user) => user.name.includes(inputedWord) || user.email.includes(inputedWord));
-    setUsers(newUsers);
-  }
-  
+  const { filterUsers, onChangeInputWord } = useUserList();
   return (
     <div className="App">
       <Container>
         <ButtonMenu />
         <SInput onChange={onChangeInputWord}></SInput>
-        <UserList users={users} />
+        <UserList users={filterUsers} />
       </Container>
     </div>
   );
