@@ -5,8 +5,8 @@ import { useTodoList } from "../hooks/useTodoList"
 export const TodoList = () => {
   const { todos } = useContext(TodoContext);
   const { onDeleteTodo } = useTodoList();
-  return (
-    <>
+  if (todos.length === 0 ) return <></>
+  return (<>
       { todos.length > 0 && (
         <div>
           {todos.map((todo) => (
