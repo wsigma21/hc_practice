@@ -1,12 +1,13 @@
-import { FC } from "react";
-import { TodoType } from "../types/todo";
+import { useContext, useCallback  } from "react";
+import { TodoContext } from "../components/providers/TodoProvider";
 
-type TodoListProps = {
-  todos: TodoType[],
-  onDeleteTodo: (id:number) => void
-}
+export const TodoList = () => {
+  const { todos, setTodos } = useContext(TodoContext);
 
-export const TodoList: FC<TodoListProps>= ({ todos, onDeleteTodo }) => {
+  const onDeleteTodo = useCallback((id:number) => {
+    const newTodos = todos.filter((t) => t.id !== id);
+    setTodos(newTodos);
+  },[todos, setTodos]);
   return (
     <>
       { todos.length > 0 && (

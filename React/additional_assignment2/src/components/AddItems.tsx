@@ -1,15 +1,12 @@
-import { useState, ChangeEvent, FC } from "react";
-import { TodoType } from "../types/todo";
-
-type Props = {
-  todos: TodoType[];
-  setTodos: (todos: TodoType[]) => void;
-}
+import { useState, useContext,  ChangeEvent } from "react";
+import { TodoContext } from "../components/providers/TodoProvider";
+// import { TodoType } from "../types/todo";
 
 let nextId = 0;
 
-
-export const AddItems: FC<Props> = ({ todos, setTodos }) => {
+export const AddItems = () => {
+  // const { todos, setTodos } = useContext<Array<TodoType>>(TodoContext);
+  const { todos, setTodos } = useContext(TodoContext);
   const [ todoText, setTodoText ] = useState<string>("");
   const onChangeTodoText = (event: ChangeEvent<HTMLInputElement>) => {
     setTodoText(event.target.value);
