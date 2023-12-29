@@ -1,11 +1,8 @@
 import { useTodoList } from "../hooks/useTodoList"
 
-
-
 export const AddItems = () => {
   const { todoText, onAddTodo, onChangeTodoText } = useTodoList();
   
-
   return (
     <div className="w-full mb-5">
       <input type="text" className="w-9/12 py-1.5 px-2 border border-gray-300 rounded-md" value={todoText} onChange={onChangeTodoText}></input>
