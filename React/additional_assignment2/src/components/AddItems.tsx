@@ -1,23 +1,10 @@
-import { useState, useContext,  ChangeEvent } from "react";
-import { TodoContext } from "../components/providers/TodoProvider";
-// import { TodoType } from "../types/todo";
+import { useTodoList } from "../hooks/useTodoList"
 
-let nextId = 0;
+
 
 export const AddItems = () => {
-  // const { todos, setTodos } = useContext<Array<TodoType>>(TodoContext);
-  const { todos, setTodos } = useContext(TodoContext);
-  const [ todoText, setTodoText ] = useState<string>("");
-  const onChangeTodoText = (event: ChangeEvent<HTMLInputElement>) => {
-    setTodoText(event.target.value);
-  }
-
-  const onAddTodo = () => {
-    if (todoText === "") return;
-    const newTodos = [...todos, { id : nextId++, title: todoText} ];
-    setTodos(newTodos);
-    setTodoText("");
-  }
+  const { todoText, onAddTodo, onChangeTodoText } = useTodoList();
+  
 
   return (
     <div className="w-full mb-5">

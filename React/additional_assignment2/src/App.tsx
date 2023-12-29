@@ -9,10 +9,8 @@ function App() {
     <div className="App">
       <div className="w-3/12 mx-auto mt-10">
         <TodoProvider>
-          {/* <AddItems todos={todos} setTodos={setTodos} /> */}
           <AddItems />
           <TodoList />
-          {/* <TodoList todos={todos} onDeleteTodo={onDeleteTodo}/> */}
         </TodoProvider>
       </div>
     </div>

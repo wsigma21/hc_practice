@@ -1,13 +1,10 @@
-import { useContext, useCallback  } from "react";
+import { useContext  } from "react";
 import { TodoContext } from "../components/providers/TodoProvider";
+import { useTodoList } from "../hooks/useTodoList"
 
 export const TodoList = () => {
-  const { todos, setTodos } = useContext(TodoContext);
-
-  const onDeleteTodo = useCallback((id:number) => {
-    const newTodos = todos.filter((t) => t.id !== id);
-    setTodos(newTodos);
-  },[todos, setTodos]);
+  const { todos } = useContext(TodoContext);
+  const { onDeleteTodo } = useTodoList();
   return (
     <>
       { todos.length > 0 && (
