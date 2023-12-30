@@ -4,7 +4,7 @@ import { TodoContext } from "../components/providers/TodoProvider";
 import { useTodoList } from "../hooks/useTodoList"
 
 export const TodoList = () => {
-  // TODO:モーダルの処理は別途カスタムフック化する
+  // モーダルの処理
   const [modalIsOpen, setIsOpen] = useState(false);
   const [deleteTargetId, setDeleteTargetId] = useState(0);
   const openModal = () => setIsOpen(true);
@@ -18,8 +18,8 @@ export const TodoList = () => {
     onDeleteTodo(deleteTargetId);
     closeModal();
   }
-
-  const showDeleteAlert = (id:number) => {
+  // 削除時のモーダル
+  const showDeleteModal = (id:number) => {
     openModal();
     setDeleteTargetId(id);
   }
@@ -35,7 +35,7 @@ export const TodoList = () => {
                 <span className="w-9/12">{todo.title}</span>
                 <button
                   className="w-3/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
-                  onClick={() => showDeleteAlert(todo.id)}
+                  onClick={() => showDeleteModal(todo.id)}
                 >削除</button>
               </div>
             </div>
@@ -64,8 +64,6 @@ export const TodoList = () => {
   )
 }
 
-// TODO:tailwindで書き換える
-// 無理っぽい？
 const customStyles = {
   content: {
     top: '25%',

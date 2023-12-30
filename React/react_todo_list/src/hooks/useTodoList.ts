@@ -1,7 +1,7 @@
 import { useState, useContext, useCallback, ChangeEvent  } from "react";
 import { TodoContext } from "../components/providers/TodoProvider";
 
-let nextId = 0;
+let nextId = 1;
 
 export const useTodoList = () => {
   const { todos, setTodos } = useContext(TodoContext);
