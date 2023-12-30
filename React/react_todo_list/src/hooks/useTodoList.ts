@@ -17,7 +17,7 @@ export const useTodoList = () => {
 
   const onAddTodo = () => {
     if (todoText === "") return;
-    const newTodos = [...todos, { id : nextId++, title: todoText, done:false } ];
+    const newTodos = [...todos, { id : nextId++, title: todoText, done:false, isEdit:false, editTitle: todoText } ];
     setTodos(newTodos);
     setTodoText("");
   }

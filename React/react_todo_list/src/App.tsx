@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="w-3/12 mx-auto mt-10">
+      <div className="w-4/12 mx-auto mt-10">
         <TodoProvider>
           <StatusList />
           <AddItems />
