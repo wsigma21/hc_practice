@@ -1,8 +1,7 @@
-import { useContext, useState, useCallback, ChangeEvent  } from "react";
+import { useContext, useState } from "react";
 import Modal from 'react-modal';
 import { TodoContext } from "../components/providers/TodoProvider";
 import { useTodoList } from "../hooks/useTodoList"
-import { TodoType } from "../types/todo";
 
 export const TodoList = () => {
   // モーダルの処理
@@ -12,8 +11,8 @@ export const TodoList = () => {
   const closeModal = () => setIsOpen(false);
   Modal.setAppElement('#root');
 
-  const { todos, setTodos } = useContext(TodoContext);
-  const { onDeleteTodo } = useTodoList();
+  const { todos } = useContext(TodoContext);
+  const { onDeleteTodo, onEditTodo, onChageEditText, onChangeStatus } = useTodoList();
 
   const onClickDeleteTodo = () => {
     onDeleteTodo(deleteTargetId);
@@ -24,32 +23,6 @@ export const TodoList = () => {
     openModal();
     setDeleteTargetId(id);
   }
-
-  // Todoの編集処理
-  const onChageEditText = (event: ChangeEvent<HTMLInputElement>, id: number) => {
-    const newTodos = todos.map((todo) => (todo.id === id ? {...todo, editTitle:event.target.value} : todo));
-    setTodos(newTodos);
-  }
-
-  const onClickEdit = (id:number) => {
-    // 更新対象のTodoを取得
-    const targetTodo = todos.find((todo) => (todo.id === id));
-
-    // todosの更新処理
-    let newTodos:TodoType[];
-    if (targetTodo?.isEdit) { // 保存 -> 編集　編集を終えて保存する
-      newTodos = todos.map((todo) => (todo.id === id ? {...todo, isEdit:!todo.isEdit, title:targetTodo.editTitle} : todo))
-    } else { // 編集 -> 保存 編集を始める
-      newTodos = todos.map((todo) => (todo.id === id ? {...todo, isEdit:!todo.isEdit} : todo))
-    }
-    setTodos(newTodos);
-  }
-
-  // 達成ステータスの更新
-  const onChangeDone = useCallback((id: number) => {
-    const newTodos = todos.map((todo) => (todo.id === id ? {...todo, done:!todo.done} : todo))
-    setTodos(newTodos)
-  },[todos, setTodos]);
 
   // 編集・保存ボタンのスタイル
   const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-400 rounded-md bg-blue-400 text-white hover:bg-white hover:text-blue-400"
@@ -62,7 +35,7 @@ export const TodoList = () => {
         <div className="group">
           {todos.map((todo) => (
             <div key={todo.id} className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
-              <input type="checkbox" className="mr-2 border border-red-500" onChange={() => onChangeDone(todo.id)} />
+              <input type="checkbox" className="mr-2 border border-red-500" onChange={() => onChangeStatus(todo.id)} />
               <input
                 type="text"
                 className="w-8/12 p-2 mr-2 border rounded-md disabled:bg-gray-100" 
@@ -72,7 +45,7 @@ export const TodoList = () => {
               />
               <button
                 className={ todo.isEdit ? saveButtonStyle : editButtonStyle }
-                onClick={()=> onClickEdit(todo.id)}
+                onClick={()=> onEditTodo(todo.id)}
               >{todo.isEdit ? "保存" : "編集"}</button>
               <button
                 className="w-2/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
