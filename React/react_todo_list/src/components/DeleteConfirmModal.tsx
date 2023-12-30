@@ -60,7 +60,6 @@ const DeleteConfirmModal = forwardRef<ReactModalMethods, {}>((props, ref) => {
         >キャンセル</button>
       </div>
     </Modal>
-
   )
 })
 

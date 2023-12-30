@@ -10,7 +10,7 @@ export const TodoList = () => {
 
   // モーダルの処理
   const reactModalRef = useRef<ReactModalMethods | null>(null);
-  const callChildMethod = (id: number) => {
+  const callShowDeleteModal = (id: number) => {
     reactModalRef.current?.showDeleteModal(id);
   }
 
@@ -38,8 +38,7 @@ export const TodoList = () => {
             >{todo.isEdit ? "保存" : "編集"}</button>
             <button
               className="w-2/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
-              // onClick={() => showDeleteModal(todo.id)}
-              onClick={() => callChildMethod(todo.id)}
+              onClick={() => callShowDeleteModal(todo.id)}
             >削除</button>
           </div>
         ))}
