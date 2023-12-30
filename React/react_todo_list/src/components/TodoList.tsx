@@ -1,27 +1,17 @@
-import { useContext, useState } from "react";
-import Modal from 'react-modal';
+import { useContext, useRef } from "react";
+import { ReactModalMethods } from "../interfaces/reactModalMethods";
 import { TodoContext } from "../components/providers/TodoProvider";
+import { DeleteConfirmModal } from "../components/DeleteConfirmModal";
 import { useTodoList } from "../hooks/useTodoList"
 
 export const TodoList = () => {
-  // モーダルの処理
-  const [ modalIsOpen, setIsOpen ] = useState(false);
-  const [ deleteTargetId, setDeleteTargetId ] = useState(0);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-  Modal.setAppElement('#root');
-
   const { todos } = useContext(TodoContext);
-  const { onDeleteTodo, onEditTodo, onChageEditText, onChangeStatus } = useTodoList();
+  const { onEditTodo, onChageEditText, onChangeStatus } = useTodoList();
 
-  const onClickDeleteTodo = () => {
-    onDeleteTodo(deleteTargetId);
-    closeModal();
-  }
-  // 削除時のモーダル
-  const showDeleteModal = (id:number) => {
-    openModal();
-    setDeleteTargetId(id);
+  // モーダルの処理
+  const reactModalRef = useRef<ReactModalMethods | null>(null);
+  const callChildMethod = (id: number) => {
+    reactModalRef.current?.showDeleteModal(id);
   }
 
   // 編集・保存ボタンのスタイル
@@ -48,42 +38,13 @@ export const TodoList = () => {
             >{todo.isEdit ? "保存" : "編集"}</button>
             <button
               className="w-2/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
-              onClick={() => showDeleteModal(todo.id)}
+              // onClick={() => showDeleteModal(todo.id)}
+              onClick={() => callChildMethod(todo.id)}
             >削除</button>
           </div>
         ))}
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Delete Modal"
-        >
-          <p className="mb-4">本当に削除してもよろしいですか？</p>
-          <div className="flex justify-end">
-            <button
-              className="w-24 p-2 text-sm border border-blue-500 rounded-md bg-blue-500 text-white"
-              onClick={onClickDeleteTodo}
-            >OK</button>
-            <button
-              className="w-24 p-2 ml-2 text-sm border border-gray-200 rounded-md text-blue-500"
-              onClick={closeModal}
-            >キャンセル</button>
-          </div>
-        </Modal>
+        <DeleteConfirmModal ref={reactModalRef}/>
       </div>
     </>
   )
-}
-
-const customStyles = {
-  content: {
-    top: '25%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    width: '500px',
-    height: '120px',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
 }
