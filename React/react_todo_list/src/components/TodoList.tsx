@@ -1,4 +1,4 @@
-import { useContext, useState  } from "react";
+import { useContext, useState, useCallback  } from "react";
 import Modal from 'react-modal';
 import { TodoContext } from "../components/providers/TodoProvider";
 import { useTodoList } from "../hooks/useTodoList"
@@ -11,7 +11,7 @@ export const TodoList = () => {
   const closeModal = () => setIsOpen(false);
   Modal.setAppElement('#root');
 
-  const { todos } = useContext(TodoContext);
+  const { todos, setTodos } = useContext(TodoContext);
   const { onDeleteTodo } = useTodoList();
 
   const onClickDeleteTodo = () => {
@@ -24,6 +24,12 @@ export const TodoList = () => {
     setDeleteTargetId(id);
   }
 
+  // 達成ステータスの更新
+  const onChangeDone = useCallback((id: number) => {
+    const newTodos = todos.map((todo) => (todo.id === id ? {...todo, done:!todo.done} : todo))
+    setTodos(newTodos)
+  },[todos, setTodos]);
+
   if (todos.length === 0 ) return <></>
   return (
     <>
@@ -31,6 +37,7 @@ export const TodoList = () => {
         <div className="group">
           {todos.map((todo) => (
             <div key={todo.id} className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
+              <input type="checkbox" className="mr-1 border border-red-500" onChange={() => onChangeDone(todo.id)} />
               <span className="w-9/12">{todo.title}</span>
               <button
                 className="w-3/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
