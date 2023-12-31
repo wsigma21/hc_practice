@@ -5,6 +5,7 @@ let nextId = 1;
 
 export const useTodoList = () => {
   const { todos, setTodos } = useContext(TodoContext);
+  // 達成状況のカウント用
   const doneTodos = todos.filter((todo) => todo.done);
   const allTodosNum = todos.length;
   const doneTodoNum = doneTodos.length;
