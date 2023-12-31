@@ -33,16 +33,15 @@ export const useTodoList = () => {
 
   // 編集
   const onEditTodo = useCallback((id: number) => {
-    // 更新対象のTodoを取得
-    const targetTodo = todos.find((todo) => (todo.id === id));
-
+    // 更新対象のTodoのindexを取得
+    const index = todos.findIndex((todo) => (todo.id === id));
+    if (index === -1) return;
+    
     // todosの更新処理
-    let newTodos:TodoType[];
-    if (targetTodo?.isEdit) { // 保存 -> 編集　編集を終えて保存する
-      newTodos = todos.map((todo) => (todo.id === id ? {...todo, isEdit:!todo.isEdit, title:targetTodo.editTitle} : todo))
-    } else { // 編集 -> 保存 編集を始める
-      newTodos = todos.map((todo) => (todo.id === id ? {...todo, isEdit:!todo.isEdit} : todo))
-    }
+    const newTodos = [...todos];
+    const title = newTodos[index]?.isEdit ? newTodos[index].editTitle : newTodos[index].title;
+    newTodos[index] = {...newTodos[index], isEdit:!newTodos[index].isEdit, title};
+
     setTodos(newTodos);
   }, [todos, setTodos]);
 
