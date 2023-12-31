@@ -1,5 +1,4 @@
 import { useState, useContext, useCallback, ChangeEvent  } from "react";
-import { TodoType } from "../types/todo";
 import { TodoContext } from "../components/providers/TodoProvider";
 
 let nextId = 1;
