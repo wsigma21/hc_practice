@@ -1,13 +1,14 @@
 import { FC } from "react";
 import Modal from 'react-modal';
+import { ModalType } from "../types/modal" 
 
 type DeleteConfirmModalType = {
-  modalIsOpen: boolean;
+  modal: ModalType;
   closeModal: () => void;
   onClickDeleteTodo: () => void;
 }
 
-export const DeleteConfirmModal: FC<DeleteConfirmModalType> = ({ modalIsOpen, closeModal, onClickDeleteTodo }) => {
+export const DeleteConfirmModal: FC<DeleteConfirmModalType> = ({ modal, closeModal, onClickDeleteTodo }) => {
   const customStyles = {
     content: {
       top: '25%',
@@ -23,7 +24,7 @@ export const DeleteConfirmModal: FC<DeleteConfirmModalType> = ({ modalIsOpen, cl
 
   return (
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={modal.isOpen}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Delete Modal"

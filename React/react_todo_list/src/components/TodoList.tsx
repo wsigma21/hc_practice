@@ -9,7 +9,7 @@ export const TodoList = () => {
   const { onEditTodo, onDeleteTodo, onChageEditText, onChangeStatus } = useTodoList();
   
   // モーダルの処理
-  const { modalIsOpen, closeModal, onClickDeleteTodo, showDeleteModal } = useDeleteModal({onDeleteTodo});
+  const { modal, closeModal, onClickDeleteTodo, showDeleteModal } = useDeleteModal({onDeleteTodo});
 
   // 編集・保存ボタンのスタイル
   const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-400 rounded-md bg-blue-400 text-white hover:bg-white hover:text-blue-400"
@@ -17,10 +17,10 @@ export const TodoList = () => {
 
   if (todos.length === 0 ) return <></>
   return (
-    <>
-      <div className="group">
-        {todos.map((todo) => (
-          <div key={todo.id} className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
+    <div className="group">
+      {todos.map((todo) => (
+        <div key={todo.id} >
+          <div className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
             <input type="checkbox" className="mr-2 border border-red-500" onChange={() => onChangeStatus(todo.id)} />
             <input
               type="text"
@@ -38,13 +38,13 @@ export const TodoList = () => {
               onClick={() => showDeleteModal(todo.id)}
             >削除</button>
           </div>
-        ))}
-        <DeleteConfirmModal
-          modalIsOpen={modalIsOpen}
-          closeModal={closeModal}
-          onClickDeleteTodo={onClickDeleteTodo}
-        />
-      </div>
-    </>
+          <DeleteConfirmModal
+            modal={modal}
+            closeModal={closeModal}
+            onClickDeleteTodo={onClickDeleteTodo}
+          />
+        </div>
+      ))}
+    </div>
   )
 }
