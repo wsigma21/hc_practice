@@ -1,18 +1,15 @@
-import { useContext, useRef } from "react";
-import { ReactModalMethods } from "../interfaces/reactModalMethods";
+import { useContext} from "react";
 import { TodoContext } from "../components/providers/TodoProvider";
 import { DeleteConfirmModal } from "../components/DeleteConfirmModal";
 import { useTodoList } from "../hooks/useTodoList"
+import { useDeleteModal } from "../hooks/useDeleteModal"
 
 export const TodoList = () => {
   const { todos } = useContext(TodoContext);
-  const { onEditTodo, onChageEditText, onChangeStatus } = useTodoList();
-
+  const { onEditTodo, onDeleteTodo, onChageEditText, onChangeStatus } = useTodoList();
+  
   // モーダルの処理
-  const reactModalRef = useRef<ReactModalMethods | null>(null);
-  const callShowDeleteModal = (id: number) => {
-    reactModalRef.current?.showDeleteModal(id);
-  }
+  const { modalIsOpen, closeModal, onClickDeleteTodo, showDeleteModal } = useDeleteModal({onDeleteTodo});
 
   // 編集・保存ボタンのスタイル
   const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-400 rounded-md bg-blue-400 text-white hover:bg-white hover:text-blue-400"
@@ -38,11 +35,15 @@ export const TodoList = () => {
             >{todo.isEdit ? "保存" : "編集"}</button>
             <button
               className="w-2/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
-              onClick={() => callShowDeleteModal(todo.id)}
+              onClick={() => showDeleteModal(todo.id)}
             >削除</button>
           </div>
         ))}
-        <DeleteConfirmModal ref={reactModalRef}/>
+        <DeleteConfirmModal
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+          onClickDeleteTodo={onClickDeleteTodo}
+        />
       </div>
     </>
   )

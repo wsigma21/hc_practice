@@ -1,33 +1,13 @@
-import { useState, forwardRef, useImperativeHandle } from "react";
+import { FC } from "react";
 import Modal from 'react-modal';
-import { useTodoList } from "../hooks/useTodoList"
-import { ReactModalMethods } from "../interfaces/reactModalMethods";
 
-const DeleteConfirmModal = forwardRef<ReactModalMethods, {}>((props, ref) => {
-  const [ modalIsOpen, setIsOpen ] = useState(false);
-  const [ deleteTargetId, setDeleteTargetId ] = useState(0);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-  Modal.setAppElement('#root');
+type DeleteConfirmModalType = {
+  modalIsOpen: boolean;
+  closeModal: () => void;
+  onClickDeleteTodo: () => void;
+}
 
-  const { onDeleteTodo } = useTodoList();
-
-  const onClickDeleteTodo = () => {
-    onDeleteTodo(deleteTargetId);
-    closeModal();
-  }
-  
-  // 削除時のモーダル
-  const showDeleteModal = (id:number) => {
-    openModal();
-    setDeleteTargetId(id);
-  }
-
-  // 親コンポーネントでshowDeleteModalの利用を可能にする
-  useImperativeHandle(ref, () => ({
-    showDeleteModal,
-  }));
-
+export const DeleteConfirmModal: FC<DeleteConfirmModalType> = ({ modalIsOpen, closeModal, onClickDeleteTodo }) => {
   const customStyles = {
     content: {
       top: '25%',
@@ -61,6 +41,4 @@ const DeleteConfirmModal = forwardRef<ReactModalMethods, {}>((props, ref) => {
       </div>
     </Modal>
   )
-})
-
-export { DeleteConfirmModal };
+}
