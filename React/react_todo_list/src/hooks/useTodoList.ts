@@ -20,19 +20,19 @@ export const useTodoList = () => {
   // 追加
   const onAddTodo = useCallback(() => {
     if (todoText === "") return;
-    const newTodos = [...todos, { id : nextId++, title: todoText, done:false, isEdit:false, editTitle: todoText } ];
+    const newTodos = [...todos, { id : nextId++, title: todoText, done: false, isEdit: false, editTitle: todoText } ];
     setTodos(newTodos);
     setTodoText("");
   },[todos, todoText, setTodos, setTodoText]);
 
   // 削除
-  const onDeleteTodo = useCallback((id:number) => {
+  const onDeleteTodo = useCallback((id: number) => {
     const newTodos = todos.filter((t) => t.id !== id);
     setTodos(newTodos);
   },[todos, setTodos]);
 
   // 編集
-  const onEditTodo = useCallback((id:number) => {
+  const onEditTodo = useCallback((id: number) => {
     // 更新対象のTodoを取得
     const targetTodo = todos.find((todo) => (todo.id === id));
 

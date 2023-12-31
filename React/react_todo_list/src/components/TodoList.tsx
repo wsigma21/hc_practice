@@ -30,10 +30,10 @@ export const TodoList = () => {
               className="w-8/12 p-2 mr-2 border rounded-md disabled:bg-gray-100" 
               value={todo.isEdit ? todo.editTitle : todo.title} 
               disabled={!todo.isEdit} 
-              onChange={(event)=>{ onChageEditText(event, todo.id)}}
+              onChange={(event)=>onChageEditText(event, todo.id)}
             />
             <button
-              className={ todo.isEdit ? saveButtonStyle : editButtonStyle }
+              className={todo.isEdit ? saveButtonStyle : editButtonStyle}
               onClick={()=> onEditTodo(todo.id)}
             >{todo.isEdit ? "保存" : "編集"}</button>
             <button
