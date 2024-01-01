@@ -21,7 +21,10 @@ export const TodoList = () => {
       {todos.map((todo) => (
         <div key={todo.id} >
           <div className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
-            <input type="checkbox" className="mr-2 border border-red-500" onChange={() => onChangeStatus(todo.id)} />
+            <input
+              type="checkbox"
+              className="mr-2 border border-red-500"
+              onChange={() => onChangeStatus(todo.id)} />
             <input
               type="text"
               className="w-8/12 p-2 mr-2 border rounded-md disabled:bg-gray-100" 
