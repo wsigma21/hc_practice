@@ -30,7 +30,6 @@ export const CustomModal: FC<CustomModalType> = ({modal, confirmText, confirm, c
       style={customStyles}
       contentLabel="Delete Modal"
     >
-      {/* <p className="mb-4"></p> */}
       <p className="mb-4">{confirmText}</p>
       <div className="flex justify-end">
         <button
