@@ -25,9 +25,9 @@ export const AddItems = () => {
           onChange={onChangeTodoText}>
         </input>
         <button
-          className="w-3/12 py-1.5 border border-green-500 rounded-md bg-green-500 text-white hover:bg-white hover:text-green-500" 
+          className="w-3/12 py-1.5 border border-teal-500 rounded-md bg-teal-500 text-white hover:bg-white hover:text-teal-500" 
           onClick={onClickAddTodo}
-        >追加</button>
+        >追 加</button>
       </div>
       <CustomModal
         modal={modal}

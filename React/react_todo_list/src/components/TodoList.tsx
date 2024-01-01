@@ -20,8 +20,8 @@ export const TodoList = () => {
   });
 
   // 編集・保存ボタンのスタイル
-  const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-400 rounded-md bg-blue-400 text-white hover:bg-white hover:text-blue-400"
-  const saveButtonStyle = "w-2/12 py-1.5 mr-1 border border-indigo-500 rounded-md bg-indigo-500 text-white hover:bg-white hover:text-indigo-500"
+  const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-500 rounded-md bg-blue-500 text-white hover:bg-white hover:text-blue-500"
+  const saveButtonStyle = "w-2/12 py-1.5 mr-1 border border-violet-500 rounded-md bg-violet-500 text-white hover:bg-white hover:text-violet-500"
 
   if (todos.length === 0 ) return <></>
   return (
@@ -43,11 +43,11 @@ export const TodoList = () => {
             <button
               className={todo.isEdit ? saveButtonStyle : editButtonStyle}
               onClick={()=> onEditTodo(todo.id)}
-            >{todo.isEdit ? "保存" : "編集"}</button>
+            >{todo.isEdit ? "保 存" : "編 集"}</button>
             <button
-              className="w-2/12 py-1.5 border border-red-500 rounded-md bg-red-500 text-white hover:bg-white hover:text-red-500"
+              className="w-2/12 py-1.5 border border-rose-500 rounded-md bg-rose-500 text-white hover:bg-white hover:text-rose-500"
               onClick={() => showDeleteModal(todo.id)}
-            >削除</button>
+            >削 除</button>
           </div>
           <CustomModal
             modal={modal}
