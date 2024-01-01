@@ -6,7 +6,7 @@ type CustomModalType = {
   modal: ModalType;
   confirmText: string;
   confirm: () => void;
-  cancel: () => void;
+  cancel?: () => void;
 }
 
 export const CustomModal: FC<CustomModalType> = ({modal, confirmText, confirm, cancel}) => {
@@ -36,10 +36,12 @@ export const CustomModal: FC<CustomModalType> = ({modal, confirmText, confirm, c
           className="w-24 p-2 text-sm border border-blue-500 rounded-md bg-blue-500 text-white"
           onClick={confirm}
         >OK</button>
-        <button
-          className="w-24 p-2 ml-2 text-sm border border-gray-200 rounded-md text-blue-500"
-          onClick={cancel}
-        >キャンセル</button>
+        { cancel && (
+          <button
+            className="w-24 p-2 ml-2 text-sm border border-gray-200 rounded-md text-blue-500"
+            onClick={cancel}
+          >キャンセル</button>)
+        }
       </div>
     </Modal>
   )

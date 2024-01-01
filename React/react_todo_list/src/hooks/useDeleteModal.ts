@@ -23,7 +23,7 @@ export const useDeleteModal= ({
 
   // 削除処理
   const onClickDeleteTodo = () => {
-    onDeleteTodo(modal.targetId);
+    if (modal.targetId !== undefined) onDeleteTodo(modal?.targetId);
     closeModal();
   }
   
