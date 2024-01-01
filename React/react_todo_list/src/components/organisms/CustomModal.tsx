@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo, FC } from "react";
 import Modal from 'react-modal';
 import { ModalType } from "../../types/modal" 
 
@@ -9,7 +9,7 @@ type CustomModalType = {
   cancel?: () => void;
 }
 
-export const CustomModal: FC<CustomModalType> = ({modal, confirmText, confirm, cancel}) => {
+export const CustomModal: FC<CustomModalType> = memo(({modal, confirmText, confirm, cancel}) => {
   const customStyles = {
     content: {
       top: '25%',
@@ -45,4 +45,4 @@ export const CustomModal: FC<CustomModalType> = ({modal, confirmText, confirm, c
       </div>
     </Modal>
   )
-}
+})
