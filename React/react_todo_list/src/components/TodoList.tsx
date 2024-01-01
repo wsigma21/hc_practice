@@ -1,6 +1,5 @@
 import { useContext} from "react";
 import { TodoContext } from "./providers/TodoProvider";
-// import { DeleteConfirmModal } from "../components/DeleteConfirmModal";
 import { CustomModal } from "./organisms/CustomModal";
 import { useTodoList } from "../hooks/useTodoList"
 import { useDeleteModal } from "../hooks/useDeleteModal"
@@ -39,11 +38,6 @@ export const TodoList = () => {
               onClick={() => showDeleteModal(todo.id)}
             >削除</button>
           </div>
-          {/* <DeleteConfirmModal
-            modal={modal}
-            onClickDeleteTodo={onClickDeleteTodo}
-            closeModal={closeModal}
-          /> */}
           <CustomModal
             modal={modal}
             confirmText={"本当に削除してもよろしいですか？"}
