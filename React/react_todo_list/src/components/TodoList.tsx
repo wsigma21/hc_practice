@@ -21,11 +21,12 @@ export const TodoList = () => {
   return (
     <div className="group">
       {todos.map((todo) => (
-        <div key={todo.id} >
+        <div key={todo.id}>
           <div className="
             group-last:border-b 
             w-full py-1.5 px-2 
             border-t border-r border-l border-gray-300 rounded-md 
+            bg-white
             flex justify-between items-center
           ">
             <input

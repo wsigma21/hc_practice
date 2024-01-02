@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <div className="w-5/12 mx-auto mt-10">
-        <h2 className="text-2xl text-teal-700 font-semibold">ToDo List</h2>
+        <h2 className="text-2xl text-emerald-500 font-semibold">ToDo List</h2>
       </div>
       <div className="w-4/12 mx-auto mt-8">
         <TodoProvider>
