@@ -12,15 +12,22 @@ export const TodoList = () => {
   const { onClickDeleteTodo, showDeleteModal, modal, closeModal } = useDeleteModal({ onDeleteTodo });
 
   // 編集・保存ボタンのスタイル
-  const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-500 rounded-md bg-blue-500 text-white hover:bg-white hover:text-blue-500"
-  const saveButtonStyle = "w-2/12 py-1.5 mr-1 border border-violet-500 rounded-md bg-violet-500 text-white hover:bg-white hover:text-violet-500"
+  const normalButtonStyle = "w-2/12 py-1.5 mr-1 border rounded-md text-white hover:bg-white"
+  const editButtonStyle = `${normalButtonStyle} border-blue-500 bg-blue-500 hover:text-blue-500`
+  const saveButtonStyle = `${normalButtonStyle} border-violet-500 bg-violet-500 hover:text-violet-500`
+  const deleteButtonStyle = `${normalButtonStyle} border-rose-500 bg-rose-500 hover:text-rose-500`
 
   if (todos.length === 0 ) return <></>
   return (
     <div className="group">
       {todos.map((todo) => (
         <div key={todo.id} >
-          <div className="group-last:border-b w-full py-1.5 px-2 border-t border-r border-l border-gray-300 rounded-md flex justify-between items-center">
+          <div className="
+            group-last:border-b 
+            w-full py-1.5 px-2 
+            border-t border-r border-l border-gray-300 rounded-md 
+            flex justify-between items-center
+          ">
             <input
               type="checkbox"
               className="mr-2 border border-red-500"
@@ -37,7 +44,7 @@ export const TodoList = () => {
               onClick={()=> onEditTodo(todo.id)}
             >{todo.isEdit ? "保 存" : "編 集"}</button>
             <button
-              className="w-2/12 py-1.5 border border-rose-500 rounded-md bg-rose-500 text-white hover:bg-white hover:text-rose-500"
+              className={deleteButtonStyle}
               onClick={() => showDeleteModal(todo.id)}
             >削 除</button>
           </div>
