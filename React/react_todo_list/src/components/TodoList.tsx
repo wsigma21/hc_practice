@@ -3,21 +3,13 @@ import { TodoContext } from "./providers/TodoProvider";
 import { CustomModal } from "./organisms/CustomModal";
 import { useTodoList } from "../hooks/useTodoList"
 import { useDeleteModal } from "../hooks/useDeleteModal"
-import { useCustomModal } from "../hooks/useCustomModal"
 
 export const TodoList = () => {
   const { todos } = useContext(TodoContext);
   const { onEditTodo, onDeleteTodo, onChageEditText, onChangeStatus } = useTodoList();
   
   // モーダルの処理
-  const { modal, setModal, openModal, closeModal } = useCustomModal();
-  const { onClickDeleteTodo, showDeleteModal } = useDeleteModal({
-    onDeleteTodo, 
-    modal, 
-    setModal,
-    openModal,
-    closeModal
-  });
+  const { onClickDeleteTodo, showDeleteModal, modal, closeModal } = useDeleteModal({ onDeleteTodo });
 
   // 編集・保存ボタンのスタイル
   const editButtonStyle = "w-2/12 py-1.5 mr-1 border border-blue-500 rounded-md bg-blue-500 text-white hover:bg-white hover:text-blue-500"

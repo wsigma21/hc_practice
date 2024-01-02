@@ -1,25 +1,19 @@
-import { ModalType } from "../types/modal" 
+import { ModalType } from "../types/modal";
+import { useCustomModal } from "./useCustomModal";
 
 type DeleteModalProps = {
   onDeleteTodo: (id:number) => void,
-  modal: ModalType,
-  setModal: (modalState: ModalType) => void,
-  openModal: () => void,
-  closeModal: () => void,
 }
 
 type DeleteModalReturn = {
   onClickDeleteTodo: () => void;
   showDeleteModal: (id: number) => void;
+  modal: ModalType,
+  closeModal: () => void,
 }
 
-export const useDeleteModal= ({ 
-  onDeleteTodo, 
-  modal,
-  setModal, 
-  openModal, 
-  closeModal
- }: DeleteModalProps ): DeleteModalReturn => {
+export const useDeleteModal= ({ onDeleteTodo }: DeleteModalProps ): DeleteModalReturn => {
+  const { modal, setModal, openModal, closeModal } = useCustomModal();
 
   // 削除処理
   const onClickDeleteTodo = () => {
@@ -33,5 +27,5 @@ export const useDeleteModal= ({
     setModal({isOpen: true, targetId: id});
   }
 
-  return { onClickDeleteTodo, showDeleteModal }
+  return {onClickDeleteTodo, showDeleteModal, modal, closeModal}
 }
