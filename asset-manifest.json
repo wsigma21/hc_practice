@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/hc_practice/static/css/main.8d5790f8.css",
-    "main.js": "/hc_practice/static/js/main.a96ba3e1.js",
+    "main.css": "/hc_practice/static/css/main.9b7dc95a.css",
+    "main.js": "/hc_practice/static/js/main.d9eb3339.js",
     "index.html": "/hc_practice/index.html",
-    "main.8d5790f8.css.map": "/hc_practice/static/css/main.8d5790f8.css.map",
-    "main.a96ba3e1.js.map": "/hc_practice/static/js/main.a96ba3e1.js.map"
+    "main.9b7dc95a.css.map": "/hc_practice/static/css/main.9b7dc95a.css.map",
+    "main.d9eb3339.js.map": "/hc_practice/static/js/main.d9eb3339.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d5790f8.css",
-    "static/js/main.a96ba3e1.js"
+    "static/css/main.9b7dc95a.css",
+    "static/js/main.d9eb3339.js"
   ]
 }
