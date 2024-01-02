@@ -25,7 +25,13 @@ export const AddItems = () => {
           onChange={onChangeTodoText}>
         </input>
         <button
-          className="w-3/12 py-1.5 border border-teal-500 rounded-md bg-teal-500 text-white hover:bg-white hover:text-teal-500" 
+          className="
+            w-3/12 py-1.5 
+            border border-teal-500 rounded-md 
+            bg-teal-500
+            text-white 
+            hover:bg-white hover:text-teal-500
+            "
           onClick={onClickAddTodo}
         >追 加</button>
       </div>

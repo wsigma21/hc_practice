@@ -33,12 +33,19 @@ export const CustomModal: FC<CustomModalType> = memo(({modal, confirmText, confi
       <p className="mb-4">{confirmText}</p>
       <div className="flex justify-end">
         <button
-          className="w-24 p-2 text-sm border border-blue-500 rounded-md bg-blue-500 text-white"
+          className="
+            w-24 p-2 
+            text-sm text-white
+            border border-blue-500 rounded-md 
+            bg-blue-500"
           onClick={confirm}
         >OK</button>
         { cancel && (
           <button
-            className="w-24 p-2 ml-2 text-sm border border-gray-200 rounded-md text-blue-500"
+            className="
+              w-24 p-2 ml-2 
+              text-sm text-blue-500
+              border border-gray-200 rounded-md"
             onClick={cancel}
           >キャンセル</button>)
         }
