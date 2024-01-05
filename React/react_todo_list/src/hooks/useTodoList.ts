@@ -1,5 +1,5 @@
 import { useState, useContext, useCallback, ChangeEvent  } from "react";
-import { TodoContext } from "../components/providers/TodoProvider";
+import { TodoContext } from "../providers/TodoProvider";
 
 let nextId = 1;
 

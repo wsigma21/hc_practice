@@ -1,5 +1,5 @@
 import { useState, createContext, Dispatch, ReactNode, SetStateAction } from "react";
-import { TodoType } from "../../types/todo";
+import { TodoType } from "../types/todo";
 
 export type TodoContextType = {
   todos: TodoType[];

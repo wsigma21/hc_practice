@@ -2,7 +2,7 @@ import "./index.css";
 import { AddItems } from "./components/AddItems";
 import { TodoList } from "./components/TodoList";
 import { StatusList } from "./components/StatusList";
-import { TodoProvider } from "./components/providers/TodoProvider";
+import { TodoProvider } from "./providers/TodoProvider";
 
 function App() {
 

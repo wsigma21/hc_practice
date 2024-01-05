@@ -1,5 +1,5 @@
 import { useContext} from "react";
-import { TodoContext } from "./providers/TodoProvider";
+import { TodoContext } from "../providers/TodoProvider";
 import { CustomModal } from "./organisms/CustomModal";
 import { useTodoList } from "../hooks/useTodoList"
 import { useDeleteModal } from "../hooks/useDeleteModal"
