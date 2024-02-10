@@ -1,0 +1,1 @@
+export type UserAttributeType = "common" | "student" | "mentor";
