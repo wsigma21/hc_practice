@@ -4,7 +4,7 @@ import { UserAttributeContext } from "../providers/UserAttributeProvider";
 
 export const MentorList: FC = () => {
   const { userAttribute } = useContext(UserAttributeContext);
-  const { mentors } = useUserList(userAttribute);
+  const { mentors, sortMentorList } = useUserList(userAttribute);
   return(
     <>
     <table>
@@ -18,7 +18,10 @@ export const MentorList: FC = () => {
           <th>電話番号</th>
           <th>趣味</th>
           <th>URL</th>
-          <th>実務経験日数</th>
+          <th>実務経験日数
+              <span onClick={() => sortMentorList("experienceDays", "desc")}>↓</span>
+              <span onClick={() => sortMentorList("experienceDays", "asc")}>↑</span>
+            </th>
           <th>現場で使っている言語</th>
           <th>担当できる課題番号始め</th>
           <th>担当できる課題番号終わり</th>
