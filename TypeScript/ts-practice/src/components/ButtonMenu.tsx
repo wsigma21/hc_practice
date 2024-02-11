@@ -11,7 +11,7 @@ export const ButtonMenu = () => {
     <>
       <button
         className=" border border-blue-500"
-        onClick={() => changeListType("common")}
+        onClick={() => changeListType("allUser")}
       >共通</button>
       <button
         className=" border border-blue-500"

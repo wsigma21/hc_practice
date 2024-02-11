@@ -1,1 +1,1 @@
-export type UserAttributeType = "common" | "student" | "mentor";
+export type UserAttributeType = "allUser" | "student" | "mentor";
