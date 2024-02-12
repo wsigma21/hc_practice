@@ -64,6 +64,27 @@ export const useUserList = () => {
     setStudents(newStudents);
   }
 
+  const addMentor = () => {
+    const newMentor: MentorType = {
+      id: 10,
+      role: "mentor",
+      name: "メンター花子",
+      email: "hanahana@gmail.com",
+      age: 18,
+      postCode: "100-1000",
+      phone: "060-1111-1111",
+      hobbies: ["ボクシング"],
+      url: "http:hanahana.com",
+      experienceDays: 5000,
+      useLangs: ["Python"],
+      availableStartCode: 101,
+      availableEndCode: 501,
+      studentList: [],
+    };
+    const newMentors: MentorType[] = [...mentors, {...newMentor, studentList:createStudentList(students, newMentor)}];
+    setMentors(newMentors);
+  }
+
 
   const sortStudentList = <T extends keyof StudentType>(sortField: T, sortType: sortType) => {
     const newStudents = [...students];
@@ -84,5 +105,5 @@ export const useUserList = () => {
     setMentors(newMentors);
   }
 
-  return { allUsers, students, setStudents, addStudent, sortStudentList, mentors, sortMentorList }
+  return { allUsers, students, setStudents, addStudent, sortStudentList, mentors, addMentor, sortMentorList }
 }

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useUserList } from "../hooks/useUserList";
 
 export const MentorList: FC = () => {
-  const { mentors, sortMentorList } = useUserList();
+  const { mentors, addMentor, sortMentorList } = useUserList();
   return(
     <>
     <table>
@@ -46,6 +46,12 @@ export const MentorList: FC = () => {
         ))}
       </tbody>
     </table>
+    <button 
+        className=" border border-blue-500"
+        onClick={() => addMentor()}
+      >
+        メンターの新規登録
+      </button>
     </>
   )
 }
