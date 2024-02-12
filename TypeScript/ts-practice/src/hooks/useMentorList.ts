@@ -16,8 +16,10 @@ export const useMentorList = () => {
     // 対応可能な生徒のリストを作成
     setMentors(fetchMentors.map((mentor) => (
       { ...mentor, 
-        studentList: fetchStudents.filter((student) => 
-        mentor.availableStartCode <= student.taskCode && student.taskCode <= mentor.availableEndCode)
+        studentList: fetchStudents
+        .filter((student) => 
+          mentor.availableStartCode <= student.taskCode && student.taskCode <= mentor.availableEndCode)
+        .map((student) => student.name)
       }
     )));
     // eslint-disable-next-line react-hooks/exhaustive-deps

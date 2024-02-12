@@ -43,12 +43,12 @@ export const AllUserList: FC = () => {
             <td>{user.taskCode}</td>
             <td>{user.studyLangs?.join(", ")}</td>
             <td>{user.score}</td>
-            <td>{user.mentorList?.map((mentor) => mentor.name).join(", ")}</td>
+            <td>{user.mentorList?.join(", ")}</td>
             <td>{user.experienceDays}</td>
             <td>{user.useLangs?.join(", ")}</td>
             <td>{user.availableStartCode}</td>
             <td>{user.availableEndCode}</td>
-            <td>{user.studentList?.map((student) => student.name).join(", ")}</td>
+            <td>{user.studentList?.join(", ")}</td>
           </tr>
         ))}
       </tbody>

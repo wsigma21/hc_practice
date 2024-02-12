@@ -1,5 +1,4 @@
 import { AllUserType } from "./allUser";
-import { MentorType } from "./mentor";
 
 export type StudentType = AllUserType & {
   role: "student";
@@ -7,5 +6,5 @@ export type StudentType = AllUserType & {
   taskCode: number;
   studyLangs: string[];
   score: number;
-  mentorList: MentorType[],
+  mentorList: string[],
 }

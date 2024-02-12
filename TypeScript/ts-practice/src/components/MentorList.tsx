@@ -41,7 +41,7 @@ export const MentorList: FC = () => {
             <td>{mentor.useLangs?.join(", ")}</td>
             <td>{mentor.availableStartCode}</td>
             <td>{mentor.availableEndCode}</td>
-            <td>{mentor.studentList.map((student) => student.name).join(", ")}</td>
+            <td>{mentor.studentList?.join(", ")}</td>
           </tr>
         ))}
       </tbody>

@@ -44,7 +44,7 @@ export const StudentList: FC = () => {
               <td>{student.taskCode}</td>
               <td>{student.studyLangs?.join(", ")}</td>
               <td>{student.score}</td>
-              <td>{student.mentorList.map((mentor) => mentor.name).join(", ")}</td>
+              <td>{student.mentorList?.join(", ")}</td>
             </tr>
           ))}
         </tbody>

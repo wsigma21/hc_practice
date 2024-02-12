@@ -7,6 +7,8 @@ import { sortType } from "../types/sort";
 export const useStudentList = () => {
   const {allUsers} = useContext(AllUserContext);
   const [students, setStudents] = useState<StudentType[]>([]);
+  console.log("生徒一覧のカスタムフック")
+  console.log("students=", students)
   
   // 初期設定
   useEffect(() => {
@@ -16,8 +18,10 @@ export const useStudentList = () => {
     // 対応可能なメンターのリストを作成
     setStudents(fetchStudents.map((student) => (
       { ...student, 
-        mentorList: fetchMentors.filter((mentor) => 
-        mentor.availableStartCode <= student.taskCode && student.taskCode <= mentor.availableEndCode)
+        mentorList: fetchMentors
+        .filter((mentor) => 
+          mentor.availableStartCode <= student.taskCode && student.taskCode <= mentor.availableEndCode)
+        .map((student) => student.name)
       }
     )));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,5 +37,5 @@ export const useStudentList = () => {
     setStudents(newStudents);
   }
 
-  return { students, sortStudentList }
+  return { students, setStudents, sortStudentList }
 }

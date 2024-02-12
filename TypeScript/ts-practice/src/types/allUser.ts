@@ -1,6 +1,3 @@
-import { MentorType } from "./mentor";
-import { StudentType } from "./student";
-
 export type AllUserType = {
   id: number;
   role: string;
@@ -15,10 +12,10 @@ export type AllUserType = {
   taskCode?: number;
   studyLangs?: string[];
   score?: number;
-  mentorList?: MentorType[],
+  mentorList?: string[],
   experienceDays?: number;
   useLangs?: string[];
   availableStartCode?: number;
   availableEndCode?: number;
-  studentList?: StudentType[];
+  studentList?: string[];
 }
