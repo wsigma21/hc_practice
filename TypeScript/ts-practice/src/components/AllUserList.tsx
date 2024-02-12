@@ -1,10 +1,8 @@
-import { FC, useContext } from "react";
-import { useUserList } from '../hooks/useUserList';
-import { UserAttributeContext } from "../providers/UserAttributeProvider";
+import { FC } from "react";
+import { useAllUserList } from "../hooks/useAllUserList";
 
 export const AllUserList: FC = () => {
-  const { userAttribute } = useContext(UserAttributeContext);
-  const { allUsers } = useUserList(userAttribute);
+  const { allUsers } = useAllUserList();
   return(
     <>
     <table>

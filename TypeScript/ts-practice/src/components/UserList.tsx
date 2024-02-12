@@ -6,8 +6,6 @@ import { MentorList } from "./MentorList";
 
 export const UserList: FC = () => {
   const { userAttribute } = useContext(UserAttributeContext);
-  console.log("AllUserListページ")
-  console.log("userAttribute=", userAttribute);
   return (
     <>
       {userAttribute === "allUser" && <AllUserList />}

@@ -1,10 +1,8 @@
-import { FC, useContext } from "react";
-import { useUserList } from '../hooks/useUserList';
-import { UserAttributeContext } from "../providers/UserAttributeProvider";
+import { FC } from "react";
+import { useStudentList } from "../hooks/useStudentList";
 
 export const StudentList: FC = () => {
-  const { userAttribute } = useContext(UserAttributeContext);
-  const { students, sortStudentList } = useUserList(userAttribute);
+  const { students, sortStudentList } = useStudentList();
   return(
     <>
       <table>
@@ -18,7 +16,6 @@ export const StudentList: FC = () => {
             <th>電話番号</th>
             <th>趣味</th>
             <th>URL</th>
-            {/* <th>勉強時間<span>■</span></th> */}
             <th>勉強時間
               <span onClick={() => sortStudentList("studyMinutes", "desc")}>↓</span>
               <span onClick={() => sortStudentList("studyMinutes", "asc")}>↑</span>

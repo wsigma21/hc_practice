@@ -1,10 +1,8 @@
-import { FC, useContext } from "react";
-import { useUserList } from '../hooks/useUserList';
-import { UserAttributeContext } from "../providers/UserAttributeProvider";
+import { FC } from "react";
+import { useMentorList } from "../hooks/useMentorList";
 
 export const MentorList: FC = () => {
-  const { userAttribute } = useContext(UserAttributeContext);
-  const { mentors, sortMentorList } = useUserList(userAttribute);
+  const { mentors, sortMentorList } = useMentorList();
   return(
     <>
     <table>
