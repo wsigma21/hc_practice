@@ -12,7 +12,7 @@ export const ButtonMenu = () => {
       <button
         className=" border border-blue-500"
         onClick={() => changeListType("allUser")}
-      >共通</button>
+      >全員</button>
       <button
         className=" border border-blue-500"
         onClick={() => changeListType("student")}
