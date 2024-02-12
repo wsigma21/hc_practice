@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useAllUserList } from "../hooks/useAllUserList";
+import { useUserList } from "../hooks/useUserList";
 
 export const AllUserList: FC = () => {
-  const { allUsers } = useAllUserList();
+  const { allUsers } = useUserList();
   return(
     <>
     <table>

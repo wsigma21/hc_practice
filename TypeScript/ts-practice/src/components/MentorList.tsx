@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useMentorList } from "../hooks/useMentorList";
+import { useUserList } from "../hooks/useUserList";
 
 export const MentorList: FC = () => {
-  const { mentors, sortMentorList } = useMentorList();
+  const { mentors, sortMentorList } = useUserList();
   return(
     <>
     <table>

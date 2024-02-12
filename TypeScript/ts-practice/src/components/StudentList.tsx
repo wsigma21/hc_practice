@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useStudentList } from "../hooks/useStudentList";
+import { useUserList } from "../hooks/useUserList";
 
 export const StudentList: FC = () => {
-  const { students, sortStudentList } = useStudentList();
+  const { students, addStudent, sortStudentList } = useUserList();
   return(
     <>
       <table>
@@ -49,6 +49,12 @@ export const StudentList: FC = () => {
           ))}
         </tbody>
       </table>
+      <button 
+        className=" border border-blue-500"
+        onClick={() => addStudent()}
+      >
+        生徒の新規登録
+      </button>
     </>
   )
 }
