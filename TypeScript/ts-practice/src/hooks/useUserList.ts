@@ -21,6 +21,7 @@ const createStudentList = (students: StudentType[], mentor: MentorType): string[
 
 export const useUserList = () => {
   const { allUsers, setAllUsers } = useContext(AllUserContext);
+
   const fetchMentors: MentorType[] = allUsers.filter((user): user is MentorType => user.role === "mentor");
   const [students, setStudents] = useState<StudentType[]>(
     allUsers
@@ -60,28 +61,14 @@ export const useUserList = () => {
       score: 77, 
       mentorList: [],
     };
-    const newStudents: StudentType[] = [...students, {...newStudent, mentorList:createMentorList(mentors, newStudent)}];
+    const newStudents: StudentType[] = [...students, {...newStudent, mentorList: createMentorList(mentors, newStudent)}];
     setStudents(newStudents);
   }
 
-  const addMentor = () => {
-    const newMentor: MentorType = {
-      id: 10,
-      role: "mentor",
-      name: "メンター花子",
-      email: "hanahana@gmail.com",
-      age: 18,
-      postCode: "100-1000",
-      phone: "060-1111-1111",
-      hobbies: ["ボクシング"],
-      url: "http:hanahana.com",
-      experienceDays: 5000,
-      useLangs: ["Python"],
-      availableStartCode: 101,
-      availableEndCode: 501,
-      studentList: [],
-    };
-    const newMentors: MentorType[] = [...mentors, {...newMentor, studentList:createStudentList(students, newMentor)}];
+  const addMentor = (newMentor: MentorType) => {
+    console.log("addMentor")
+    console.log("newMentor=", newMentor);
+    const newMentors: MentorType[] = [...mentors, {...newMentor, studentList: createStudentList(students, newMentor)}];
     setMentors(newMentors);
   }
 
