@@ -4,21 +4,21 @@ import { ModalType } from "../../types/modal"
 
 type CustomModalType = {
   modal: ModalType;
-  confirmText: string;
+  title: string;
   confirm: () => void;
   cancel?: () => void;
   children: React.ReactNode;
 }
 
-export const CustomModal: FC<CustomModalType> = memo(({modal, confirmText, confirm, cancel, children}) => {
+export const CustomModal: FC<CustomModalType> = memo(({modal, title, confirm, cancel, children}) => {
   const customStyles = {
     content: {
-      top: '25%',
+      top: '40%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      width: '500px',
-      height: '500px',
+      width: '750px',
+      height: '750px',
       marginRight: '-50%',
       borderRadius: '3%',
       transform: 'translate(-50%, -50%)',
@@ -30,11 +30,11 @@ export const CustomModal: FC<CustomModalType> = memo(({modal, confirmText, confi
       isOpen={modal.isOpen}
       onRequestClose={cancel}
       style={customStyles}
-      contentLabel="Delete Modal"
+      contentLabel="Entry Modal"
     >
-      <p className="mb-4">{confirmText}</p>
+      <p className="mb-4">{title}</p>
       {children}
-      <div className="flex justify-end">
+      <div className="mt-5 flex justify-end">
         <button
           className="
             w-24 p-2 
