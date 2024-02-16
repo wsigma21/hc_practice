@@ -44,30 +44,12 @@ export const useUserList = () => {
     setAllUsers([...students, ...mentors].sort((a,b) => a.id - b.id));
   },[students, mentors, setAllUsers]);  
 
-  const addStudent = () => {
-    const newStudent: StudentType = {
-      id: 9,
-      role: "student",
-      name: "田中一郎",
-      email: "tanaka@gmail.com",
-      age: 20,
-      postCode: "300-1000",
-      phone: "090-1111-1111",
-      hobbies: ["囲碁", "将棋"],
-      url: "http:fdsfojfod.com",
-      studyMinutes: 2222,
-      taskCode: 102,
-      studyLangs: ["Golang", "React"],
-      score: 77, 
-      mentorList: [],
-    };
+  const addStudent = (newStudent: StudentType) => {
     const newStudents: StudentType[] = [...students, {...newStudent, mentorList: createMentorList(mentors, newStudent)}];
     setStudents(newStudents);
   }
 
   const addMentor = (newMentor: MentorType) => {
-    console.log("addMentor")
-    console.log("newMentor=", newMentor);
     const newMentors: MentorType[] = [...mentors, {...newMentor, studentList: createStudentList(students, newMentor)}];
     setMentors(newMentors);
   }

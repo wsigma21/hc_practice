@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useUserList } from "../hooks/useUserList";
 
 export const StudentList: FC = () => {
-  const { students, addStudent, sortStudentList } = useUserList();
+  const { students, sortStudentList } = useUserList();
   return(
     <>
       <table>
@@ -49,12 +49,6 @@ export const StudentList: FC = () => {
           ))}
         </tbody>
       </table>
-      <button 
-        className=" border border-blue-500"
-        onClick={() => addStudent()}
-      >
-        生徒の新規登録
-      </button>
     </>
   )
 }

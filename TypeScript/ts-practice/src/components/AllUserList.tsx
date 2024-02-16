@@ -1,29 +1,53 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUserList } from "../hooks/useUserList";
 import { MentorType } from "../types/mentor";
 import { useCustomModal } from "../hooks/useCustomModal";
 import { CustomModal } from "./organisms/CustomModal";
-// import { AllUserType } from "../types/allUser";
+import { StudentType } from "../types/student";
+import { UserAttributeType } from "../types/userAttribute";
 
 export const AllUserList: FC = () => {
-  const { allUsers, addMentor } = useUserList();
+  const { allUsers, addMentor, addStudent } = useUserList();
   const { modal, openModal, closeModal } = useCustomModal();
-  // TODO: メンター・生徒で入力欄の表示を切り替える
+  const [ selectedRole, setSelectedRole] = useState<UserAttributeType>("student");
+  const [ multiInputTarget, setMultiInputTarget] = useState<string>("勉強中の言語");
 
-  const { register, handleSubmit, formState: { errors } } = useForm<MentorType>();
-  const onSubmit: SubmitHandler<MentorType> = (data) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<MentorType | StudentType>();
+  const onChangeRole = (role: UserAttributeType) => {
+    setSelectedRole(role);
+    if (role === "student") {
+      setMultiInputTarget("勉強中の言語")
+    } else {
+      setMultiInputTarget("現場で使っている言語")
+    }
+  }
+  const onSubmit: SubmitHandler<MentorType | StudentType> = (data) => {
     console.log("onSubmit押された！")
     console.log("data=",data)
-    const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
-    const useLangs: string[] = data.useLangs.toString().split(/[,、・]/);
-    addMentor({
-      ...data, 
-      id: allUsers.length + 1,
-      hobbies,
-      useLangs,
-    });
-    console.log("allUsers=", allUsers);
+    if (data.role === "mentor") {
+      const studyLangs: string[] = [];
+      const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
+      const useLangs: string[] = data.useLangs.toString().split(/[,、・]/);
+      addMentor({
+        ...data, 
+        id: allUsers.length + 1,
+        studyLangs,
+        hobbies,
+        useLangs,
+      });
+    } else {
+      const studyLangs: string[] = data.studyLangs.toString().split(/[,、・]/);
+      const hobbies: string[] = [];
+      const useLangs: string[] = [];
+      addStudent({
+        ...data, 
+        id: allUsers.length + 1,
+        hobbies,
+        studyLangs,
+        useLangs,
+      });
+    }
     closeModal();
   }
   const validRules = {
@@ -39,6 +63,12 @@ export const AllUserList: FC = () => {
   }
   return(
     <>
+      <button 
+        className=" border border-blue-500"
+        onClick={() => openModal()}
+        >
+        新規登録
+      </button>
       <table>
         <thead>
           <tr>
@@ -87,12 +117,6 @@ export const AllUserList: FC = () => {
           ))}
         </tbody>
       </table>
-      <button 
-        className=" border border-blue-500"
-        onClick={() => openModal()}
-        >
-          メンターの新規登録
-      </button>
       <CustomModal
         modal={modal}
         title={"新規登録"}
@@ -100,7 +124,7 @@ export const AllUserList: FC = () => {
         cancel={closeModal}
       >
         <div>
-          <p>※ 趣味、現場で使っている言語を複数入力する場合は「,」で区切ってください</p>
+          <p>※ 趣味、{multiInputTarget}を複数入力する場合は「,」で区切ってください</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="name" className="w-6/12">名前：</label>
@@ -117,6 +141,7 @@ export const AllUserList: FC = () => {
               <select
                 id="role"
                 {...register("role", validRules)}
+                onChange={(event) => onChangeRole(event.target.value as UserAttributeType)}
                 className="w-6/12 p-2 mr-2 border rounded-md"
               >
                 <option value="student">生徒</option>
@@ -183,46 +208,96 @@ export const AllUserList: FC = () => {
               />
               {errors.url && errors.url.message}
             </div>
-            <div>
-              <label className="w-6/12">実務経験日数：</label>
-              <input
-                type="number"
-                id="experienceDays"
-                {...register("experienceDays", validRules)}
-                className="w-6/12 p-2 mr-2 border rounded-md" 
-              />
-              {errors.experienceDays && errors.experienceDays.message}
-            </div>
-            <div>
-              <label className="w-6/12">現場で使っている言語：</label>
-              <input
-                type="text"
-                id="useLangs"
-                {...register("useLangs", validRules)}
-                className="w-6/12 p-2 mr-2 border rounded-md" 
-              />
-              {errors.useLangs && errors.useLangs.message}
-            </div>
-            <div>
-              <label className="w-6/12">担当できる課題番号初め：</label>
-              <input
-                type="number"
-                id="availableStartCode"
-                {...register("availableStartCode", validRules)}
-                className="w-6/12 p-2 mr-2 border rounded-md" 
-              />
-              {errors.availableStartCode && errors.availableStartCode.message}
-            </div>
-            <div>
-              <label className="w-6/12">担当できる課題番号終わり：</label>
-              <input
-                type="number"
-                id="availableEndCode"
-                {...register("availableEndCode", validRules)}
-                className="w-6/12 p-2 mr-2 border rounded-md" 
-              />
-              {errors.availableEndCode && errors.availableEndCode.message}
-            </div>
+            {/* 生徒のみ */}
+            {selectedRole === "student" && (
+            <>
+              <div>
+                <label className="w-6/12">勉強時間：</label>
+                <input
+                  type="number"
+                  id="studyMinutes"
+                  {...register("studyMinutes", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.studyMinutes && errors.studyMinutes.message}
+              </div>
+              <div>
+                <label className="w-6/12">課題番号：</label>
+                <input
+                  type="number"
+                  id="taskCode"
+                  {...register("taskCode", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.taskCode && errors.taskCode.message}
+              </div>
+              <div>
+                <label className="w-6/12">勉強中の言語</label>
+                <input
+                  type="text"
+                  id="studyLangs"
+                  {...register("studyLangs", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.studyLangs && errors.studyLangs.message}
+              </div>
+              <div>
+                <label className="w-6/12">ハピネススコア：</label>
+                <input
+                  type="number"
+                  id="score"
+                  {...register("score", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.score && errors.score.message}
+              </div>
+            </>
+            )}
+            {/* メンターのみ */}
+            {selectedRole === "mentor" && (
+            <>
+              <div>
+                <label className="w-6/12">実務経験日数：</label>
+                <input
+                  type="number"
+                  id="experienceDays"
+                  {...register("experienceDays", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.experienceDays && errors.experienceDays.message}
+              </div>
+              <div>
+                <label className="w-6/12">現場で使っている言語：</label>
+                <input
+                  type="text"
+                  id="useLangs"
+                  {...register("useLangs", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.useLangs && errors.useLangs.message}
+              </div>
+              <div>
+                <label className="w-6/12">担当できる課題番号初め：</label>
+                <input
+                  type="number"
+                  id="availableStartCode"
+                  {...register("availableStartCode", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.availableStartCode && errors.availableStartCode.message}
+              </div>
+              <div>
+                <label className="w-6/12">担当できる課題番号終わり：</label>
+                <input
+                  type="number"
+                  id="availableEndCode"
+                  {...register("availableEndCode", validRules)}
+                  className="w-6/12 p-2 mr-2 border rounded-md" 
+                />
+                {errors.availableEndCode && errors.availableEndCode.message}
+              </div>
+            </>
+            )}
           </form>
         </div>
       </CustomModal>
