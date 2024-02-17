@@ -7,7 +7,7 @@ export const ButtonMenu = () => {
   const changeListType = (selectedType: UserAttributeType) => {
     setUserAttribute(selectedType);
   }
-  const buttonStyle = "w-2/12 py-1.5 border border-emerald-500 rounded-sm tracking-widest"
+  const buttonStyle = "w-2/12 py-1.5 border-2 border-emerald-500 rounded-sm tracking-widest"
   const unSelectedButtonStyle = `${buttonStyle} bg-emerald-500 text-white`
   const selectedunSelectedButtonStyle = `${buttonStyle} bg-white text-emerald-500`
   return (

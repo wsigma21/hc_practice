@@ -3,7 +3,7 @@ import { useUserList } from "../hooks/useUserList";
 
 export const StudentList: FC = () => {
   const { students, sortStudentList } = useUserList();
-  const tdStyle = "border border-slate-600"
+  const tdStyle = "border border-slate-600 p-1.5"
   const tdNumStyle = "border border-slate-600 text-center"
   return(
     <>

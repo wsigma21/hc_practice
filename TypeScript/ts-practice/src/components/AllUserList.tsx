@@ -55,7 +55,7 @@ export const AllUserList: FC = () => {
     pattern: {value: /^0\d{9,10}$/, message: '0から始まる半角数字のみ10~11桁で入力してください'}
   }
   // CSS
-  const tdStyle = "border border-slate-600"
+  const tdStyle = "border border-slate-600 p-1.5"
   const tdNumStyle = "border border-slate-600 text-center"
   const buttonStyle = "w-1/12 py-1.5 border border-blue-300 rounded-md bg-blue-500 text-white hover:bg-white hover:text-blue-500"
   const modalItemDivStyle = "grid grid-cols-3 mr-2 mb-2 flex items-center"
