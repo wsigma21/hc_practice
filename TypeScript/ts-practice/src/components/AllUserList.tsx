@@ -30,12 +30,14 @@ export const AllUserList: FC = () => {
   }
   // 新規登録処理
   const onSubmit: SubmitHandler<MentorType | StudentType> = (data) => {
+    const postCode: string = data.postCode.slice(0,3) + "-" + data.postCode.slice(-4);
     const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
     const studyLangs: string[] = isStudent(data) ? data.studyLangs.toString().split(/[,、・]/) : [];
     const useLangs: string[] = isMentor(data) ? data.useLangs.toString().split(/[,、・]/) : [];
     addUser({
       ...data, 
       id: allUsers.length + 1,
+      postCode,
       studyLangs,
       hobbies,
       useLangs,
