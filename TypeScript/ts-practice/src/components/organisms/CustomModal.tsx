@@ -18,7 +18,7 @@ export const CustomModal: FC<CustomModalType> = memo(({modal, title, confirm, ca
       right: 'auto',
       bottom: 'auto',
       width: '750px',
-      height: '750px',
+      height: '770px',
       marginRight: '-50%',
       borderRadius: '3%',
       transform: 'translate(-50%, -50%)',
@@ -32,7 +32,7 @@ export const CustomModal: FC<CustomModalType> = memo(({modal, title, confirm, ca
       style={customStyles}
       contentLabel="Entry Modal"
     >
-      <p className="mb-4">{title}</p>
+      <p className="mb-4 text-xl font-bold">{title}</p>
       {children}
       <div className="mt-5 flex justify-end">
         <button
