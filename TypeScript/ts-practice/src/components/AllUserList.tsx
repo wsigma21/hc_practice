@@ -8,7 +8,7 @@ import { StudentType } from "../types/student";
 import { UserAttributeType } from "../types/userAttribute";
 
 export const AllUserList: FC = () => {
-  const { allUsers, addMentor, addStudent } = useUserList();
+  const { allUsers, addUser, isStudent, isMentor } = useUserList();
   const { modal, openModal, closeModal } = useCustomModal();
   const [ selectedRole, setSelectedRole] = useState<UserAttributeType>("student");
   const [ multiInputTarget, setMultiInputTarget] = useState<string>("勉強中の言語");
@@ -30,31 +30,16 @@ export const AllUserList: FC = () => {
   }
   // 新規登録処理
   const onSubmit: SubmitHandler<MentorType | StudentType> = (data) => {
-    console.log("onSubmit押された！")
-    console.log("data=",data)
     const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
-    if (data.role === "mentor") {
-      const studyLangs: string[] = [];
-      const useLangs: string[] = data.useLangs.toString().split(/[,、・]/);
-      addMentor({
-        ...data, 
-        id: allUsers.length + 1,
-        studyLangs,
-        hobbies,
-        useLangs,
-      });
-    } 
-    if (data.role === "student") {
-      const studyLangs: string[] = data.studyLangs.toString().split(/[,、・]/);
-      const useLangs: string[] = [];
-      addStudent({
-        ...data, 
-        id: allUsers.length + 1,
-        hobbies,
-        studyLangs,
-        useLangs,
-      });
-    }
+    const studyLangs: string[] = isStudent(data) ? data.studyLangs.toString().split(/[,、・]/) : [];
+    const useLangs: string[] = isMentor(data) ? data.useLangs.toString().split(/[,、・]/) : [];
+    addUser({
+      ...data, 
+      id: allUsers.length + 1,
+      studyLangs,
+      hobbies,
+      useLangs,
+    });
     closeModal();
   }
   // 新規登録バリデーション
@@ -63,11 +48,11 @@ export const AllUserList: FC = () => {
   }
   const postCodeValidRules = {
     ...validRules,
-    pattern: { value: /^\d{7}$/, message: '半角数字のみ7桁で入力してください'}
+    pattern: {value: /^\d{7}$/, message: '半角数字のみ7桁で入力してください'}
   }
   const phoneValidRules = {
     ...validRules,
-    pattern: { value: /^0\d{9,10}$/, message: '0から始まる半角数字のみ10~11桁で入力してください'}
+    pattern: {value: /^0\d{9,10}$/, message: '0から始まる半角数字のみ10~11桁で入力してください'}
   }
   // CSS
   const tdStyle = "border border-slate-600"
