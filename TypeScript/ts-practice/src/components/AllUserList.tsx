@@ -14,6 +14,7 @@ export const AllUserList: FC = () => {
   const [ multiInputTarget, setMultiInputTarget] = useState<string>("勉強中の言語");
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<MentorType | StudentType>();
+  // ロール変更で注釈文字列切り替え
   const onChangeRole = (role: UserAttributeType) => {
     setSelectedRole(role);
     if (role === "student") {
@@ -22,16 +23,18 @@ export const AllUserList: FC = () => {
       setMultiInputTarget("現場で使っている言語")
     }
   }
+  // 新規登録ボタンクリック
   const onClickEntry = () => {
     reset();
     openModal();
   }
+  // 新規登録処理
   const onSubmit: SubmitHandler<MentorType | StudentType> = (data) => {
     console.log("onSubmit押された！")
     console.log("data=",data)
+    const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
     if (data.role === "mentor") {
       const studyLangs: string[] = [];
-      const hobbies: string[] = data.hobbies.toString().split(/[,、・]/);
       const useLangs: string[] = data.useLangs.toString().split(/[,、・]/);
       addMentor({
         ...data, 
@@ -40,9 +43,9 @@ export const AllUserList: FC = () => {
         hobbies,
         useLangs,
       });
-    } else {
+    } 
+    if (data.role === "student") {
       const studyLangs: string[] = data.studyLangs.toString().split(/[,、・]/);
-      const hobbies: string[] = [];
       const useLangs: string[] = [];
       addStudent({
         ...data, 
@@ -54,6 +57,7 @@ export const AllUserList: FC = () => {
     }
     closeModal();
   }
+  // 新規登録バリデーション
   const validRules = {
     required: "※ 入力してください",
   }
@@ -76,12 +80,12 @@ export const AllUserList: FC = () => {
   return(
     <>
       <div className="flex justify-center">
-      <button
-          className={buttonStyle}
-          onClick={() => onClickEntry()}
-          >
-          新規登録
- </button>
+        <button
+            className={buttonStyle}
+            onClick={() => onClickEntry()}
+            >
+            新規登録
+        </button>
       </div>
       <br/>
       <table className="border-collapse border border-slate-500 table-auto w-full">
