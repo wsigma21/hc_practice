@@ -13,7 +13,7 @@ export const ButtonMenu = () => {
   return (
     <div className="mb-5 flex justify-center">
       <button
-        className={userAttribute !== "student" && userAttribute !== "mentor" ? selectedunSelectedButtonStyle : unSelectedButtonStyle}
+        className={userAttribute === "allUser" ? selectedunSelectedButtonStyle : unSelectedButtonStyle}
         onClick={() => changeListType("allUser")}
       >全員</button>
       <button
