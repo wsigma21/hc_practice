@@ -13,7 +13,7 @@ export const AllUserList: FC = () => {
   const [ selectedRole, setSelectedRole] = useState<UserAttributeType>("student");
   const [ multiInputTarget, setMultiInputTarget] = useState<string>("勉強中の言語");
 
-  const { register, handleSubmit, formState: { errors } } = useForm<MentorType | StudentType>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<MentorType | StudentType>();
   const onChangeRole = (role: UserAttributeType) => {
     setSelectedRole(role);
     if (role === "student") {
@@ -21,6 +21,10 @@ export const AllUserList: FC = () => {
     } else {
       setMultiInputTarget("現場で使っている言語")
     }
+  }
+  const onClickEntry = () => {
+    reset();
+    openModal();
   }
   const onSubmit: SubmitHandler<MentorType | StudentType> = (data) => {
     console.log("onSubmit押された！")
@@ -72,12 +76,12 @@ export const AllUserList: FC = () => {
   return(
     <>
       <div className="flex justify-center">
-        <button
+      <button
           className={buttonStyle}
-          onClick={() => openModal()}
+          onClick={() => onClickEntry()}
           >
           新規登録
-        </button>
+ </button>
       </div>
       <br/>
       <table className="border-collapse border border-slate-500 table-auto w-full">
