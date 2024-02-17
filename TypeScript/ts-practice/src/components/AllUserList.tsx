@@ -61,58 +61,65 @@ export const AllUserList: FC = () => {
     ...validRules,
     pattern: { value: /^0\d{9,10}$/, message: '0から始まる半角数字のみ10~11桁で入力してください'}
   }
+  const tdStyle = "border border-slate-600"
+  const tdNumStyle = "border border-slate-600 text-center"
+  const buttonStyle = "w-1/12 py-1.5 border border-blue-300 rounded-md bg-blue-500 text-white hover:bg-white hover:text-blue-500"
+
   return(
     <>
-      <button 
-        className=" border border-blue-500"
-        onClick={() => openModal()}
-        >
-        新規登録
-      </button>
-      <table>
+      <div className="flex justify-center">
+        <button
+          className={buttonStyle}
+          onClick={() => openModal()}
+          >
+          新規登録
+        </button>
+      </div>
+      <br/>
+      <table className="border-collapse border border-slate-500 table-auto w-full">
         <thead>
-          <tr>
-            <th>名前</th>
-            <th>ロール</th>
-            <th>メールアドレス</th>
-            <th>年齢</th>
-            <th>郵便番号</th>
-            <th>電話番号</th>
-            <th>趣味</th>
-            <th>URL</th>
-            <th>勉強時間</th>
-            <th>課題番号</th>
-            <th>勉強中の言語</th>
-            <th>ハピネススコア</th>
-            <th>対応可能なメンター</th>
-            <th>実務経験日数</th>
-            <th>現場で使っている言語</th>
-            <th>担当できる課題番号始め</th>
-            <th>担当できる課題番号終わり</th>
-            <th>対応可能な生徒</th>
+          <tr className="bg-gray-200">
+            <th className={tdStyle}>名前</th>
+            <th className={tdStyle}>ロール</th>
+            <th className={tdStyle}>メールアドレス</th>
+            <th className={tdStyle}>年齢</th>
+            <th className={tdStyle}>郵便番号</th>
+            <th className={tdStyle}>電話番号</th>
+            <th className={tdStyle}>趣味</th>
+            <th className={tdStyle}>URL</th>
+            <th className={tdStyle}>勉強時間</th>
+            <th className={tdStyle}>課題番号</th>
+            <th className={tdStyle}>勉強中の言語</th>
+            <th className={tdStyle}>ハピネススコア</th>
+            <th className={tdStyle}>対応可能なメンター</th>
+            <th className={tdStyle}>実務経験日数</th>
+            <th className={tdStyle}>現場で使っている言語</th>
+            <th className={tdStyle}>担当できる課題番号始め</th>
+            <th className={tdStyle}>担当できる課題番号終わり</th>
+            <th className={tdStyle}>対応可能な生徒</th>
           </tr>
         </thead>
         <tbody>
           {allUsers.map((user) => (
             <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.role}</td>
-              <td>{user.email}</td>
-              <td>{user.age}</td>
-              <td>{user.postCode}</td>
-              <td>{user.phone}</td>
-              <td>{user.hobbies.join(", ")}</td>
-              <td>{user.url}</td>
-              <td>{user.studyMinutes}</td>
-              <td>{user.taskCode}</td>
-              <td>{user.studyLangs?.join(", ")}</td>
-              <td>{user.score}</td>
-              <td>{user.mentorList?.join(", ")}</td>
-              <td>{user.experienceDays}</td>
-              <td>{user.useLangs?.join(", ")}</td>
-              <td>{user.availableStartCode}</td>
-              <td>{user.availableEndCode}</td>
-              <td>{user.studentList?.join(", ")}</td>
+              <td className={tdStyle}>{user.name}</td>
+              <td className={tdStyle}>{user.role}</td>
+              <td className={tdStyle}>{user.email}</td>
+              <td className={tdNumStyle}>{user.age}</td>
+              <td className={tdNumStyle}>{user.postCode}</td>
+              <td className={tdNumStyle}>{user.phone}</td>
+              <td className={tdStyle}>{user.hobbies.join(", ")}</td>
+              <td className={tdStyle}>{user.url}</td>
+              <td className={tdNumStyle}>{user.studyMinutes}</td>
+              <td className={tdNumStyle}>{user.taskCode}</td>
+              <td className={tdStyle}>{user.studyLangs?.join(", ")}</td>
+              <td className={tdNumStyle}>{user.score}</td>
+              <td className={tdStyle}>{user.mentorList?.join(", ")}</td>
+              <td className={tdNumStyle}>{user.experienceDays}</td>
+              <td className={tdStyle}>{user.useLangs?.join(", ")}</td>
+              <td className={tdNumStyle}>{user.availableStartCode}</td>
+              <td className={tdNumStyle}>{user.availableEndCode}</td>
+              <td className={tdStyle}>{user.studentList?.join(", ")}</td>
             </tr>
           ))}
         </tbody>
@@ -127,7 +134,6 @@ export const AllUserList: FC = () => {
           <p>※ 趣味、{multiInputTarget}を複数入力する場合は「,」で区切ってください</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label htmlFor="name" className="w-6/12">名前：</label>
               <input
                 type="text"
                 id="name"

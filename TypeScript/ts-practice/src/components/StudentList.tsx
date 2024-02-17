@@ -3,48 +3,50 @@ import { useUserList } from "../hooks/useUserList";
 
 export const StudentList: FC = () => {
   const { students, sortStudentList } = useUserList();
+  const tdStyle = "border border-slate-600"
+  const tdNumStyle = "border border-slate-600 text-center"
   return(
     <>
-      <table>
+      <table className="table-auto w-full">
         <thead>
-          <tr>
-            <th>名前</th>
-            <th>ロール</th>
-            <th>メールアドレス</th>
-            <th>年齢</th>
-            <th>郵便番号</th>
-            <th>電話番号</th>
-            <th>趣味</th>
-            <th>URL</th>
-            <th>勉強時間
+          <tr className="bg-gray-200">
+            <th className={tdStyle}>名前</th>
+            <th className={tdStyle}>ロール</th>
+            <th className={tdStyle}>メールアドレス</th>
+            <th className={tdStyle}>年齢</th>
+            <th className={tdStyle}>郵便番号</th>
+            <th className={tdStyle}>電話番号</th>
+            <th className={tdStyle}>趣味</th>
+            <th className={tdStyle}>URL</th>
+            <th className={tdStyle}>勉強時間
               <span onClick={() => sortStudentList("studyMinutes", "desc")}>↓</span>
               <span onClick={() => sortStudentList("studyMinutes", "asc")}>↑</span>
             </th>
-            <th>課題番号</th>
-            <th>勉強中の言語</th>
-            <th>ハピネススコア
+            <th className={tdStyle}>課題番号</th>
+            <th className={tdStyle}>勉強中の言語</th>
+            <th className={tdStyle}>ハピネススコア
               <span onClick={() => sortStudentList("score", "desc")}>↓</span>
               <span onClick={() => sortStudentList("score", "asc")}>↑</span>
             </th>
-            <th>対応可能なメンター</th>
+            <th className={tdStyle}>対応可能なメンター</th>
           </tr>
         </thead>
         <tbody>
           {students.map((student) => (
             <tr key={student.id}>
-              <td>{student.name}</td>
-              <td>{student.role}</td>
-              <td>{student.email}</td>
-              <td>{student.age}</td>
-              <td>{student.postCode}</td>
-              <td>{student.phone}</td>
-              <td>{student.hobbies.join(", ")}</td>
-              <td>{student.url}</td>
-              <td>{student.studyMinutes}</td>
-              <td>{student.taskCode}</td>
-              <td>{student.studyLangs?.join(", ")}</td>
-              <td>{student.score}</td>
-              <td>{student.mentorList?.join(", ")}</td>
+              <td className={tdStyle}>{student.name}</td>
+              <td className={tdStyle}>{student.role}</td>
+              <td className={tdStyle}>{student.email}</td>
+              <td className={tdNumStyle}>{student.age}</td>
+              <td className={tdNumStyle}>{student.postCode}</td>
+              <td className={tdNumStyle}>{student.phone}</td>
+              <td className={tdStyle}>{student.hobbies.join(", ")}</td>
+              <td className={tdStyle}>{student.url}</td>
+              <td className={tdNumStyle}>{student.studyMinutes}</td>
+              <td className={tdNumStyle}>{student.taskCode}</td>
+              <td className={tdStyle}>{student.studyLangs?.join(", ")}</td>
+              <td className={tdNumStyle}>{student.score}</td>
+              <td className={tdStyle}>{student.mentorList?.join(", ")}</td>
             </tr>
           ))}
         </tbody>
