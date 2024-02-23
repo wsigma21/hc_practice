@@ -1,5 +1,5 @@
 import { UserList } from './components/UserList';
-import { ButtonMenu } from './components/ButtonMenu';
+import { Menu } from './components/Menu';
 import { UserAttributeProvider } from './providers/UserAttributeProvider';
 import { AllUserProvider } from './providers/AllUserProvider';
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <UserAttributeProvider>
         <AllUserProvider>
-          <ButtonMenu />
+          <Menu />
           <UserList />
         </AllUserProvider>
       </UserAttributeProvider>
