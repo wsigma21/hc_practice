@@ -1,16 +1,15 @@
 import { memo, FC } from "react";
 import Modal from 'react-modal';
-import { ModalType } from "../../types/modal" 
 
 type CustomModalType = {
-  modal: ModalType;
+  isOpen: boolean;
   title: string;
   confirm: () => void;
   cancel?: () => void;
   children: React.ReactNode;
 }
 
-export const CustomModal: FC<CustomModalType> = memo(({modal, title, confirm, cancel, children}) => {
+export const CustomModal: FC<CustomModalType> = memo(({isOpen, title, confirm, cancel, children}) => {
   const customStyles = {
     content: {
       top: '40%',
@@ -27,7 +26,7 @@ export const CustomModal: FC<CustomModalType> = memo(({modal, title, confirm, ca
 
   return (
     <Modal
-      isOpen={modal.isOpen}
+      isOpen={isOpen}
       onRequestClose={cancel}
       style={customStyles}
       contentLabel="Entry Modal"
