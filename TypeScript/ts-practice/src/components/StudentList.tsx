@@ -1,8 +1,12 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useUserList } from "../hooks/useUserList";
+import { UserAttributeContext } from "../providers/UserAttributeProvider";
+import { StudentType } from "../types/student";
 
 export const StudentList: FC = () => {
-  const { students, sortStudentList } = useUserList();
+  const { userAttribute } = useContext(UserAttributeContext);
+  const { filterUsers, sortUserList } = useUserList(userAttribute);
+  const students = filterUsers as StudentType[];
   const tdStyle = "border border-slate-600 p-1.5"
   const tdNumStyle = "border border-slate-600 text-center"
   return(
@@ -19,14 +23,14 @@ export const StudentList: FC = () => {
             <th className={tdStyle}>趣味</th>
             <th className={tdStyle}>URL</th>
             <th className={tdStyle}>勉強時間
-              <span onClick={() => sortStudentList("studyMinutes", "desc")}>↓</span>
-              <span onClick={() => sortStudentList("studyMinutes", "asc")}>↑</span>
+              <span onClick={() => sortUserList<StudentType, "studyMinutes">("studyMinutes", "desc")}>↓</span>
+              <span onClick={() => sortUserList<StudentType, "studyMinutes">("studyMinutes", "asc")}>↑</span>
             </th>
             <th className={tdStyle}>課題番号</th>
             <th className={tdStyle}>勉強中の言語</th>
             <th className={tdStyle}>ハピネススコア
-              <span onClick={() => sortStudentList("score", "desc")}>↓</span>
-              <span onClick={() => sortStudentList("score", "asc")}>↑</span>
+              <span onClick={() => sortUserList<StudentType, "score">("score", "desc")}>↓</span>
+              <span onClick={() => sortUserList<StudentType, "score">("score", "asc")}>↑</span>
             </th>
             <th className={tdStyle}>対応可能なメンター</th>
           </tr>
@@ -46,7 +50,7 @@ export const StudentList: FC = () => {
               <td className={tdNumStyle}>{student.taskCode}</td>
               <td className={tdStyle}>{student.studyLangs?.join(", ")}</td>
               <td className={tdNumStyle}>{student.score}</td>
-              <td className={tdStyle}>{student.mentorList?.join(", ")}</td>
+              <td className={tdStyle}>{student.availableList?.join(", ")}</td>
             </tr>
           ))}
         </tbody>

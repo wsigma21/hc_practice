@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useUserList } from "../hooks/useUserList";
 import { MentorType } from "../types/mentor";
@@ -6,14 +6,16 @@ import { useCustomModal } from "../hooks/useCustomModal";
 import { CustomModal } from "./organisms/CustomModal";
 import { StudentType } from "../types/student";
 import { UserAttributeType } from "../types/userAttribute";
+import { UserAttributeContext } from "../providers/UserAttributeProvider";
 
 export const AllUserList: FC = () => {
-  const { allUsers, addUser, isStudent, isMentor } = useUserList();
+  const { userAttribute } = useContext(UserAttributeContext);
+  const { filterUsers, isMentor, isStudent, addUser } = useUserList(userAttribute);
   const { modal, openModal, closeModal } = useCustomModal();
   const [ selectedRole, setSelectedRole] = useState<UserAttributeType>("student");
   const [ multiInputTarget, setMultiInputTarget] = useState<string>("勉強中の言語");
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<MentorType | StudentType>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<MentorType & StudentType>();
   // ロール変更で注釈文字列切り替え
   const onChangeRole = (role: UserAttributeType) => {
     setSelectedRole(role);
@@ -36,7 +38,7 @@ export const AllUserList: FC = () => {
     const useLangs: string[] = isMentor(data) ? data.useLangs.toString().split(/[,、・]/) : [];
     addUser({
       ...data, 
-      id: allUsers.length + 1,
+      id: filterUsers.length + 1,
       postCode,
       studyLangs,
       hobbies,
@@ -99,7 +101,7 @@ export const AllUserList: FC = () => {
           </tr>
         </thead>
         <tbody>
-          {allUsers.map((user) => (
+          {filterUsers.map((user) => (
             <tr key={user.id}>
               <td className={tdStyle}>{user.name}</td>
               <td className={tdStyle}>{user.role}</td>
@@ -109,16 +111,35 @@ export const AllUserList: FC = () => {
               <td className={tdNumStyle}>{user.phone}</td>
               <td className={tdStyle}>{user.hobbies.join(", ")}</td>
               <td className={tdStyle}>{user.url}</td>
-              <td className={tdNumStyle}>{user.studyMinutes}</td>
-              <td className={tdNumStyle}>{user.taskCode}</td>
-              <td className={tdStyle}>{user.studyLangs?.join(", ")}</td>
-              <td className={tdNumStyle}>{user.score}</td>
-              <td className={tdStyle}>{user.mentorList?.join(", ")}</td>
-              <td className={tdNumStyle}>{user.experienceDays}</td>
-              <td className={tdStyle}>{user.useLangs?.join(", ")}</td>
-              <td className={tdNumStyle}>{user.availableStartCode}</td>
-              <td className={tdNumStyle}>{user.availableEndCode}</td>
-              <td className={tdStyle}>{user.studentList?.join(", ")}</td>
+              {/* 生徒のみの列 */}
+              { isStudent(user) && (
+                <>
+                  <td className={tdNumStyle}>{user.studyMinutes}</td>
+                  <td className={tdNumStyle}>{user.taskCode}</td>
+                  <td className={tdStyle}>{user.studyLangs?.join(", ")}</td>
+                  <td className={tdNumStyle}>{user.score}</td>
+                  <td className={tdStyle}>{user.availableList?.join(", ")}</td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                </>
+              )}
+              {/* メンターのみの列 */}
+              { isMentor(user) && (
+                <>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdStyle}></td>
+                  <td className={tdNumStyle}>{user.experienceDays}</td>
+                  <td className={tdStyle}>{user.useLangs?.join(", ")}</td>
+                  <td className={tdNumStyle}>{user.availableStartCode}</td>
+                  <td className={tdNumStyle}>{user.availableEndCode}</td>
+                  <td className={tdStyle}>{user.availableList?.join(", ")}</td>
+                </>
+              )}
             </tr>
           ))}
         </tbody>

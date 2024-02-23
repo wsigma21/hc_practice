@@ -1,8 +1,12 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useUserList } from "../hooks/useUserList";
+import { UserAttributeContext } from "../providers/UserAttributeProvider";
+import { MentorType } from "../types/mentor";
 
 export const MentorList: FC = () => {
-  const { mentors, sortMentorList } = useUserList();
+  const { userAttribute } = useContext(UserAttributeContext);
+  const { filterUsers, sortUserList } = useUserList(userAttribute);
+  const mentors = filterUsers as MentorType[];
   const tdStyle = "border border-slate-600 p-1.5"
   const tdNumStyle = "border border-slate-600 text-center"
   return(
@@ -19,9 +23,9 @@ export const MentorList: FC = () => {
             <th className={tdStyle}>趣味</th>
             <th className={tdStyle}>URL</th>
             <th className={tdStyle}>実務経験日数
-                <span onClick={() => sortMentorList("experienceDays", "desc")}>↓</span>
-                <span onClick={() => sortMentorList("experienceDays", "asc")}>↑</span>
-              </th>
+              <span onClick={() => sortUserList<MentorType, "experienceDays">("experienceDays", "desc")}>↓</span>
+              <span onClick={() => sortUserList<MentorType, "experienceDays">("experienceDays", "asc")}>↑</span>
+            </th>
             <th className={tdStyle}>現場で使っている言語</th>
             <th className={tdStyle}>担当できる課題番号始め</th>
             <th className={tdStyle}>担当できる課題番号終わり</th>
@@ -43,7 +47,7 @@ export const MentorList: FC = () => {
               <td className={tdStyle}>{mentor.useLangs?.join(", ")}</td>
               <td className={tdNumStyle}>{mentor.availableStartCode}</td>
               <td className={tdNumStyle}>{mentor.availableEndCode}</td>
-              <td className={tdStyle}>{mentor.studentList?.join(", ")}</td>
+              <td className={tdStyle}>{mentor.availableList?.join(", ")}</td>
             </tr>
           ))}
         </tbody>
