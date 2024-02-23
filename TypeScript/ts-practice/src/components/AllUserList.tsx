@@ -60,7 +60,7 @@ export const AllUserList: FC = () => {
               <td className={tdStyle}>{user.hobbies.join(", ")}</td>
               <td className={tdStyle}>{user.url}</td>
               {/* 生徒のみの列 */}
-              { isStudent(user) && (
+              {isStudent(user) && (
                 <>
                   <td className={tdNumStyle}>{user.studyMinutes}</td>
                   <td className={tdNumStyle}>{user.taskCode}</td>
@@ -74,7 +74,7 @@ export const AllUserList: FC = () => {
                 </>
               )}
               {/* メンターのみの列 */}
-              { isMentor(user) && (
+              {isMentor(user) && (
                 <>
                   <td className={tdStyle}></td>
                   <td className={tdStyle}></td>

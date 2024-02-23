@@ -139,93 +139,93 @@ export const AddUserModal = ({
           </div>
           {/* 生徒のみ */}
           {selectedRole === "student" && (
-          <>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>勉強時間</label>
-              <input
-                type="number"
-                id="studyMinutes"
-                {...register("studyMinutes", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.studyMinutes && errors.studyMinutes.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>課題番号</label>
-              <input
-                type="number"
-                id="taskCode"
-                {...register("taskCode", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.taskCode && errors.taskCode.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>勉強中の言語</label>
-              <input
-                type="text"
-                id="studyLangs"
-                {...register("studyLangs", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.studyLangs && errors.studyLangs.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>ハピネススコア</label>
-              <input
-                type="number"
-                id="score"
-                {...register("score", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.score && errors.score.message}</span>
-            </div>
-          </>
+            <>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>勉強時間</label>
+                <input
+                  type="number"
+                  id="studyMinutes"
+                  {...register("studyMinutes", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.studyMinutes && errors.studyMinutes.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>課題番号</label>
+                <input
+                  type="number"
+                  id="taskCode"
+                  {...register("taskCode", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.taskCode && errors.taskCode.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>勉強中の言語</label>
+                <input
+                  type="text"
+                  id="studyLangs"
+                  {...register("studyLangs", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.studyLangs && errors.studyLangs.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>ハピネススコア</label>
+                <input
+                  type="number"
+                  id="score"
+                  {...register("score", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.score && errors.score.message}</span>
+              </div>
+            </>
           )}
           {/* メンターのみ */}
           {selectedRole === "mentor" && (
-          <>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>実務経験日数</label>
-              <input
-                type="number"
-                id="experienceDays"
-                {...register("experienceDays", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.experienceDays && errors.experienceDays.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>現場で使っている言語</label>
-              <input
-                type="text"
-                id="useLangs"
-                {...register("useLangs", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.useLangs && errors.useLangs.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>担当できる課題番号初め</label>
-              <input
-                type="number"
-                id="availableStartCode"
-                {...register("availableStartCode", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.availableStartCode && errors.availableStartCode.message}</span>
-            </div>
-            <div className={modalItemDivStyle}>
-              <label className={modalItemLabelStyle}>担当できる課題番号終わり</label>
-              <input
-                type="number"
-                id="availableEndCode"
-                {...register("availableEndCode", validRules)}
-                className={modalItemInputStyle} 
-              />
-              <span className={modalItemSpanStyle}>{errors.availableEndCode && errors.availableEndCode.message}</span>
-            </div>
-          </>
+            <>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>実務経験日数</label>
+                <input
+                  type="number"
+                  id="experienceDays"
+                  {...register("experienceDays", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.experienceDays && errors.experienceDays.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>現場で使っている言語</label>
+                <input
+                  type="text"
+                  id="useLangs"
+                  {...register("useLangs", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.useLangs && errors.useLangs.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>担当できる課題番号初め</label>
+                <input
+                  type="number"
+                  id="availableStartCode"
+                  {...register("availableStartCode", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.availableStartCode && errors.availableStartCode.message}</span>
+              </div>
+              <div className={modalItemDivStyle}>
+                <label className={modalItemLabelStyle}>担当できる課題番号終わり</label>
+                <input
+                  type="number"
+                  id="availableEndCode"
+                  {...register("availableEndCode", validRules)}
+                  className={modalItemInputStyle} 
+                />
+                <span className={modalItemSpanStyle}>{errors.availableEndCode && errors.availableEndCode.message}</span>
+              </div>
+            </>
           )}
         </form>
       </div>
