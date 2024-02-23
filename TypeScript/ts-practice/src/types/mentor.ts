@@ -1,10 +1,8 @@
-import { AllUserType } from "./allUser"
+import { CommonUserType } from "./common"
 
-export type MentorType = AllUserType & {
-  role: "mentor";
+export type MentorType = CommonUserType & {
   experienceDays: number;
   useLangs: string[];
   availableStartCode: number;
   availableEndCode: number;
-  studentList: string[];
 }

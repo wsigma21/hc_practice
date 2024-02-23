@@ -1,10 +1,11 @@
 import { useState, createContext, Dispatch, ReactNode, SetStateAction } from "react";
-import { AllUserType } from "../types/allUser";
 import { USER_LIST } from "../user_list";
+import { StudentType } from "../types/student";
+import { MentorType } from "../types/mentor";
 
 export type AllUserContextType = {
-  allUsers: AllUserType[];
-  setAllUsers: Dispatch<SetStateAction<AllUserType[]>>;
+  allUsers: (StudentType | MentorType)[];
+  setAllUsers: Dispatch<SetStateAction<(StudentType | MentorType)[]>>;
 }
 
 export const AllUserContext = createContext<AllUserContextType>(
@@ -13,7 +14,7 @@ export const AllUserContext = createContext<AllUserContextType>(
 
 export const AllUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [ allUsers, setAllUsers ] = useState<AllUserType[]>(USER_LIST);
+  const [ allUsers, setAllUsers ] = useState<(StudentType | MentorType)[]>(USER_LIST);
 
   return (
     <AllUserContext.Provider value={{ allUsers, setAllUsers }} >
